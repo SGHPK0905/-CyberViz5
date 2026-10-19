@@ -1,0 +1,24 @@
+{
+  "started_utc": "2026-10-14T12:57:55.999539+00:00",
+  "finished_utc": "2026-10-14T13:01:26.465281+00:00",
+  "elapsed_seconds": 210.466,
+  "python_executable": "C:\\Users\\Quan Phan\\anaconda3\\python.exe",
+  "machine_ram_bytes": 16794284032,
+  "peak_memory": {
+    "children_rss_bytes": 540127232,
+    "kernel_peak_wset_bytes": 771686400,
+    "sample_interval_seconds": 0.5
+  },
+  "memory_note": "RSS tổng các tiến trình con được lấy mẫu mỗi 0,5s; peak_wset là đỉnh working set do Windows báo cho một tiến trình con. Không phải yêu cầu RAM tối thiểu và không bao gồm môi trường VS Code của người nhận.",
+  "fresh_kernel": true,
+  "execution_success": true,
+  "code_cells": 5,
+  "execution_counts": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "errors": []
+}

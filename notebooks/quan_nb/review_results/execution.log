@@ -1,0 +1,452 @@
+START UTC 2026-10-14T12:57:55.999539+00:00
+Python executable: C:\Users\Quan Phan\anaconda3\python.exe
+
+=== CELL 2, execution_count=1, seconds=0.243 ===
+Bắt đầu UTC: 2026-10-14T12:57:57.255980+00:00
+Python: 3.14.6 | Pandas: 3.0.3 | PyArrow: 23.0.1
+Số dòng mỗi lô: 1000
+                    file      bytes
+0  train_transaction.csv  683351067
+1     train_identity.csv   26529680
+
+=== CELL 4, execution_count=2, seconds=67.350 ===
+Kiểm tra nguồn source_transaction: 100,000 dòng
+Kiểm tra nguồn source_transaction: 200,000 dòng
+Kiểm tra nguồn source_transaction: 300,000 dòng
+Kiểm tra nguồn source_transaction: 400,000 dòng
+Kiểm tra nguồn source_transaction: 500,000 dòng
+Kiểm tra nguồn source_identity: 100,000 dòng
+              dataset  duplicate_id_groups  duplicate_id_rows_involved  \
+0  source_transaction                    0                           0   
+1     source_identity                    0                           0   
+
+   duplicate_id_extra_rows  duplicate_full_row_groups  \
+0                        0                          0   
+1                        0                          0   
+
+   duplicate_full_rows_involved  duplicate_full_extra_rows  
+0                             0                          0  
+1                             0                          0  
+Giao dịch nguồn: 590540 | ID duy nhất: 590540 | Fraud: 20663
+Có identity: 144233 | Không có: 446307 | Identity không ghép được: 0
+
+=== CELL 6, execution_count=3, seconds=111.264 ===
+Làm sạch và ghi Parquet: 50,000 dòng
+Làm sạch và ghi Parquet: 100,000 dòng
+Làm sạch và ghi Parquet: 150,000 dòng
+Làm sạch và ghi Parquet: 200,000 dòng
+Làm sạch và ghi Parquet: 250,000 dòng
+Làm sạch và ghi Parquet: 300,000 dòng
+Làm sạch và ghi Parquet: 350,000 dòng
+Làm sạch và ghi Parquet: 400,000 dòng
+Làm sạch và ghi Parquet: 450,000 dòng
+Làm sạch và ghi Parquet: 500,000 dòng
+Làm sạch và ghi Parquet: 550,000 dòng
+Hoàn thành ghi 590,540 dòng. Chưa kết luận chất lượng trước bước kiểm tra độc lập.
+Parquet: fraud_train_clean.parquet | bytes: 160819367
+
+=== CELL 8, execution_count=4, seconds=30.347 ===
+Đọc lại Parquet độc lập: 100,000 dòng
+Đọc lại Parquet độc lập: 200,000 dòng
+Đọc lại Parquet độc lập: 300,000 dòng
+Đọc lại Parquet độc lập: 400,000 dòng
+Đọc lại Parquet độc lập: 500,000 dòng
+                                           check  \
+0                            row_count_preserved   
+1               unique_transaction_ids_preserved   
+2                          fraud_count_preserved   
+3                             missing_source_ids   
+4                          unexpected_output_ids   
+5                   fraud_label_mismatches_by_id   
+6                        amount_mismatches_by_id   
+7                          time_mismatches_by_id   
+8                 identity_flag_mismatches_by_id   
+9                        relative_day_mismatches   
+10                   identity_coverage_preserved   
+11              parquet_metadata_rows_match_scan   
+12                                  column_count   
+13                 source_transaction_missing_id   
+14                 source_transaction_invalid_id   
+15  source_transaction_reserved_label_collisions   
+16              source_transaction_invalid_label   
+17    source_transaction_duplicate_id_extra_rows   
+18                    source_identity_missing_id   
+19                    source_identity_invalid_id   
+20     source_identity_reserved_label_collisions   
+21       source_identity_duplicate_id_extra_rows   
+22                          output_dtype_changes   
+23                          output_invalid_label   
+24                             output_invalid_id   
+25                               output_infinity   
+26                        output_negative_amount   
+27                         output_missing_amount   
+28                             output_missing_dt   
+29                            output_negative_dt   
+30                        output_status_mismatch   
+31                output_duplicate_id_extra_rows   
+32                columns_with_wrong_null_counts   
+33       columns_with_wrong_missing_label_counts   
+34      identity_missing_reason_count_mismatches   
+35                    derived_columns_null_count   
+36             transaction_source_hash_unchanged   
+37                identity_source_hash_unchanged   
+
+                                             expected  \
+0                                              590540   
+1                                              590540   
+2                                               20663   
+3                                                   0   
+4                                                   0   
+5                                                   0   
+6                                                   0   
+7                                                   0   
+8                                                   0   
+9                                                   0   
+10                                             144233   
+11                                             590540   
+12                                                437   
+13                                                  0   
+14                                                  0   
+15                                                  0   
+16                                                  0   
+17                                                  0   
+18                                                  0   
+19                                                  0   
+20                                                  0   
+21                                                  0   
+22                                                  0   
+23                                                  0   
+24                                                  0   
+25                                                  0   
+26                                                  0   
+27                                                  0   
+28                                                  0   
+29                                                  0   
+30                                                  0   
+31                                                  0   
+32                                                  0   
+33                                                  0   
+34                                                  0   
+35                                                  0   
+36  3a5c83ab6b3cc13dcabe5ffa9f522307fd5f7f7b6e6f6a...   
+37  b63c725d8377be90a995268d97f347c17d456b95db4580...   
+
+                                             observed  passed  
+0                                              590540    True  
+1                                              590540    True  
+2                                               20663    True  
+3                                                   0    True  
+4                                                   0    True  
+5                                                   0    True  
+6                                                   0    True  
+7                                                   0    True  
+8                                                   0    True  
+9                                                   0    True  
+10                                             144233    True  
+11                                             590540    True  
+12                                                437    True  
+13                                                  0    True  
+14                                                  0    True  
+15                                                  0    True  
+16                                                  0    True  
+17                                                  0    True  
+18                                                  0    True  
+19                                                  0    True  
+20                                                  0    True  
+21                                                  0    True  
+22                                                  0    True  
+23                                                  0    True  
+24                                                  0    True  
+25                                                  0    True  
+26                                                  0    True  
+27                                                  0    True  
+28                                                  0    True  
+29                                                  0    True  
+30                                                  0    True  
+31                                                  0    True  
+32                                                  0    True  
+33                                                  0    True  
+34                                                  0    True  
+35                                                  0    True  
+36  3a5c83ab6b3cc13dcabe5ffa9f522307fd5f7f7b6e6f6a...    True  
+37  b63c725d8377be90a995268d97f347c17d456b95db4580...    True  
+Kiểm tra đạt: 38/38
+
+=== CELL 10, execution_count=5, seconds=0.212 ===
+BẢNG TRƯỚC / SAU
+                                           stage    rows  columns  \
+0                              Nguồn transaction  590540      394   
+1           Nguồn identity (không có nhãn fraud)  144233       41   
+2        Sau left join, trước làm sạch (cột gốc)  590540      434   
+3  Parquet sau làm sạch (chỉ cột gốc để so sánh)  590540      434   
+4            Parquet đầy đủ (gồm 3 cột dẫn xuất)  590540      437   
+
+   unique_transaction_ids  fraud_count  fraud_pct  matched_identity_rows  \
+0                  590540      20663.0   3.499001               144233.0   
+1                  144233          NaN        NaN                    NaN   
+2                  590540      20663.0   3.499001               144233.0   
+3                  590540      20663.0   3.499001               144233.0   
+4                  590540      20663.0   3.499001               144233.0   
+
+   identity_coverage_pct  missing_cells  missing_denominator_cells  \
+0              24.423917       95566686                  232672760   
+1                    NaN        2104107                    5913553   
+2              24.423917      115523073                  256294360   
+3              24.423917       97719626                  256294360   
+4              24.423917       97719626                  258065980   
+
+   missing_pct  unknown_cells_after_normalization  
+0    41.073431                           95566686  
+1    35.581097                            2104107  
+2    45.074372                          115523073  
+3    38.127888                          115523073  
+4    37.866140                          115523073  
+TRÙNG KHÓA VÀ TRÙNG TOÀN DÒNG — KHÔNG XÓA DÒNG
+              dataset  duplicate_id_groups  duplicate_id_rows_involved  \
+0  source_transaction                    0                           0   
+1     source_identity                    0                           0   
+2      parquet_output                    0                           0   
+
+   duplicate_id_extra_rows  duplicate_full_row_groups  \
+0                        0                          0   
+1                        0                          0   
+2                        0                          0   
+
+   duplicate_full_rows_involved  duplicate_full_extra_rows  
+0                             0                          0  
+1                             0                          0  
+2                             0                          0  
+MISSING: 12 CỘT CÓ TỶ LỆ THIẾU TRƯỚC LÀM SẠCH CAO NHẤT
+    column       source comparison_scope  denominator_rows  \
+417  id_24     identity         original            590540   
+418  id_25     identity         original            590540   
+401  id_08     identity         original            590540   
+400  id_07     identity         original            590540   
+414  id_21     identity         original            590540   
+419  id_26     identity         original            590540   
+415  id_22     identity         original            590540   
+420  id_27     identity         original            590540   
+416  id_23     identity         original            590540   
+14   dist2  transaction         original            590540   
+37      D7  transaction         original            590540   
+411  id_18     identity         original            590540   
+
+     missing_after_join_before_clean  missing_before_pct  \
+417                           585793           99.196159   
+418                           585408           99.130965   
+401                           585385           99.127070   
+400                           585385           99.127070   
+414                           585381           99.126393   
+419                           585377           99.125715   
+415                           585371           99.124699   
+420                           585371           99.124699   
+416                           585371           99.124699   
+14                            552913           93.628374   
+37                            551623           93.409930   
+411                           545427           92.360721   
+
+     missing_after_normalizing_blanks  output_null_count  output_null_pct  \
+417                            585793                  0         0.000000   
+418                            585408                  0         0.000000   
+401                            585385             585385        99.127070   
+400                            585385             585385        99.127070   
+414                            585381                  0         0.000000   
+419                            585377                  0         0.000000   
+415                            585371                  0         0.000000   
+420                            585371                  0         0.000000   
+416                            585371                  0         0.000000   
+14                             552913             552913        93.628374   
+37                             551623             551623        93.409930   
+411                            545427                  0         0.000000   
+
+     structural_missing_no_identity  missing_within_matched_identity  \
+417                          446307                         139486.0   
+418                          446307                         139101.0   
+401                          446307                         139078.0   
+400                          446307                         139078.0   
+414                          446307                         139074.0   
+419                          446307                         139070.0   
+415                          446307                         139064.0   
+420                          446307                         139064.0   
+416                          446307                         139064.0   
+14                                0                              NaN   
+37                                0                              NaN   
+411                          446307                          99120.0   
+
+     within_identity_denominator  missing_within_identity_pct  \
+417                     144233.0                    96.708798   
+418                     144233.0                    96.441868   
+401                     144233.0                    96.425922   
+400                     144233.0                    96.425922   
+414                     144233.0                    96.423149   
+419                     144233.0                    96.420375   
+415                     144233.0                    96.416215   
+420                     144233.0                    96.416215   
+416                     144233.0                    96.416215   
+14                           NaN                          NaN   
+37                           NaN                          NaN   
+411                     144233.0                    68.722137   
+
+     explicit_missing_labels  unknown_after_null_plus_label  \
+417                   585793                         585793   
+418                   585408                         585408   
+401                        0                         585385   
+400                        0                         585385   
+414                   585381                         585381   
+419                   585377                         585377   
+415                   585371                         585371   
+420                   585371                         585371   
+416                   585371                         585371   
+14                         0                         552913   
+37                         0                         551623   
+411                   545427                         545427   
+
+                                                  note  
+417  Nhãn thay thế không khôi phục thông tin; không...  
+418  Nhãn thay thế không khôi phục thông tin; không...  
+401  Nhãn thay thế không khôi phục thông tin; không...  
+400  Nhãn thay thế không khôi phục thông tin; không...  
+414  Nhãn thay thế không khôi phục thông tin; không...  
+419  Nhãn thay thế không khôi phục thông tin; không...  
+415  Nhãn thay thế không khôi phục thông tin; không...  
+420  Nhãn thay thế không khôi phục thông tin; không...  
+416  Nhãn thay thế không khôi phục thông tin; không...  
+14   Nhãn thay thế không khôi phục thông tin; không...  
+37   Nhãn thay thế không khôi phục thông tin; không...  
+411  Nhãn thay thế không khôi phục thông tin; không...  
+KIỂU DỮ LIỆU THỰC TẾ — TOÀN BỘ CỘT
+  dtype_after_pandas dtype_after_parquet  columns
+0               bool                bool        1
+1            float64              double      382
+2              int64               int64        3
+3               int8                int8        1
+4             string        large_string       50
+TỔNG HỢP MỨC ĐỘ KẾT LUẬN STEVENS
+                  scale_status stevens_scale    candidate_scale  columns
+0            Chưa đủ thông tin                                       350
+1            Chưa đủ thông tin                Khoảng hoặc tỷ lệ       15
+2                    Có căn cứ    Danh nghĩa                           4
+3                    Có căn cứ         Tỷ lệ                           1
+4  Có căn cứ theo cách sử dụng        Khoảng                           2
+5    Quy ước phân tích bảo thủ    Danh nghĩa                          49
+6         Đề xuất có điều kiện                            Tỷ lệ       16
+VÍ DỤ DICTIONARY; BẢN ĐẦY ĐỦ CÓ 437 DÒNG TRONG data_dictionary.csv
+             column       source dtype_csv_read_policy dtype_after_pandas  \
+0     TransactionID  transaction                 int64              int64   
+1           isFraud  transaction                 int64               int8   
+2     TransactionDT  transaction                 int64              int64   
+3    TransactionAmt  transaction               float64            float64   
+5             card1  transaction                string             string   
+17               C1  transaction               float64            float64   
+39               D9  transaction               float64            float64   
+55               V1  transaction               float64            float64   
+394           id_01     identity               float64            float64   
+434     HasIdentity      derived               derived               bool   
+
+    dtype_after_parquet  null_count_after  observed_min  observed_max  \
+0                 int64                 0   2987000.000  3.577539e+06   
+1                  int8                 0         0.000  1.000000e+00   
+2                 int64                 0     86400.000  1.581113e+07   
+3                double                 0         0.251  3.193739e+04   
+5          large_string                 0           NaN           NaN   
+17               double                 0         0.000  4.685000e+03   
+39               double            515614         0.000  9.583330e-01   
+55               double            279287         0.000  1.000000e+00   
+394              double            446307      -100.000  0.000000e+00   
+434                bool                 0           NaN           NaN   
+
+               missing_treatment stevens_scale    candidate_scale  \
+0    Giữ null; không điền số giả    Danh nghĩa                      
+1    Giữ null; không điền số giả    Danh nghĩa                      
+2    Giữ null; không điền số giả        Khoảng                      
+3    Giữ null; không điền số giả         Tỷ lệ                      
+5     Nhãn phân biệt nguyên nhân    Danh nghĩa                      
+17   Giữ null; không điền số giả                            Tỷ lệ   
+39   Giữ null; không điền số giả                Khoảng hoặc tỷ lệ   
+55   Giữ null; không điền số giả                                    
+394  Giữ null; không điền số giả                                    
+434                Tính từ nguồn    Danh nghĩa                      
+
+                    scale_status  confidence  \
+0                      Có căn cứ         Cao   
+1                      Có căn cứ         Cao   
+2    Có căn cứ theo cách sử dụng  Trung bình   
+3                      Có căn cứ         Cao   
+5      Quy ước phân tích bảo thủ  Trung bình   
+17          Đề xuất có điều kiện  Trung bình   
+39             Chưa đủ thông tin        Thấp   
+55             Chưa đủ thông tin        Thấp   
+394            Chưa đủ thông tin        Thấp   
+434                    Có căn cứ         Cao   
+
+                                                 basis  \
+0    Mã định danh hoặc nhãn nhóm; 0/1 không làm biế...   
+1    Mã định danh hoặc nhãn nhóm; 0/1 không làm biế...   
+2    Vị trí trên trục thời gian tính từ mốc tùy ý; ...   
+3    Số tiền thanh toán: gốc 0 mang nghĩa không có ...   
+5    Nguồn liệt kê categorical; chưa có thứ tự mức ...   
+17   Mô tả nhóm là đếm/khoảng cách; chưa xác nhận b...   
+39   Nhóm timedelta; thiếu mốc và phép biến đổi cụ ...   
+55   V là đặc trưng được tạo; id_01–id_11 ẩn nghĩa....   
+394  V là đặc trưng được tạo; id_01–id_11 ẩn nghĩa....   
+434  Mã định danh hoặc nhãn nhóm; 0/1 không làm biế...   
+
+                                            limitation  \
+0    Dùng đếm/tỷ lệ; không lấy trung bình Transacti...   
+1    Dùng đếm/tỷ lệ; không lấy trung bình Transacti...   
+2    Không suy ra ngày lịch/giờ địa phương; tỷ lệ h...   
+3    So sánh tỷ lệ trong cùng đơn vị; tổng tiền gia...   
+5    Categorical không tự chứng minh nominal; cần c...   
+17   Chỉ chốt tỷ lệ khi xác nhận ý nghĩa gốc 0, đơn...   
+39   Giá trị âm không tự phủ định thang tỷ lệ. D9 c...   
+55   Không diễn giải ý nghĩa nghiệp vụ khi chưa có ...   
+394  Không diễn giải ý nghĩa nghiệp vụ khi chưa có ...   
+434  Dùng đếm/tỷ lệ; không lấy trung bình Transacti...   
+
+                                      source_reference  
+0    https://www.kaggle.com/c/ieee-fraud-detection/...  
+1    https://www.kaggle.com/c/ieee-fraud-detection/...  
+2    https://www.kaggle.com/c/ieee-fraud-detection/...  
+3    https://www.kaggle.com/competitions/ieee-fraud...  
+5    https://www.kaggle.com/c/ieee-fraud-detection/...  
+17   https://www.kaggle.com/competitions/ieee-fraud...  
+39   https://www.kaggle.com/competitions/ieee-fraud...  
+55   https://www.kaggle.com/c/ieee-fraud-detection/...  
+394  https://www.kaggle.com/c/ieee-fraud-detection/...  
+434  https://www.kaggle.com/c/ieee-fraud-detection/...  
+Danh sách biến chưa chốt thang Stevens (bao gồm đề xuất có điều kiện):
+dist1, dist2, C1, C2, C3, C4, C5, C6, C7, C8, C9, C10, C11, C12, C13, C14, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30, V31, V32, V33, V34, V35, V36, V37, V38, V39, V40, V41, V42, V43, V44, V45, V46, V47, V48, V49, V50, V51, V52, V53, V54, V55, V56, V57, V58, V59, V60, V61, V62, V63, V64, V65, V66, V67, V68, V69, V70, V71, V72, V73, V74, V75, V76, V77, V78, V79, V80, V81, V82, V83, V84, V85, V86, V87, V88, V89, V90, V91, V92, V93, V94, V95, V96, V97, V98, V99, V100, V101, V102, V103, V104, V105, V106, V107, V108, V109, V110, V111, V112, V113, V114, V115, V116, V117, V118, V119, V120, V121, V122, V123, V124, V125, V126, V127, V128, V129, V130, V131, V132, V133, V134, V135, V136, V137, V138, V139, V140, V141, V142, V143, V144, V145, V146, V147, V148, V149, V150, V151, V152, V153, V154, V155, V156, V157, V158, V159, V160, V161, V162, V163, V164, V165, V166, V167, V168, V169, V170, V171, V172, V173, V174, V175, V176, V177, V178, V179, V180, V181, V182, V183, V184, V185, V186, V187, V188, V189, V190, V191, V192, V193, V194, V195, V196, V197, V198, V199, V200, V201, V202, V203, V204, V205, V206, V207, V208, V209, V210, V211, V212, V213, V214, V215, V216, V217, V218, V219, V220, V221, V222, V223, V224, V225, V226, V227, V228, V229, V230, V231, V232, V233, V234, V235, V236, V237, V238, V239, V240, V241, V242, V243, V244, V245, V246, V247, V248, V249, V250, V251, V252, V253, V254, V255, V256, V257, V258, V259, V260, V261, V262, V263, V264, V265, V266, V267, V268, V269, V270, V271, V272, V273, V274, V275, V276, V277, V278, V279, V280, V281, V282, V283, V284, V285, V286, V287, V288, V289, V290, V291, V292, V293, V294, V295, V296, V297, V298, V299, V300, V301, V302, V303, V304, V305, V306, V307, V308, V309, V310, V311, V312, V313, V314, V315, V316, V317, V318, V319, V320, V321, V322, V323, V324, V325, V326, V327, V328, V329, V330, V331, V332, V333, V334, V335, V336, V337, V338, V339, id_01, id_02, id_03, id_04, id_05, id_06, id_07, id_08, id_09, id_10, id_11
+CHECKLIST:
+1. Các ô code đã chạy tuần tự; log và bản notebook có output được lưu bởi công cụ thực thi.
+2. Kiểm tra nguồn/Parquet: 38 / 38 đạt.
+3. Dictionary: 437 cột có dtype thực tế.
+4. Duplicate: đã báo cáo riêng ID và toàn dòng, không tự xóa.
+5. Đã xuất summary_before_after.csv và missing_before_after.csv.
+6. Stevens: 381 biến chưa chốt hoặc có điều kiện; không ép kết luận.
+KẾT LUẬN KỸ THUẬT: Các kiểm tra trong phạm vi đã đạt. Nhóm trưởng đối chiếu checklist để chốt Giai đoạn 1.
+
+EXECUTION RESULT
+{
+  "started_utc": "2026-10-14T12:57:55.999539+00:00",
+  "finished_utc": "2026-10-14T13:01:26.465281+00:00",
+  "elapsed_seconds": 210.466,
+  "python_executable": "C:\\Users\\Quan Phan\\anaconda3\\python.exe",
+  "machine_ram_bytes": 16794284032,
+  "peak_memory": {
+    "children_rss_bytes": 540127232,
+    "kernel_peak_wset_bytes": 771686400,
+    "sample_interval_seconds": 0.5
+  },
+  "memory_note": "RSS tổng các tiến trình con được lấy mẫu mỗi 0,5s; peak_wset là đỉnh working set do Windows báo cho một tiến trình con. Không phải yêu cầu RAM tối thiểu và không bao gồm môi trường VS Code của người nhận.",
+  "fresh_kernel": true,
+  "execution_success": true,
+  "code_cells": 5,
+  "execution_counts": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "errors": []
+}

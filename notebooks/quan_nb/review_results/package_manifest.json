@@ -1,0 +1,54 @@
+{
+  "GIAI_DOAN_1_MINH_QUAN_NGHIEM_THU.ipynb": {
+    "bytes": 131891,
+    "sha256": "ae4b05ff315f5f827a8091e29b304b17cf90a1eb7f38a07376db5093918a9ca6"
+  },
+  "requirements.txt": {
+    "bytes": 241,
+    "sha256": "3e9f643ec6de50ed3da9fe3923e4dc21fe80a79946d9055087c7a39acd50be8e"
+  },
+  "data/raw/train_transaction.csv": {
+    "bytes": 683351067,
+    "sha256": "3a5c83ab6b3cc13dcabe5ffa9f522307fd5f7f7b6e6f6a60c32284ca6283d642"
+  },
+  "data/raw/train_identity.csv": {
+    "bytes": 26529680,
+    "sha256": "b63c725d8377be90a995268d97f347c17d456b95db45807adcf9f59cd603c37c"
+  },
+  "data/processed/fraud_train_clean.parquet": {
+    "bytes": 160819367,
+    "sha256": "0a299efa1c28874ef0861042de513ad9367eee5bb9fd7147627c6540b6951047"
+  },
+  "review_results/summary_before_after.csv": {
+    "bytes": 963,
+    "sha256": "11b65bae5e618139cff1c40bf928dc042ed3d417a36ffb94990c9abf79809261"
+  },
+  "review_results/quality_checks.csv": {
+    "bytes": 3620,
+    "sha256": "846c5d25f8b2d5b9f662c4a8da3aabee138dce8db6849ef405b65fafdc718614"
+  },
+  "review_results/duplicates.csv": {
+    "bytes": 833,
+    "sha256": "91254af1836cdab5bdeed7d6aa08ca20aff9bbe5296b54b3b607758f0e8f42ba"
+  },
+  "review_results/missing_before_after.csv": {
+    "bytes": 98331,
+    "sha256": "26b582f27b6357d15411f54c6aedc730a7b05e6bd32758031b36a01b54a4d733"
+  },
+  "review_results/data_dictionary.csv": {
+    "bytes": 163312,
+    "sha256": "3bd2d5e572d2a9539305761a0ee60707bdb85eac93265ce11e76fdfa9e28750f"
+  },
+  "review_results/execution.log": {
+    "bytes": 28429,
+    "sha256": "4ac230e840baf0f39c565a13724b7b65700f3b5edc44ceac062069f443d72793"
+  },
+  "review_results/execution_environment.json": {
+    "bytes": 832,
+    "sha256": "e338f352c7f47fbcd1ad0a4dc181885109a2e13aa45b63f542a5aafa9fb96df0"
+  },
+  "review_results/run_summary.json": {
+    "bytes": 2806,
+    "sha256": "87c221feff42670706d26e2fce29becec21db523e18d54baf808b42a27b5f39d"
+  }
+}
