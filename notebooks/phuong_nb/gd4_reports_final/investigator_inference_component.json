@@ -1,0 +1,183 @@
+{
+  "metadata": {
+    "module": "Confidence Intervals & LOESS Risk Curve",
+    "user_story": "Fraud Investigator",
+    "total_records_analyzed": 590540,
+    "bootstrap_comparison": {
+      "fraud_amount": {
+        "mean_point": 149.2447785897498,
+        "mean_ci_95": [
+          146.13239948700576,
+          152.35796666142377
+        ],
+        "median_point": 75.0,
+        "median_ci_95": [
+          72.99,
+          77.0
+        ]
+      },
+      "legitimate_amount": {
+        "mean_point": 134.256012875,
+        "mean_ci_95": [
+          132.07143108625,
+          136.646271023125
+        ],
+        "median_point": 67.95,
+        "median_ci_95": [
+          67.95,
+          68.95
+        ]
+      }
+    }
+  },
+  "wilson_ci_matrix": [
+    {
+      "ProductCD": "C",
+      "HasIdentity": false,
+      "nobs": 6327,
+      "frauds": 368,
+      "amt_median": 34.742,
+      "amt_mean": 49.843126758337284,
+      "amt_iqr": 44.07499999999999,
+      "fraud_rate": 0.05816342658447922,
+      "ci_lower": 0.05265989761200348,
+      "ci_upper": 0.06420315287492379,
+      "err_lower": 0.005503528972475739,
+      "err_upper": 0.0060397262904445664
+    },
+    {
+      "ProductCD": "C",
+      "HasIdentity": true,
+      "nobs": 62192,
+      "frauds": 7640,
+      "amt_median": 30.864,
+      "amt_mean": 42.1631930151788,
+      "amt_iqr": 34.919,
+      "fraud_rate": 0.12284538204270645,
+      "ci_lower": 0.12028878326362151,
+      "ci_upper": 0.1254485697257916,
+      "err_lower": 0.0025565987790849426,
+      "err_upper": 0.002603187683085151
+    },
+    {
+      "ProductCD": "H",
+      "HasIdentity": false,
+      "nobs": 116,
+      "frauds": 3,
+      "amt_median": 50.0,
+      "amt_mean": 74.26724137931035,
+      "amt_iqr": 60.0,
+      "fraud_rate": 0.02586206896551724,
+      "ci_lower": 0.008833905577488928,
+      "ci_upper": 0.07328662750925385,
+      "err_lower": 0.017028163388028313,
+      "err_upper": 0.04742455854373662
+    },
+    {
+      "ProductCD": "H",
+      "HasIdentity": true,
+      "nobs": 32908,
+      "frauds": 1571,
+      "amt_median": 50.0,
+      "amt_mean": 73.16619059195332,
+      "amt_iqr": 65.0,
+      "fraud_rate": 0.04773915157408533,
+      "ci_lower": 0.045487843799279136,
+      "ci_upper": 0.05009603438118098,
+      "err_lower": 0.0022513077748061924,
+      "err_upper": 0.002356882807095652
+    },
+    {
+      "ProductCD": "R",
+      "HasIdentity": false,
+      "nobs": 151,
+      "frauds": 3,
+      "amt_median": 100.0,
+      "amt_mean": 150.49668874172184,
+      "amt_iqr": 100.0,
+      "fraud_rate": 0.019867549668874173,
+      "ci_lower": 0.0067794158395112075,
+      "ci_upper": 0.05677878278039358,
+      "err_lower": 0.013088133829362966,
+      "err_upper": 0.036911233111519406
+    },
+    {
+      "ProductCD": "R",
+      "HasIdentity": true,
+      "nobs": 37548,
+      "frauds": 1423,
+      "amt_median": 125.0,
+      "amt_mean": 168.37780973687015,
+      "amt_iqr": 100.0,
+      "fraud_rate": 0.037898157025673805,
+      "ci_lower": 0.036013543950256605,
+      "ci_upper": 0.03987731342652687,
+      "err_lower": 0.0018846130754172005,
+      "err_upper": 0.001979156400853062
+    },
+    {
+      "ProductCD": "S",
+      "HasIdentity": false,
+      "nobs": 43,
+      "frauds": 2,
+      "amt_median": 25.0,
+      "amt_mean": 39.74418604651163,
+      "amt_iqr": 30.0,
+      "fraud_rate": 0.046511627906976744,
+      "ci_lower": 0.012849289941383388,
+      "ci_upper": 0.15455467256787064,
+      "err_lower": 0.033662337965593356,
+      "err_upper": 0.1080430446608939
+    },
+    {
+      "ProductCD": "S",
+      "HasIdentity": true,
+      "nobs": 11585,
+      "frauds": 684,
+      "amt_median": 35.0,
+      "amt_mean": 60.34567112645662,
+      "amt_iqr": 60.0,
+      "fraud_rate": 0.05904186447993095,
+      "ci_lower": 0.05489420907510663,
+      "ci_upper": 0.06348185551471204,
+      "err_lower": 0.00414765540482432,
+      "err_upper": 0.004439991034781092
+    },
+    {
+      "ProductCD": "W",
+      "HasIdentity": false,
+      "nobs": 439670,
+      "frauds": 8969,
+      "amt_median": 78.5,
+      "amt_mean": 153.15855385175243,
+      "amt_iqr": 97.0,
+      "fraud_rate": 0.020399390451929858,
+      "ci_lower": 0.019985714915650127,
+      "ci_upper": 0.02082144655729227,
+      "err_lower": 0.0004136755362797312,
+      "err_upper": 0.0004220561053624103
+    }
+  ],
+  "investigator_filter_recommendations": [
+    {
+      "segment": "Vi mô (< $15)",
+      "risk_level": "Nguy cơ thử thẻ (Card Testing)",
+      "action": "Giám sát tần suất IP/Device"
+    },
+    {
+      "segment": "Phổ thông ($15 - $200)",
+      "risk_level": "An toàn nền",
+      "action": "Duyệt giao dịch chuẩn"
+    },
+    {
+      "segment": "Vùng nhạy cảm ($200 - $1,200)",
+      "risk_level": "Nguy cơ cao (Đỉnh LOESS)",
+      "action": "Bắt buộc xác thực 2 lớp (OTP/Sinh trắc)"
+    },
+    {
+      "segment": "Giá trị lớn (> $1,200)",
+      "risk_level": "Cực đoan",
+      "action": "Chuyển điều tra viên thẩm định thủ công"
+    }
+  ]
+}

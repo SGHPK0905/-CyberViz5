@@ -1,0 +1,1693 @@
+{
+  "metadata": {
+    "module": "Time-Series & LOESS Trend",
+    "user_story": "Risk Manager",
+    "total_days_observed": 182,
+    "denominator_verified": 590540,
+    "baseline_fraud_rate_pct": 3.4990009144173126
+  },
+  "daily_time_series": [
+    {
+      "TransactionDayIndex": 1,
+      "total_tx": 5122,
+      "fraud_tx": 112,
+      "fraud_rate_pct": 2.1866458414681764,
+      "loess_trend": 2.9654289409215453,
+      "loess_ci_lower": 1.4065948003551887,
+      "loess_ci_upper": 4.524263081487902
+    },
+    {
+      "TransactionDayIndex": 2,
+      "total_tx": 3730,
+      "fraud_tx": 123,
+      "fraud_rate_pct": 3.2975871313672926,
+      "loess_trend": 2.933992873713014,
+      "loess_ci_lower": 1.3751587331466573,
+      "loess_ci_upper": 4.492827014279371
+    },
+    {
+      "TransactionDayIndex": 3,
+      "total_tx": 3241,
+      "fraud_tx": 92,
+      "fraud_rate_pct": 2.8386300524529466,
+      "loess_trend": 2.902127750111604,
+      "loess_ci_lower": 1.3432936095452475,
+      "loess_ci_upper": 4.460961890677961
+    },
+    {
+      "TransactionDayIndex": 4,
+      "total_tx": 4036,
+      "fraud_tx": 115,
+      "fraud_rate_pct": 2.8493557978196233,
+      "loess_trend": 2.870003403888996,
+      "loess_ci_lower": 1.3111692633226395,
+      "loess_ci_upper": 4.4288375444553525
+    },
+    {
+      "TransactionDayIndex": 5,
+      "total_tx": 3964,
+      "fraud_tx": 127,
+      "fraud_rate_pct": 3.203834510595358,
+      "loess_trend": 2.837794051384592,
+      "loess_ci_lower": 1.2789599108182352,
+      "loess_ci_upper": 4.396628191950948
+    },
+    {
+      "TransactionDayIndex": 6,
+      "total_tx": 3717,
+      "fraud_tx": 99,
+      "fraud_rate_pct": 2.663438256658596,
+      "loess_trend": 2.8056690680202343,
+      "loess_ci_lower": 1.2468349274538777,
+      "loess_ci_upper": 4.364503208586591
+    },
+    {
+      "TransactionDayIndex": 7,
+      "total_tx": 3786,
+      "fraud_tx": 136,
+      "fraud_rate_pct": 3.5921817221341787,
+      "loess_trend": 2.773714652375828,
+      "loess_ci_lower": 1.2148805118094714,
+      "loess_ci_upper": 4.332548792942185
+    },
+    {
+      "TransactionDayIndex": 8,
+      "total_tx": 3999,
+      "fraud_tx": 93,
+      "fraud_rate_pct": 2.3255813953488373,
+      "loess_trend": 2.741957824025443,
+      "loess_ci_lower": 1.1831236834590866,
+      "loess_ci_upper": 4.3007919645918
+    },
+    {
+      "TransactionDayIndex": 9,
+      "total_tx": 3907,
+      "fraud_tx": 119,
+      "fraud_rate_pct": 3.045815203480932,
+      "loess_trend": 2.710219204778346,
+      "loess_ci_lower": 1.1513850642119896,
+      "loess_ci_upper": 4.269053345344703
+    },
+    {
+      "TransactionDayIndex": 10,
+      "total_tx": 3445,
+      "fraud_tx": 90,
+      "fraud_rate_pct": 2.6124818577648767,
+      "loess_trend": 2.6782111451407387,
+      "loess_ci_lower": 1.119377004574382,
+      "loess_ci_upper": 4.2370452857070955
+    },
+    {
+      "TransactionDayIndex": 11,
+      "total_tx": 4319,
+      "fraud_tx": 123,
+      "fraud_rate_pct": 2.847881454040287,
+      "loess_trend": 2.6453614465573563,
+      "loess_ci_lower": 1.0865273059909997,
+      "loess_ci_upper": 4.204195587123713
+    },
+    {
+      "TransactionDayIndex": 12,
+      "total_tx": 4164,
+      "fraud_tx": 84,
+      "fraud_rate_pct": 2.0172910662824206,
+      "loess_trend": 2.6106047058979396,
+      "loess_ci_lower": 1.051770565331583,
+      "loess_ci_upper": 4.169438846464296
+    },
+    {
+      "TransactionDayIndex": 13,
+      "total_tx": 4183,
+      "fraud_tx": 82,
+      "fraud_rate_pct": 1.960315562993067,
+      "loess_trend": 2.5717258222200754,
+      "loess_ci_lower": 1.0128916816537188,
+      "loess_ci_upper": 4.130559962786432
+    },
+    {
+      "TransactionDayIndex": 14,
+      "total_tx": 4446,
+      "fraud_tx": 126,
+      "fraud_rate_pct": 2.834008097165992,
+      "loess_trend": 2.5254312395917973,
+      "loess_ci_lower": 0.9665970990254407,
+      "loess_ci_upper": 4.084265380158154
+    },
+    {
+      "TransactionDayIndex": 15,
+      "total_tx": 5034,
+      "fraud_tx": 143,
+      "fraud_rate_pct": 2.840683353198252,
+      "loess_trend": 2.4693291764358234,
+      "loess_ci_lower": 0.9104950358694668,
+      "loess_ci_upper": 4.02816331700218
+    },
+    {
+      "TransactionDayIndex": 16,
+      "total_tx": 4325,
+      "fraud_tx": 70,
+      "fraud_rate_pct": 1.6184971098265895,
+      "loess_trend": 2.416043079640286,
+      "loess_ci_lower": 0.8572089390739295,
+      "loess_ci_upper": 3.9748772202066425
+    },
+    {
+      "TransactionDayIndex": 17,
+      "total_tx": 3805,
+      "fraud_tx": 126,
+      "fraud_rate_pct": 3.3114323258869907,
+      "loess_trend": 2.372985795886686,
+      "loess_ci_lower": 0.8141516553203292,
+      "loess_ci_upper": 3.931819936453042
+    },
+    {
+      "TransactionDayIndex": 18,
+      "total_tx": 5585,
+      "fraud_tx": 161,
+      "fraud_rate_pct": 2.88272157564906,
+      "loess_trend": 2.346890163134369,
+      "loess_ci_lower": 0.7880560225680122,
+      "loess_ci_upper": 3.905724303700725
+    },
+    {
+      "TransactionDayIndex": 19,
+      "total_tx": 5526,
+      "fraud_tx": 118,
+      "fraud_rate_pct": 2.135360115816142,
+      "loess_trend": 2.3414062164900784,
+      "loess_ci_lower": 0.7825720759237218,
+      "loess_ci_upper": 3.9002403570564352
+    },
+    {
+      "TransactionDayIndex": 20,
+      "total_tx": 5749,
+      "fraud_tx": 135,
+      "fraud_rate_pct": 2.348234475560967,
+      "loess_trend": 2.3567778949757345,
+      "loess_ci_lower": 0.7979437544093779,
+      "loess_ci_upper": 3.9156120355420914
+    },
+    {
+      "TransactionDayIndex": 21,
+      "total_tx": 5677,
+      "fraud_tx": 116,
+      "fraud_rate_pct": 2.043332746168751,
+      "loess_trend": 2.38920490076251,
+      "loess_ci_lower": 0.8303707601961532,
+      "loess_ci_upper": 3.948039041328866
+    },
+    {
+      "TransactionDayIndex": 22,
+      "total_tx": 6852,
+      "fraud_tx": 147,
+      "fraud_rate_pct": 2.1453590192644483,
+      "loess_trend": 2.43677622081939,
+      "loess_ci_lower": 0.8779420802530333,
+      "loess_ci_upper": 3.9956103613857463
+    },
+    {
+      "TransactionDayIndex": 23,
+      "total_tx": 5872,
+      "fraud_tx": 106,
+      "fraud_rate_pct": 1.805177111716621,
+      "loess_trend": 2.4959193235860346,
+      "loess_ci_lower": 0.937085183019678,
+      "loess_ci_upper": 4.054753464152391
+    },
+    {
+      "TransactionDayIndex": 24,
+      "total_tx": 6065,
+      "fraud_tx": 76,
+      "fraud_rate_pct": 1.2530915086562242,
+      "loess_trend": 2.560728187901713,
+      "loess_ci_lower": 1.0018940473353564,
+      "loess_ci_upper": 4.11956232846807
+    },
+    {
+      "TransactionDayIndex": 25,
+      "total_tx": 5742,
+      "fraud_tx": 63,
+      "fraud_rate_pct": 1.09717868338558,
+      "loess_trend": 2.6278726201245464,
+      "loess_ci_lower": 1.0690384795581898,
+      "loess_ci_upper": 4.186706760690903
+    },
+    {
+      "TransactionDayIndex": 26,
+      "total_tx": 3458,
+      "fraud_tx": 82,
+      "fraud_rate_pct": 2.371312897628687,
+      "loess_trend": 2.6993364133010402,
+      "loess_ci_lower": 1.1405022727346836,
+      "loess_ci_upper": 4.258170553867397
+    },
+    {
+      "TransactionDayIndex": 27,
+      "total_tx": 3585,
+      "fraud_tx": 100,
+      "fraud_rate_pct": 2.789400278940028,
+      "loess_trend": 2.779084830239148,
+      "loess_ci_lower": 1.2202506896727916,
+      "loess_ci_upper": 4.337918970805505
+    },
+    {
+      "TransactionDayIndex": 28,
+      "total_tx": 3332,
+      "fraud_tx": 150,
+      "fraud_rate_pct": 4.501800720288116,
+      "loess_trend": 2.86819961952237,
+      "loess_ci_lower": 1.3093654789560134,
+      "loess_ci_upper": 4.427033760088727
+    },
+    {
+      "TransactionDayIndex": 29,
+      "total_tx": 4302,
+      "fraud_tx": 129,
+      "fraud_rate_pct": 2.9986052998605297,
+      "loess_trend": 2.966915111021628,
+      "loess_ci_lower": 1.4080809704552715,
+      "loess_ci_upper": 4.5257492515879845
+    },
+    {
+      "TransactionDayIndex": 30,
+      "total_tx": 3371,
+      "fraud_tx": 158,
+      "fraud_rate_pct": 4.687036487689113,
+      "loess_trend": 3.0765479705825673,
+      "loess_ci_lower": 1.5177138300162107,
+      "loess_ci_upper": 4.635382111148924
+    },
+    {
+      "TransactionDayIndex": 31,
+      "total_tx": 2982,
+      "fraud_tx": 149,
+      "fraud_rate_pct": 4.99664654594232,
+      "loess_trend": 3.193886534396027,
+      "loess_ci_lower": 1.6350523938296704,
+      "loess_ci_upper": 4.752720674962384
+    },
+    {
+      "TransactionDayIndex": 32,
+      "total_tx": 2387,
+      "fraud_tx": 51,
+      "fraud_rate_pct": 2.13657310431504,
+      "loess_trend": 3.31404649923358,
+      "loess_ci_lower": 1.7552123586672235,
+      "loess_ci_upper": 4.872880639799937
+    },
+    {
+      "TransactionDayIndex": 33,
+      "total_tx": 3403,
+      "fraud_tx": 123,
+      "fraud_rate_pct": 3.614457831325301,
+      "loess_trend": 3.431271036353257,
+      "loess_ci_lower": 1.8724368957869004,
+      "loess_ci_upper": 4.990105176919614
+    },
+    {
+      "TransactionDayIndex": 34,
+      "total_tx": 4264,
+      "fraud_tx": 159,
+      "fraud_rate_pct": 3.7288930581613506,
+      "loess_trend": 3.5391591301512184,
+      "loess_ci_lower": 1.9803249895848618,
+      "loess_ci_upper": 5.097993270717575
+    },
+    {
+      "TransactionDayIndex": 35,
+      "total_tx": 3830,
+      "fraud_tx": 120,
+      "fraud_rate_pct": 3.1331592689295036,
+      "loess_trend": 3.632103567794237,
+      "loess_ci_lower": 2.0732694272278804,
+      "loess_ci_upper": 5.190937708360593
+    },
+    {
+      "TransactionDayIndex": 36,
+      "total_tx": 3571,
+      "fraud_tx": 135,
+      "fraud_rate_pct": 3.7804536544385328,
+      "loess_trend": 3.7060312046148156,
+      "loess_ci_lower": 2.1471970640484592,
+      "loess_ci_upper": 5.264865345181172
+    },
+    {
+      "TransactionDayIndex": 37,
+      "total_tx": 3030,
+      "fraud_tx": 126,
+      "fraud_rate_pct": 4.158415841584159,
+      "loess_trend": 3.7614168127154133,
+      "loess_ci_lower": 2.202582672149057,
+      "loess_ci_upper": 5.32025095328177
+    },
+    {
+      "TransactionDayIndex": 38,
+      "total_tx": 2544,
+      "fraud_tx": 110,
+      "fraud_rate_pct": 4.323899371069182,
+      "loess_trend": 3.802807128566383,
+      "loess_ci_lower": 2.243972988000026,
+      "loess_ci_upper": 5.36164126913274
+    },
+    {
+      "TransactionDayIndex": 39,
+      "total_tx": 3017,
+      "fraud_tx": 117,
+      "fraud_rate_pct": 3.8780245276764997,
+      "loess_trend": 3.837870262204498,
+      "loess_ci_lower": 2.279036121638141,
+      "loess_ci_upper": 5.396704402770855
+    },
+    {
+      "TransactionDayIndex": 40,
+      "total_tx": 2914,
+      "fraud_tx": 109,
+      "fraud_rate_pct": 3.740562800274537,
+      "loess_trend": 3.8744636356424307,
+      "loess_ci_lower": 2.315629495076074,
+      "loess_ci_upper": 5.4332977762087875
+    },
+    {
+      "TransactionDayIndex": 41,
+      "total_tx": 2962,
+      "fraud_tx": 121,
+      "fraud_rate_pct": 4.085077650236327,
+      "loess_trend": 3.916429612137422,
+      "loess_ci_lower": 2.3575954715710656,
+      "loess_ci_upper": 5.475263752703778
+    },
+    {
+      "TransactionDayIndex": 42,
+      "total_tx": 2881,
+      "fraud_tx": 85,
+      "fraud_rate_pct": 2.950364456785838,
+      "loess_trend": 3.960507453457849,
+      "loess_ci_lower": 2.401673312891492,
+      "loess_ci_upper": 5.519341594024206
+    },
+    {
+      "TransactionDayIndex": 43,
+      "total_tx": 3606,
+      "fraud_tx": 160,
+      "fraud_rate_pct": 4.437049362174155,
+      "loess_trend": 4.001832865422408,
+      "loess_ci_lower": 2.442998724856051,
+      "loess_ci_upper": 5.560667005988765
+    },
+    {
+      "TransactionDayIndex": 44,
+      "total_tx": 2786,
+      "fraud_tx": 119,
+      "fraud_rate_pct": 4.271356783919598,
+      "loess_trend": 4.034890438446098,
+      "loess_ci_lower": 2.476056297879741,
+      "loess_ci_upper": 5.593724579012455
+    },
+    {
+      "TransactionDayIndex": 45,
+      "total_tx": 2300,
+      "fraud_tx": 100,
+      "fraud_rate_pct": 4.3478260869565215,
+      "loess_trend": 4.058754025054899,
+      "loess_ci_lower": 2.499919884488542,
+      "loess_ci_upper": 5.617588165621256
+    },
+    {
+      "TransactionDayIndex": 46,
+      "total_tx": 2786,
+      "fraud_tx": 117,
+      "fraud_rate_pct": 4.1995692749461595,
+      "loess_trend": 4.073576639848539,
+      "loess_ci_lower": 2.514742499282182,
+      "loess_ci_upper": 5.6324107804148955
+    },
+    {
+      "TransactionDayIndex": 47,
+      "total_tx": 2971,
+      "fraud_tx": 91,
+      "fraud_rate_pct": 3.0629417704476607,
+      "loess_trend": 4.079212967507673,
+      "loess_ci_lower": 2.5203788269413163,
+      "loess_ci_upper": 5.63804710807403
+    },
+    {
+      "TransactionDayIndex": 48,
+      "total_tx": 3062,
+      "fraud_tx": 115,
+      "fraud_rate_pct": 3.7557152188112344,
+      "loess_trend": 4.077225919869069,
+      "loess_ci_lower": 2.5183917793027124,
+      "loess_ci_upper": 5.636060060435426
+    },
+    {
+      "TransactionDayIndex": 49,
+      "total_tx": 3053,
+      "fraud_tx": 121,
+      "fraud_rate_pct": 3.963314772355061,
+      "loess_trend": 4.069468891226237,
+      "loess_ci_lower": 2.5106347506598805,
+      "loess_ci_upper": 5.628303031792594
+    },
+    {
+      "TransactionDayIndex": 50,
+      "total_tx": 3336,
+      "fraud_tx": 175,
+      "fraud_rate_pct": 5.2458033573141485,
+      "loess_trend": 4.057993022492249,
+      "loess_ci_lower": 2.499158881925892,
+      "loess_ci_upper": 5.6168271630586055
+    },
+    {
+      "TransactionDayIndex": 51,
+      "total_tx": 2826,
+      "fraud_tx": 148,
+      "fraud_rate_pct": 5.237084217975937,
+      "loess_trend": 4.0476969752151,
+      "loess_ci_lower": 2.488862834648743,
+      "loess_ci_upper": 5.606531115781457
+    },
+    {
+      "TransactionDayIndex": 52,
+      "total_tx": 2333,
+      "fraud_tx": 114,
+      "fraud_rate_pct": 4.88641234462066,
+      "loess_trend": 4.042096089839845,
+      "loess_ci_lower": 2.483261949273488,
+      "loess_ci_upper": 5.600930230406202
+    },
+    {
+      "TransactionDayIndex": 53,
+      "total_tx": 2908,
+      "fraud_tx": 79,
+      "fraud_rate_pct": 2.7166437414030264,
+      "loess_trend": 4.044582357965641,
+      "loess_ci_lower": 2.4857482173992844,
+      "loess_ci_upper": 5.603416498531998
+    },
+    {
+      "TransactionDayIndex": 54,
+      "total_tx": 2798,
+      "fraud_tx": 112,
+      "fraud_rate_pct": 4.0028591851322375,
+      "loess_trend": 4.055462106606806,
+      "loess_ci_lower": 2.4966279660404496,
+      "loess_ci_upper": 5.614296247173163
+    },
+    {
+      "TransactionDayIndex": 55,
+      "total_tx": 2771,
+      "fraud_tx": 76,
+      "fraud_rate_pct": 2.7426921688920967,
+      "loess_trend": 4.070039352116436,
+      "loess_ci_lower": 2.511205211550079,
+      "loess_ci_upper": 5.628873492682793
+    },
+    {
+      "TransactionDayIndex": 56,
+      "total_tx": 2789,
+      "fraud_tx": 158,
+      "fraud_rate_pct": 5.665112943707422,
+      "loess_trend": 4.083469181232802,
+      "loess_ci_lower": 2.5246350406664453,
+      "loess_ci_upper": 5.642303321799159
+    },
+    {
+      "TransactionDayIndex": 57,
+      "total_tx": 3274,
+      "fraud_tx": 109,
+      "fraud_rate_pct": 3.329260843005498,
+      "loess_trend": 4.090049961549416,
+      "loess_ci_lower": 2.531215820983059,
+      "loess_ci_upper": 5.6488841021157725
+    },
+    {
+      "TransactionDayIndex": 58,
+      "total_tx": 2681,
+      "fraud_tx": 102,
+      "fraud_rate_pct": 3.8045505408429694,
+      "loess_trend": 4.086394682059368,
+      "loess_ci_lower": 2.5275605414930116,
+      "loess_ci_upper": 5.645228822625725
+    },
+    {
+      "TransactionDayIndex": 59,
+      "total_tx": 2402,
+      "fraud_tx": 168,
+      "fraud_rate_pct": 6.994171523730225,
+      "loess_trend": 4.07487583907807,
+      "loess_ci_lower": 2.516041698511713,
+      "loess_ci_upper": 5.6337099796444265
+    },
+    {
+      "TransactionDayIndex": 60,
+      "total_tx": 2932,
+      "fraud_tx": 108,
+      "fraud_rate_pct": 3.6834924965893587,
+      "loess_trend": 4.060542238029598,
+      "loess_ci_lower": 2.501708097463241,
+      "loess_ci_upper": 5.6193763785959545
+    },
+    {
+      "TransactionDayIndex": 61,
+      "total_tx": 3111,
+      "fraud_tx": 112,
+      "fraud_rate_pct": 3.600128576020572,
+      "loess_trend": 4.049783232733461,
+      "loess_ci_lower": 2.490949092167104,
+      "loess_ci_upper": 5.6086173732998175
+    },
+    {
+      "TransactionDayIndex": 62,
+      "total_tx": 3057,
+      "fraud_tx": 165,
+      "fraud_rate_pct": 5.397448478900883,
+      "loess_trend": 4.04970938212125,
+      "loess_ci_lower": 2.4908752415548934,
+      "loess_ci_upper": 5.608543522687607
+    },
+    {
+      "TransactionDayIndex": 63,
+      "total_tx": 3975,
+      "fraud_tx": 163,
+      "fraud_rate_pct": 4.10062893081761,
+      "loess_trend": 4.06213933415021,
+      "loess_ci_lower": 2.503305193583853,
+      "loess_ci_upper": 5.620973474716567
+    },
+    {
+      "TransactionDayIndex": 64,
+      "total_tx": 4317,
+      "fraud_tx": 234,
+      "fraud_rate_pct": 5.420430854760251,
+      "loess_trend": 4.081499798259771,
+      "loess_ci_lower": 2.5226656576934143,
+      "loess_ci_upper": 5.640333938826128
+    },
+    {
+      "TransactionDayIndex": 65,
+      "total_tx": 3209,
+      "fraud_tx": 183,
+      "fraud_rate_pct": 5.702711124961047,
+      "loess_trend": 4.1007618878899565,
+      "loess_ci_lower": 2.5419277473235997,
+      "loess_ci_upper": 5.659596028456313
+    },
+    {
+      "TransactionDayIndex": 66,
+      "total_tx": 2584,
+      "fraud_tx": 85,
+      "fraud_rate_pct": 3.289473684210526,
+      "loess_trend": 4.114364297847238,
+      "loess_ci_lower": 2.555530157280881,
+      "loess_ci_upper": 5.6731984384135945
+    },
+    {
+      "TransactionDayIndex": 67,
+      "total_tx": 3223,
+      "fraud_tx": 120,
+      "fraud_rate_pct": 3.7232392181197644,
+      "loess_trend": 4.119774420961868,
+      "loess_ci_lower": 2.560940280395511,
+      "loess_ci_upper": 5.6786085615282245
+    },
+    {
+      "TransactionDayIndex": 68,
+      "total_tx": 3158,
+      "fraud_tx": 111,
+      "fraud_rate_pct": 3.5148828372387584,
+      "loess_trend": 4.116112536587443,
+      "loess_ci_lower": 2.5572783960210863,
+      "loess_ci_upper": 5.6749466771538
+    },
+    {
+      "TransactionDayIndex": 69,
+      "total_tx": 3130,
+      "fraud_tx": 118,
+      "fraud_rate_pct": 3.769968051118211,
+      "loess_trend": 4.102240772937903,
+      "loess_ci_lower": 2.5434066323715463,
+      "loess_ci_upper": 5.66107491350426
+    },
+    {
+      "TransactionDayIndex": 70,
+      "total_tx": 2913,
+      "fraud_tx": 145,
+      "fraud_rate_pct": 4.977686234122897,
+      "loess_trend": 4.076167759526231,
+      "loess_ci_lower": 2.5173336189598743,
+      "loess_ci_upper": 5.635001900092588
+    },
+    {
+      "TransactionDayIndex": 71,
+      "total_tx": 3267,
+      "fraud_tx": 152,
+      "fraud_rate_pct": 4.65258647076829,
+      "loess_trend": 4.039736822362747,
+      "loess_ci_lower": 2.4809026817963904,
+      "loess_ci_upper": 5.598570962929104
+    },
+    {
+      "TransactionDayIndex": 72,
+      "total_tx": 2744,
+      "fraud_tx": 94,
+      "fraud_rate_pct": 3.4256559766763846,
+      "loess_trend": 3.994837820487198,
+      "loess_ci_lower": 2.4360036799208418,
+      "loess_ci_upper": 5.5536719610535545
+    },
+    {
+      "TransactionDayIndex": 73,
+      "total_tx": 2304,
+      "fraud_tx": 135,
+      "fraud_rate_pct": 5.859375,
+      "loess_trend": 3.944206138993144,
+      "loess_ci_lower": 2.3853719984267876,
+      "loess_ci_upper": 5.5030402795595
+    },
+    {
+      "TransactionDayIndex": 74,
+      "total_tx": 3122,
+      "fraud_tx": 120,
+      "fraud_rate_pct": 3.843689942344651,
+      "loess_trend": 3.8953195947979022,
+      "loess_ci_lower": 2.3364854542315454,
+      "loess_ci_upper": 5.454153735364259
+    },
+    {
+      "TransactionDayIndex": 75,
+      "total_tx": 3054,
+      "fraud_tx": 110,
+      "fraud_rate_pct": 3.6018336607727566,
+      "loess_trend": 3.8550284212009203,
+      "loess_ci_lower": 2.2961942806345634,
+      "loess_ci_upper": 5.413862561767277
+    },
+    {
+      "TransactionDayIndex": 76,
+      "total_tx": 3456,
+      "fraud_tx": 144,
+      "fraud_rate_pct": 4.166666666666666,
+      "loess_trend": 3.824117961806788,
+      "loess_ci_lower": 2.2652838212404314,
+      "loess_ci_upper": 5.382952102373145
+    },
+    {
+      "TransactionDayIndex": 77,
+      "total_tx": 3006,
+      "fraud_tx": 125,
+      "fraud_rate_pct": 4.1583499667332005,
+      "loess_trend": 3.7990174289532885,
+      "loess_ci_lower": 2.240183288386932,
+      "loess_ci_upper": 5.357851569519645
+    },
+    {
+      "TransactionDayIndex": 78,
+      "total_tx": 3166,
+      "fraud_tx": 100,
+      "fraud_rate_pct": 3.1585596967782688,
+      "loess_trend": 3.774100379813247,
+      "loess_ci_lower": 2.2152662392468905,
+      "loess_ci_upper": 5.332934520379603
+    },
+    {
+      "TransactionDayIndex": 79,
+      "total_tx": 2688,
+      "fraud_tx": 113,
+      "fraud_rate_pct": 4.203869047619048,
+      "loess_trend": 3.7468573987344063,
+      "loess_ci_lower": 2.18802325816805,
+      "loess_ci_upper": 5.305691539300763
+    },
+    {
+      "TransactionDayIndex": 80,
+      "total_tx": 2204,
+      "fraud_tx": 66,
+      "fraud_rate_pct": 2.9945553539019962,
+      "loess_trend": 3.719998065311857,
+      "loess_ci_lower": 2.161163924745501,
+      "loess_ci_upper": 5.278832205878214
+    },
+    {
+      "TransactionDayIndex": 81,
+      "total_tx": 2863,
+      "fraud_tx": 105,
+      "fraud_rate_pct": 3.6674816625916873,
+      "loess_trend": 3.694055511953086,
+      "loess_ci_lower": 2.135221371386729,
+      "loess_ci_upper": 5.252889652519443
+    },
+    {
+      "TransactionDayIndex": 82,
+      "total_tx": 2970,
+      "fraud_tx": 95,
+      "fraud_rate_pct": 3.1986531986531985,
+      "loess_trend": 3.669260005514661,
+      "loess_ci_lower": 2.1104258649483043,
+      "loess_ci_upper": 5.228094146081018
+    },
+    {
+      "TransactionDayIndex": 83,
+      "total_tx": 2934,
+      "fraud_tx": 81,
+      "fraud_rate_pct": 2.7607361963190185,
+      "loess_trend": 3.6443631595456623,
+      "loess_ci_lower": 2.0855290189793054,
+      "loess_ci_upper": 5.203197300112019
+    },
+    {
+      "TransactionDayIndex": 84,
+      "total_tx": 3350,
+      "fraud_tx": 116,
+      "fraud_rate_pct": 3.462686567164179,
+      "loess_trend": 3.6187280102827923,
+      "loess_ci_lower": 2.0598938697164355,
+      "loess_ci_upper": 5.177562150849149
+    },
+    {
+      "TransactionDayIndex": 85,
+      "total_tx": 3574,
+      "fraud_tx": 187,
+      "fraud_rate_pct": 5.23223279238948,
+      "loess_trend": 3.592968200114409,
+      "loess_ci_lower": 2.0341340595480526,
+      "loess_ci_upper": 5.151802340680765
+    },
+    {
+      "TransactionDayIndex": 86,
+      "total_tx": 2661,
+      "fraud_tx": 125,
+      "fraud_rate_pct": 4.697482149567832,
+      "loess_trend": 3.5718003941066025,
+      "loess_ci_lower": 2.012966253540246,
+      "loess_ci_upper": 5.130634534672959
+    },
+    {
+      "TransactionDayIndex": 87,
+      "total_tx": 2549,
+      "fraud_tx": 99,
+      "fraud_rate_pct": 3.883876029815614,
+      "loess_trend": 3.5570559444710215,
+      "loess_ci_lower": 1.9982218039046649,
+      "loess_ci_upper": 5.115890085037378
+    },
+    {
+      "TransactionDayIndex": 88,
+      "total_tx": 3021,
+      "fraud_tx": 75,
+      "fraud_rate_pct": 2.4826216484607744,
+      "loess_trend": 3.5480954568129457,
+      "loess_ci_lower": 1.989261316246589,
+      "loess_ci_upper": 5.1069295973793025
+    },
+    {
+      "TransactionDayIndex": 89,
+      "total_tx": 3226,
+      "fraud_tx": 114,
+      "fraud_rate_pct": 3.533787972721637,
+      "loess_trend": 3.542819335720915,
+      "loess_ci_lower": 1.9839851951545582,
+      "loess_ci_upper": 5.101653476287272
+    },
+    {
+      "TransactionDayIndex": 90,
+      "total_tx": 3353,
+      "fraud_tx": 132,
+      "fraud_rate_pct": 3.9367730390694895,
+      "loess_trend": 3.537124951767306,
+      "loess_ci_lower": 1.9782908112009492,
+      "loess_ci_upper": 5.095959092333662
+    },
+    {
+      "TransactionDayIndex": 91,
+      "total_tx": 4007,
+      "fraud_tx": 180,
+      "fraud_rate_pct": 4.492138757174944,
+      "loess_trend": 3.5276457706244226,
+      "loess_ci_lower": 1.968811630058066,
+      "loess_ci_upper": 5.0864799111907795
+    },
+    {
+      "TransactionDayIndex": 92,
+      "total_tx": 6252,
+      "fraud_tx": 147,
+      "fraud_rate_pct": 2.3512476007677545,
+      "loess_trend": 3.5125001676690326,
+      "loess_ci_lower": 1.953666027102676,
+      "loess_ci_upper": 5.071334308235389
+    },
+    {
+      "TransactionDayIndex": 93,
+      "total_tx": 4524,
+      "fraud_tx": 151,
+      "fraud_rate_pct": 3.3377541998231655,
+      "loess_trend": 3.490360612786859,
+      "loess_ci_lower": 1.9315264722205023,
+      "loess_ci_upper": 5.049194753353215
+    },
+    {
+      "TransactionDayIndex": 94,
+      "total_tx": 2931,
+      "fraud_tx": 81,
+      "fraud_rate_pct": 2.7635619242579326,
+      "loess_trend": 3.465447682146269,
+      "loess_ci_lower": 1.9066135415799124,
+      "loess_ci_upper": 5.024281822712625
+    },
+    {
+      "TransactionDayIndex": 95,
+      "total_tx": 3711,
+      "fraud_tx": 150,
+      "fraud_rate_pct": 4.042037186742118,
+      "loess_trend": 3.4446724714837087,
+      "loess_ci_lower": 1.885838330917352,
+      "loess_ci_upper": 5.0035066120500655
+    },
+    {
+      "TransactionDayIndex": 96,
+      "total_tx": 3243,
+      "fraud_tx": 91,
+      "fraud_rate_pct": 2.80604378661733,
+      "loess_trend": 3.436307914453552,
+      "loess_ci_lower": 1.8774737738871956,
+      "loess_ci_upper": 4.995142055019909
+    },
+    {
+      "TransactionDayIndex": 97,
+      "total_tx": 3102,
+      "fraud_tx": 135,
+      "fraud_rate_pct": 4.352030947775629,
+      "loess_trend": 3.445935701640484,
+      "loess_ci_lower": 1.8871015610741273,
+      "loess_ci_upper": 5.004769842206841
+    },
+    {
+      "TransactionDayIndex": 98,
+      "total_tx": 3666,
+      "fraud_tx": 129,
+      "fraud_rate_pct": 3.518821603927987,
+      "loess_trend": 3.473412031528725,
+      "loess_ci_lower": 1.9145778909623685,
+      "loess_ci_upper": 5.032246172095082
+    },
+    {
+      "TransactionDayIndex": 99,
+      "total_tx": 3301,
+      "fraud_tx": 105,
+      "fraud_rate_pct": 3.180854286579824,
+      "loess_trend": 3.512723395462208,
+      "loess_ci_lower": 1.9538892548958515,
+      "loess_ci_upper": 5.071557536028565
+    },
+    {
+      "TransactionDayIndex": 100,
+      "total_tx": 3052,
+      "fraud_tx": 100,
+      "fraud_rate_pct": 3.2765399737876804,
+      "loess_trend": 3.5568247708960277,
+      "loess_ci_lower": 1.997990630329671,
+      "loess_ci_upper": 5.1156589114623845
+    },
+    {
+      "TransactionDayIndex": 101,
+      "total_tx": 2500,
+      "fraud_tx": 68,
+      "fraud_rate_pct": 2.7199999999999998,
+      "loess_trend": 3.603373004420863,
+      "loess_ci_lower": 2.0445388638545063,
+      "loess_ci_upper": 5.16220714498722
+    },
+    {
+      "TransactionDayIndex": 102,
+      "total_tx": 3166,
+      "fraud_tx": 105,
+      "fraud_rate_pct": 3.3164876816171827,
+      "loess_trend": 3.6551976823625485,
+      "loess_ci_lower": 2.096363541796192,
+      "loess_ci_upper": 5.214031822928905
+    },
+    {
+      "TransactionDayIndex": 103,
+      "total_tx": 3101,
+      "fraud_tx": 97,
+      "fraud_rate_pct": 3.128023218316672,
+      "loess_trend": 3.714590801849876,
+      "loess_ci_lower": 2.1557566612835197,
+      "loess_ci_upper": 5.2734249424162325
+    },
+    {
+      "TransactionDayIndex": 104,
+      "total_tx": 3115,
+      "fraud_tx": 111,
+      "fraud_rate_pct": 3.5634028892455856,
+      "loess_trend": 3.782312933190165,
+      "loess_ci_lower": 2.2234787926238084,
+      "loess_ci_upper": 5.341147073756521
+    },
+    {
+      "TransactionDayIndex": 105,
+      "total_tx": 3034,
+      "fraud_tx": 132,
+      "fraud_rate_pct": 4.350692155570204,
+      "loess_trend": 3.8595474222487205,
+      "loess_ci_lower": 2.3007132816823637,
+      "loess_ci_upper": 5.418381562815077
+    },
+    {
+      "TransactionDayIndex": 106,
+      "total_tx": 3221,
+      "fraud_tx": 152,
+      "fraud_rate_pct": 4.719031356721515,
+      "loess_trend": 3.948835455910034,
+      "loess_ci_lower": 2.390001315343677,
+      "loess_ci_upper": 5.507669596476391
+    },
+    {
+      "TransactionDayIndex": 107,
+      "total_tx": 2809,
+      "fraud_tx": 127,
+      "fraud_rate_pct": 4.521181915272339,
+      "loess_trend": 4.04670192087423,
+      "loess_ci_lower": 2.487867780307873,
+      "loess_ci_upper": 5.605536061440587
+    },
+    {
+      "TransactionDayIndex": 108,
+      "total_tx": 2287,
+      "fraud_tx": 96,
+      "fraud_rate_pct": 4.19763882815916,
+      "loess_trend": 4.146102844789717,
+      "loess_ci_lower": 2.5872687042233604,
+      "loess_ci_upper": 5.704936985356074
+    },
+    {
+      "TransactionDayIndex": 109,
+      "total_tx": 3151,
+      "fraud_tx": 133,
+      "fraud_rate_pct": 4.220882259600127,
+      "loess_trend": 4.238262623605027,
+      "loess_ci_lower": 2.67942848303867,
+      "loess_ci_upper": 5.797096764171384
+    },
+    {
+      "TransactionDayIndex": 110,
+      "total_tx": 3018,
+      "fraud_tx": 117,
+      "fraud_rate_pct": 3.876739562624255,
+      "loess_trend": 4.315588782564063,
+      "loess_ci_lower": 2.7567546419977065,
+      "loess_ci_upper": 5.87442292313042
+    },
+    {
+      "TransactionDayIndex": 111,
+      "total_tx": 3180,
+      "fraud_tx": 102,
+      "fraud_rate_pct": 3.207547169811321,
+      "loess_trend": 4.371029149865596,
+      "loess_ci_lower": 2.8121950092992396,
+      "loess_ci_upper": 5.929863290431953
+    },
+    {
+      "TransactionDayIndex": 112,
+      "total_tx": 3225,
+      "fraud_tx": 139,
+      "fraud_rate_pct": 4.310077519379845,
+      "loess_trend": 4.401292680164894,
+      "loess_ci_lower": 2.842458539598537,
+      "loess_ci_upper": 5.960126820731251
+    },
+    {
+      "TransactionDayIndex": 113,
+      "total_tx": 3227,
+      "fraud_tx": 161,
+      "fraud_rate_pct": 4.989154013015185,
+      "loess_trend": 4.407698390822632,
+      "loess_ci_lower": 2.848864250256275,
+      "loess_ci_upper": 5.966532531388989
+    },
+    {
+      "TransactionDayIndex": 114,
+      "total_tx": 2758,
+      "fraud_tx": 150,
+      "fraud_rate_pct": 5.4387237128353885,
+      "loess_trend": 4.394657205381123,
+      "loess_ci_lower": 2.8358230648147664,
+      "loess_ci_upper": 5.95349134594748
+    },
+    {
+      "TransactionDayIndex": 115,
+      "total_tx": 2461,
+      "fraud_tx": 139,
+      "fraud_rate_pct": 5.648110524177163,
+      "loess_trend": 4.366457218582812,
+      "loess_ci_lower": 2.807623078016455,
+      "loess_ci_upper": 5.925291359149169
+    },
+    {
+      "TransactionDayIndex": 116,
+      "total_tx": 3111,
+      "fraud_tx": 163,
+      "fraud_rate_pct": 5.239472838315654,
+      "loess_trend": 4.325910620234639,
+      "loess_ci_lower": 2.7670764796682823,
+      "loess_ci_upper": 5.884744760800996
+    },
+    {
+      "TransactionDayIndex": 117,
+      "total_tx": 3042,
+      "fraud_tx": 194,
+      "fraud_rate_pct": 6.377383300460224,
+      "loess_trend": 4.276278769690125,
+      "loess_ci_lower": 2.7174446291237686,
+      "loess_ci_upper": 5.835112910256482
+    },
+    {
+      "TransactionDayIndex": 118,
+      "total_tx": 3179,
+      "fraud_tx": 117,
+      "fraud_rate_pct": 3.6804026423403586,
+      "loess_trend": 4.221471262098145,
+      "loess_ci_lower": 2.6626371215317883,
+      "loess_ci_upper": 5.780305402664502
+    },
+    {
+      "TransactionDayIndex": 119,
+      "total_tx": 3300,
+      "fraud_tx": 145,
+      "fraud_rate_pct": 4.393939393939394,
+      "loess_trend": 4.1614563672674985,
+      "loess_ci_lower": 2.6026222267011416,
+      "loess_ci_upper": 5.720290507833855
+    },
+    {
+      "TransactionDayIndex": 120,
+      "total_tx": 3941,
+      "fraud_tx": 181,
+      "fraud_rate_pct": 4.592742958639939,
+      "loess_trend": 4.09546849181097,
+      "loess_ci_lower": 2.5366343512446132,
+      "loess_ci_upper": 5.654302632377327
+    },
+    {
+      "TransactionDayIndex": 121,
+      "total_tx": 3017,
+      "fraud_tx": 121,
+      "fraud_rate_pct": 4.010606562810739,
+      "loess_trend": 4.023831978010978,
+      "loess_ci_lower": 2.4649978374446215,
+      "loess_ci_upper": 5.582666118577335
+    },
+    {
+      "TransactionDayIndex": 122,
+      "total_tx": 2507,
+      "fraud_tx": 64,
+      "fraud_rate_pct": 2.5528520143597926,
+      "loess_trend": 3.9479241149788886,
+      "loess_ci_lower": 2.3890899744125322,
+      "loess_ci_upper": 5.506758255545245
+    },
+    {
+      "TransactionDayIndex": 123,
+      "total_tx": 3390,
+      "fraud_tx": 128,
+      "fraud_rate_pct": 3.775811209439528,
+      "loess_trend": 3.8705668859825653,
+      "loess_ci_lower": 2.311732745416209,
+      "loess_ci_upper": 5.429401026548922
+    },
+    {
+      "TransactionDayIndex": 124,
+      "total_tx": 4202,
+      "fraud_tx": 89,
+      "fraud_rate_pct": 2.1180390290337936,
+      "loess_trend": 3.7977184641415374,
+      "loess_ci_lower": 2.2388843235751805,
+      "loess_ci_upper": 5.356552604707894
+    },
+    {
+      "TransactionDayIndex": 125,
+      "total_tx": 3467,
+      "fraud_tx": 148,
+      "fraud_rate_pct": 4.268820305739833,
+      "loess_trend": 3.735108475131754,
+      "loess_ci_lower": 2.176274334565397,
+      "loess_ci_upper": 5.293942615698111
+    },
+    {
+      "TransactionDayIndex": 126,
+      "total_tx": 3051,
+      "fraud_tx": 102,
+      "fraud_rate_pct": 3.343166175024582,
+      "loess_trend": 3.68421192368838,
+      "loess_ci_lower": 2.1253777831220235,
+      "loess_ci_upper": 5.243046064254736
+    },
+    {
+      "TransactionDayIndex": 127,
+      "total_tx": 3335,
+      "fraud_tx": 84,
+      "fraud_rate_pct": 2.5187406296851576,
+      "loess_trend": 3.6436393442646473,
+      "loess_ci_lower": 2.0848052036982905,
+      "loess_ci_upper": 5.202473484831004
+    },
+    {
+      "TransactionDayIndex": 128,
+      "total_tx": 2507,
+      "fraud_tx": 69,
+      "fraud_rate_pct": 2.7522935779816518,
+      "loess_trend": 3.609487972964125,
+      "loess_ci_lower": 2.050653832397768,
+      "loess_ci_upper": 5.168322113530482
+    },
+    {
+      "TransactionDayIndex": 129,
+      "total_tx": 2348,
+      "fraud_tx": 130,
+      "fraud_rate_pct": 5.536626916524702,
+      "loess_trend": 3.58104984200908,
+      "loess_ci_lower": 2.0222157014427236,
+      "loess_ci_upper": 5.139883982575436
+    },
+    {
+      "TransactionDayIndex": 130,
+      "total_tx": 2807,
+      "fraud_tx": 95,
+      "fraud_rate_pct": 3.3843961524759525,
+      "loess_trend": 3.5609241770162536,
+      "loess_ci_lower": 2.0020900364498972,
+      "loess_ci_upper": 5.11975831758261
+    },
+    {
+      "TransactionDayIndex": 131,
+      "total_tx": 2822,
+      "fraud_tx": 105,
+      "fraud_rate_pct": 3.720765414599575,
+      "loess_trend": 3.5533487317384878,
+      "loess_ci_lower": 1.9945145911721311,
+      "loess_ci_upper": 5.112182872304844
+    },
+    {
+      "TransactionDayIndex": 132,
+      "total_tx": 2752,
+      "fraud_tx": 108,
+      "fraud_rate_pct": 3.9244186046511627,
+      "loess_trend": 3.5597892833973828,
+      "loess_ci_lower": 2.0009551428310264,
+      "loess_ci_upper": 5.118623423963739
+    },
+    {
+      "TransactionDayIndex": 133,
+      "total_tx": 2687,
+      "fraud_tx": 136,
+      "fraud_rate_pct": 5.061406773353181,
+      "loess_trend": 3.5752189508743966,
+      "loess_ci_lower": 2.0163848103080397,
+      "loess_ci_upper": 5.134053091440753
+    },
+    {
+      "TransactionDayIndex": 134,
+      "total_tx": 2937,
+      "fraud_tx": 103,
+      "fraud_rate_pct": 3.5069799114742937,
+      "loess_trend": 3.5908226597272344,
+      "loess_ci_lower": 2.031988519160878,
+      "loess_ci_upper": 5.149656800293591
+    },
+    {
+      "TransactionDayIndex": 135,
+      "total_tx": 2429,
+      "fraud_tx": 90,
+      "fraud_rate_pct": 3.705228489090161,
+      "loess_trend": 3.6003833887019856,
+      "loess_ci_lower": 2.041549248135629,
+      "loess_ci_upper": 5.159217529268342
+    },
+    {
+      "TransactionDayIndex": 136,
+      "total_tx": 2048,
+      "fraud_tx": 73,
+      "fraud_rate_pct": 3.564453125,
+      "loess_trend": 3.6009846304475595,
+      "loess_ci_lower": 2.0421504898812026,
+      "loess_ci_upper": 5.159818771013916
+    },
+    {
+      "TransactionDayIndex": 137,
+      "total_tx": 2914,
+      "fraud_tx": 69,
+      "fraud_rate_pct": 2.367879203843514,
+      "loess_trend": 3.589641747515174,
+      "loess_ci_lower": 2.0308076069488177,
+      "loess_ci_upper": 5.1484758880815304
+    },
+    {
+      "TransactionDayIndex": 138,
+      "total_tx": 2846,
+      "fraud_tx": 112,
+      "fraud_rate_pct": 3.9353478566408993,
+      "loess_trend": 3.5649148017773067,
+      "loess_ci_lower": 2.00608066121095,
+      "loess_ci_upper": 5.1237489423436635
+    },
+    {
+      "TransactionDayIndex": 139,
+      "total_tx": 2769,
+      "fraud_tx": 61,
+      "fraud_rate_pct": 2.2029613578909353,
+      "loess_trend": 3.5266921984216824,
+      "loess_ci_lower": 1.9678580578553257,
+      "loess_ci_upper": 5.085526338988039
+    },
+    {
+      "TransactionDayIndex": 140,
+      "total_tx": 2629,
+      "fraud_tx": 103,
+      "fraud_rate_pct": 3.917839482693039,
+      "loess_trend": 3.4793657228991437,
+      "loess_ci_lower": 1.920531582332787,
+      "loess_ci_upper": 5.0381998634655005
+    },
+    {
+      "TransactionDayIndex": 141,
+      "total_tx": 3000,
+      "fraud_tx": 131,
+      "fraud_rate_pct": 4.366666666666666,
+      "loess_trend": 3.430533369055246,
+      "loess_ci_lower": 1.8716992284888894,
+      "loess_ci_upper": 4.989367509621602
+    },
+    {
+      "TransactionDayIndex": 142,
+      "total_tx": 2391,
+      "fraud_tx": 103,
+      "fraud_rate_pct": 4.307820995399415,
+      "loess_trend": 3.3865824655661627,
+      "loess_ci_lower": 1.827748324999806,
+      "loess_ci_upper": 4.945416606132519
+    },
+    {
+      "TransactionDayIndex": 143,
+      "total_tx": 2064,
+      "fraud_tx": 71,
+      "fraud_rate_pct": 3.439922480620155,
+      "loess_trend": 3.348152115401485,
+      "loess_ci_lower": 1.7893179748351284,
+      "loess_ci_upper": 4.906986255967841
+    },
+    {
+      "TransactionDayIndex": 144,
+      "total_tx": 2718,
+      "fraud_tx": 90,
+      "fraud_rate_pct": 3.3112582781456954,
+      "loess_trend": 3.3159937168402815,
+      "loess_ci_lower": 1.757159576273925,
+      "loess_ci_upper": 4.874827857406638
+    },
+    {
+      "TransactionDayIndex": 145,
+      "total_tx": 2668,
+      "fraud_tx": 67,
+      "fraud_rate_pct": 2.5112443778110944,
+      "loess_trend": 3.287663152749572,
+      "loess_ci_lower": 1.7288290121832153,
+      "loess_ci_upper": 4.846497293315928
+    },
+    {
+      "TransactionDayIndex": 146,
+      "total_tx": 2990,
+      "fraud_tx": 98,
+      "fraud_rate_pct": 3.2775919732441468,
+      "loess_trend": 3.25906317924107,
+      "loess_ci_lower": 1.7002290386747132,
+      "loess_ci_upper": 4.817897319807426
+    },
+    {
+      "TransactionDayIndex": 147,
+      "total_tx": 2718,
+      "fraud_tx": 79,
+      "fraud_rate_pct": 2.9065489330389993,
+      "loess_trend": 3.225957233527446,
+      "loess_ci_lower": 1.6671230929610894,
+      "loess_ci_upper": 4.784791374093802
+    },
+    {
+      "TransactionDayIndex": 148,
+      "total_tx": 3060,
+      "fraud_tx": 86,
+      "fraud_rate_pct": 2.8104575163398695,
+      "loess_trend": 3.1877083807704087,
+      "loess_ci_lower": 1.6288742402040521,
+      "loess_ci_upper": 4.746542521336766
+    },
+    {
+      "TransactionDayIndex": 149,
+      "total_tx": 2289,
+      "fraud_tx": 66,
+      "fraud_rate_pct": 2.8833551769331587,
+      "loess_trend": 3.1453735756189345,
+      "loess_ci_lower": 1.5865394350525779,
+      "loess_ci_upper": 4.704207716185291
+    },
+    {
+      "TransactionDayIndex": 150,
+      "total_tx": 2209,
+      "fraud_tx": 69,
+      "fraud_rate_pct": 3.123585332729742,
+      "loess_trend": 3.101504871648272,
+      "loess_ci_lower": 1.5426707310819154,
+      "loess_ci_upper": 4.660339012214629
+    },
+    {
+      "TransactionDayIndex": 151,
+      "total_tx": 3101,
+      "fraud_tx": 99,
+      "fraud_rate_pct": 3.1925185424056757,
+      "loess_trend": 3.062421380906842,
+      "loess_ci_lower": 1.5035872403404855,
+      "loess_ci_upper": 4.6212555214731985
+    },
+    {
+      "TransactionDayIndex": 152,
+      "total_tx": 3896,
+      "fraud_tx": 120,
+      "fraud_rate_pct": 3.0800821355236137,
+      "loess_trend": 3.033933408302692,
+      "loess_ci_lower": 1.4750992677363353,
+      "loess_ci_upper": 4.592767548869048
+    },
+    {
+      "TransactionDayIndex": 153,
+      "total_tx": 3105,
+      "fraud_tx": 126,
+      "fraud_rate_pct": 4.057971014492753,
+      "loess_trend": 3.018857210105302,
+      "loess_ci_lower": 1.4600230695389456,
+      "loess_ci_upper": 4.5776913506716586
+    },
+    {
+      "TransactionDayIndex": 154,
+      "total_tx": 3783,
+      "fraud_tx": 94,
+      "fraud_rate_pct": 2.484800422944753,
+      "loess_trend": 3.01439010383861,
+      "loess_ci_lower": 1.4555559632722532,
+      "loess_ci_upper": 4.573224244404966
+    },
+    {
+      "TransactionDayIndex": 155,
+      "total_tx": 3352,
+      "fraud_tx": 119,
+      "fraud_rate_pct": 3.5501193317422435,
+      "loess_trend": 3.016288543057814,
+      "loess_ci_lower": 1.4574544024914575,
+      "loess_ci_upper": 4.575122683624171
+    },
+    {
+      "TransactionDayIndex": 156,
+      "total_tx": 2575,
+      "fraud_tx": 54,
+      "fraud_rate_pct": 2.0970873786407767,
+      "loess_trend": 3.0229929486334335,
+      "loess_ci_lower": 1.4641588080670769,
+      "loess_ci_upper": 4.58182708919979
+    },
+    {
+      "TransactionDayIndex": 157,
+      "total_tx": 2259,
+      "fraud_tx": 69,
+      "fraud_rate_pct": 3.054448871181939,
+      "loess_trend": 3.0352060067604576,
+      "loess_ci_lower": 1.476371866194101,
+      "loess_ci_upper": 4.594040147326814
+    },
+    {
+      "TransactionDayIndex": 158,
+      "total_tx": 3048,
+      "fraud_tx": 81,
+      "fraud_rate_pct": 2.65748031496063,
+      "loess_trend": 3.055265434591678,
+      "loess_ci_lower": 1.4964312940253215,
+      "loess_ci_upper": 4.6140995751580345
+    },
+    {
+      "TransactionDayIndex": 159,
+      "total_tx": 2845,
+      "fraud_tx": 89,
+      "fraud_rate_pct": 3.1282952548330405,
+      "loess_trend": 3.084337019439709,
+      "loess_ci_lower": 1.5255028788733525,
+      "loess_ci_upper": 4.643171160006066
+    },
+    {
+      "TransactionDayIndex": 160,
+      "total_tx": 2878,
+      "fraud_tx": 85,
+      "fraud_rate_pct": 2.953439888811675,
+      "loess_trend": 3.118646652932828,
+      "loess_ci_lower": 1.5598125123664712,
+      "loess_ci_upper": 4.677480793499185
+    },
+    {
+      "TransactionDayIndex": 161,
+      "total_tx": 2854,
+      "fraud_tx": 68,
+      "fraud_rate_pct": 2.3826208829712687,
+      "loess_trend": 3.1553316362868635,
+      "loess_ci_lower": 1.596497495720507,
+      "loess_ci_upper": 4.71416577685322
+    },
+    {
+      "TransactionDayIndex": 162,
+      "total_tx": 3233,
+      "fraud_tx": 114,
+      "fraud_rate_pct": 3.5261367151252707,
+      "loess_trend": 3.196096328366543,
+      "loess_ci_lower": 1.6372621878001865,
+      "loess_ci_upper": 4.7549304689328995
+    },
+    {
+      "TransactionDayIndex": 163,
+      "total_tx": 2880,
+      "fraud_tx": 136,
+      "fraud_rate_pct": 4.722222222222222,
+      "loess_trend": 3.2415152330489896,
+      "loess_ci_lower": 1.682681092482633,
+      "loess_ci_upper": 4.800349373615346
+    },
+    {
+      "TransactionDayIndex": 164,
+      "total_tx": 2988,
+      "fraud_tx": 77,
+      "fraud_rate_pct": 2.5769745649263722,
+      "loess_trend": 3.291781686049678,
+      "loess_ci_lower": 1.7329475454833212,
+      "loess_ci_upper": 4.850615826616035
+    },
+    {
+      "TransactionDayIndex": 165,
+      "total_tx": 3038,
+      "fraud_tx": 73,
+      "fraud_rate_pct": 2.402896642527979,
+      "loess_trend": 3.347929772093827,
+      "loess_ci_lower": 1.7890956315274702,
+      "loess_ci_upper": 4.906763912660184
+    },
+    {
+      "TransactionDayIndex": 166,
+      "total_tx": 2931,
+      "fraud_tx": 94,
+      "fraud_rate_pct": 3.207096554077107,
+      "loess_trend": 3.4108384555570543,
+      "loess_ci_lower": 1.8520043149906977,
+      "loess_ci_upper": 4.969672596123411
+    },
+    {
+      "TransactionDayIndex": 167,
+      "total_tx": 3020,
+      "fraud_tx": 119,
+      "fraud_rate_pct": 3.940397350993378,
+      "loess_trend": 3.478807146726101,
+      "loess_ci_lower": 1.9199730061597442,
+      "loess_ci_upper": 5.037641287292457
+    },
+    {
+      "TransactionDayIndex": 168,
+      "total_tx": 2948,
+      "fraud_tx": 116,
+      "fraud_rate_pct": 3.934871099050204,
+      "loess_trend": 3.5481201663281703,
+      "loess_ci_lower": 1.9892860257618137,
+      "loess_ci_upper": 5.106954306894527
+    },
+    {
+      "TransactionDayIndex": 169,
+      "total_tx": 3191,
+      "fraud_tx": 146,
+      "fraud_rate_pct": 4.575368223127546,
+      "loess_trend": 3.6148343657043114,
+      "loess_ci_lower": 2.0560002251379546,
+      "loess_ci_upper": 5.173668506270668
+    },
+    {
+      "TransactionDayIndex": 170,
+      "total_tx": 2409,
+      "fraud_tx": 101,
+      "fraud_rate_pct": 4.192611041926111,
+      "loess_trend": 3.6705634915953205,
+      "loess_ci_lower": 2.1117293510289636,
+      "loess_ci_upper": 5.229397632161677
+    },
+    {
+      "TransactionDayIndex": 171,
+      "total_tx": 2795,
+      "fraud_tx": 68,
+      "fraud_rate_pct": 2.4329159212880143,
+      "loess_trend": 3.723195653133328,
+      "loess_ci_lower": 2.1643615125669715,
+      "loess_ci_upper": 5.282029793699684
+    },
+    {
+      "TransactionDayIndex": 172,
+      "total_tx": 3160,
+      "fraud_tx": 81,
+      "fraud_rate_pct": 2.5632911392405067,
+      "loess_trend": 3.775138679401762,
+      "loess_ci_lower": 2.2163045388354057,
+      "loess_ci_upper": 5.3339728199681185
+    },
+    {
+      "TransactionDayIndex": 173,
+      "total_tx": 2866,
+      "fraud_tx": 142,
+      "fraud_rate_pct": 4.954640614096301,
+      "loess_trend": 3.8266721648196937,
+      "loess_ci_lower": 2.2678380242533374,
+      "loess_ci_upper": 5.38550630538605
+    },
+    {
+      "TransactionDayIndex": 174,
+      "total_tx": 2837,
+      "fraud_tx": 87,
+      "fraud_rate_pct": 3.0666196686640816,
+      "loess_trend": 3.8779742673473554,
+      "loess_ci_lower": 2.319140126780999,
+      "loess_ci_upper": 5.436808407913712
+    },
+    {
+      "TransactionDayIndex": 175,
+      "total_tx": 2683,
+      "fraud_tx": 108,
+      "fraud_rate_pct": 4.025344763324636,
+      "loess_trend": 3.9290281552469293,
+      "loess_ci_lower": 2.370194014680573,
+      "loess_ci_upper": 5.487862295813286
+    },
+    {
+      "TransactionDayIndex": 176,
+      "total_tx": 3032,
+      "fraud_tx": 145,
+      "fraud_rate_pct": 4.782321899736148,
+      "loess_trend": 3.9799337489187394,
+      "loess_ci_lower": 2.4210996083523826,
+      "loess_ci_upper": 5.538767889485096
+    },
+    {
+      "TransactionDayIndex": 177,
+      "total_tx": 2364,
+      "fraud_tx": 109,
+      "fraud_rate_pct": 4.61082910321489,
+      "loess_trend": 4.030726714915821,
+      "loess_ci_lower": 2.4718925743494644,
+      "loess_ci_upper": 5.589560855482178
+    },
+    {
+      "TransactionDayIndex": 178,
+      "total_tx": 2068,
+      "fraud_tx": 88,
+      "fraud_rate_pct": 4.25531914893617,
+      "loess_trend": 4.081250212382531,
+      "loess_ci_lower": 2.522416071816174,
+      "loess_ci_upper": 5.640084352948888
+    },
+    {
+      "TransactionDayIndex": 179,
+      "total_tx": 2177,
+      "fraud_tx": 66,
+      "fraud_rate_pct": 3.031694993109784,
+      "loess_trend": 4.131227816990947,
+      "loess_ci_lower": 2.57239367642459,
+      "loess_ci_upper": 5.690061957557304
+    },
+    {
+      "TransactionDayIndex": 180,
+      "total_tx": 2618,
+      "fraud_tx": 98,
+      "fraud_rate_pct": 3.7433155080213902,
+      "loess_trend": 4.180424196319511,
+      "loess_ci_lower": 2.6215900557531544,
+      "loess_ci_upper": 5.739258336885868
+    },
+    {
+      "TransactionDayIndex": 181,
+      "total_tx": 2739,
+      "fraud_tx": 122,
+      "fraud_rate_pct": 4.454180357794816,
+      "loess_trend": 4.22885195935673,
+      "loess_ci_lower": 2.670017818790373,
+      "loess_ci_upper": 5.787686099923087
+    },
+    {
+      "TransactionDayIndex": 182,
+      "total_tx": 2754,
+      "fraud_tx": 119,
+      "fraud_rate_pct": 4.320987654320987,
+      "loess_trend": 4.276665642922713,
+      "loess_ci_lower": 2.717831502356356,
+      "loess_ci_upper": 5.83549978348907
+    }
+  ],
+  "weekly_cycle_relative": [
+    {
+      "DayOfWeekIndex": 0,
+      "total_tx": 86377,
+      "fraud_tx": 3211,
+      "fraud_rate_pct": 3.717424777429177
+    },
+    {
+      "DayOfWeekIndex": 1,
+      "total_tx": 98502,
+      "fraud_tx": 3550,
+      "fraud_rate_pct": 3.603987736289618
+    },
+    {
+      "DayOfWeekIndex": 2,
+      "total_tx": 79834,
+      "fraud_tx": 2963,
+      "fraud_rate_pct": 3.711451261367337
+    },
+    {
+      "DayOfWeekIndex": 3,
+      "total_tx": 70223,
+      "fraud_tx": 2503,
+      "fraud_rate_pct": 3.564359255514575
+    },
+    {
+      "DayOfWeekIndex": 4,
+      "total_tx": 85433,
+      "fraud_tx": 2687,
+      "fraud_rate_pct": 3.1451546826167873
+    },
+    {
+      "DayOfWeekIndex": 5,
+      "total_tx": 84815,
+      "fraud_tx": 2803,
+      "fraud_rate_pct": 3.3048399457643103
+    },
+    {
+      "DayOfWeekIndex": 6,
+      "total_tx": 85356,
+      "fraud_tx": 2946,
+      "fraud_rate_pct": 3.4514269647124984
+    }
+  ]
+}

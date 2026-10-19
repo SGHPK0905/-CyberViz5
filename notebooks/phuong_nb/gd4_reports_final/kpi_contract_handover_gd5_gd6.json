@@ -1,0 +1,48 @@
+{
+  "project_metadata": {
+    "title": "IEEE-CIS Fraud Detection EDA & Data Contract",
+    "phase": "Giai đoạn 4 -> Giai đoạn 5 & Giai đoạn 6",
+    "author": "Phan Đồng Minh Quân - MSSV 3123580038"
+  },
+  "denominator_audit": {
+    "total_records": 590540,
+    "labeled_records_count": 590540,
+    "is_denominator_complete": true,
+    "note": "100% dòng dữ liệu đều có nhãn xác định, không thiếu nhãn."
+  },
+  "manager_kpi_cards": {
+    "card_total_volume": {
+      "label": "Tổng khối lượng giao dịch",
+      "value": 590540,
+      "display": "590,540"
+    },
+    "card_system_fraud_rate": {
+      "label": "Tỷ lệ gian lận toàn hệ thống",
+      "value": 3.5,
+      "display": "3.50%",
+      "benchmark_line": 3.499
+    },
+    "card_total_fraud_loss": {
+      "label": "Tổng giá trị gian lận ước tính",
+      "value": 3083844.86,
+      "display": "$3,084,148.82"
+    }
+  },
+  "investigator_filter_rules": {
+    "high_risk_product": "C",
+    "high_risk_amount_range": [
+      200.0,
+      1200.0
+    ],
+    "identity_challenged_risk_rate": 7.85,
+    "peak_relative_days_of_week": [
+      0,
+      1,
+      2
+    ]
+  },
+  "sub_parquet_specs": {
+    "manager_file": "data/processed/manager_subset.parquet",
+    "investigator_file": "data/processed/investigator_subset.parquet"
+  }
+}
