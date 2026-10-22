@@ -420,6 +420,7 @@
               <button id="c2-btn-prod" onclick="renderChart2('product')" class="px-3 py-1 rounded-full font-mono text-[11px] font-bold glass-tab-active">Theo ProductCD</button>
               <button id="c2-btn-dev" onclick="renderChart2('device')" class="px-3 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive">Theo Thiết Bị &amp; ID</button>
               <button id="c2-btn-card" onclick="renderChart2('card')" class="px-3 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive">Theo Loại Thẻ</button>
+              <button id="c2-btn-prodid" onclick="renderChart2('prodid')" class="px-3 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive">ProductCD × Identity (Wilson CI)</button>
             </div>
           </div>
           <div id="chart2-bars-container" class="flex flex-col gap-3 pt-1"></div>
@@ -696,6 +697,8 @@
               <button id="forensic-tab-hist" onclick="switchForensicTab('hist')" class="px-3 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive">Histogram 24 Bins (Biểu đồ 08)</button>
               <button id="forensic-tab-d1" onclick="switchForensicTab('d1')" class="px-3 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive">Cụm Timedelta D1 (Biểu đồ 06)</button>
               <button id="forensic-tab-extra" onclick="switchForensicTab('extra')" class="px-3 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive">Missing &amp; C1/M4 (Biểu đồ 12)</button>
+              <button id="forensic-tab-loess" onclick="switchForensicTab('loess')" class="px-3 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive">LOESS Phi Tuyến $ (Biểu đồ 3)</button>
+              <button id="forensic-tab-iqr" onclick="switchForensicTab('iqr')" class="px-3 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive">Độ Phân Tán IQR (Mục 9.4)</button>
             </div>
           </div>
 
@@ -839,7 +842,175 @@
               </div>
             </div>
             <div id="eda-extra-container" class="flex flex-col gap-2 my-2"></div>
+          
+          <!-- Tab 5: Biểu đồ 3 Notebook: LOESS Phi Tuyến Số Tiền x Identity (Vùng nhạy cảm $200–$1,200) -->
+          <div id="forensic-content-loess" class="forensic-pane hidden flex-col justify-between">
+            <div class="flex items-start justify-between pb-2 border-b border-white/10">
+              <div>
+                <h4 class="font-display text-sm font-bold text-white">Hồi Quy Phi Tuyến Binned-LOESS Giữa Số Tiền &amp; Rủi Ro Phân Tầng Theo Identity</h4>
+                <p class="font-sans text-xs text-on-surface-variant mt-0.5">Khảo sát quan hệ phi tuyến trên thang Log. Vùng nguy cơ cao đạt đỉnh tại <strong>$200 – $1,200</strong>.</p>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded-full bg-error/15 border border-error/30 text-error font-semibold">Đỉnh LOESS: $200–$1,200</span>
+            </div>
+            
+            <div class="w-full h-60 relative my-2">
+              <svg class="w-full h-full overflow-visible" viewBox="0 0 420 190">
+                <!-- Log scale grid: $5 (40), $20 (110), $100 (195), $500 (280), $2,000 (360), $5,000 (400) -->
+                <line stroke="rgba(255,255,255,0.06)" stroke-width="1" x1="40" x2="405" y1="20" y2="20"></line>
+                <line stroke="rgba(255,255,255,0.06)" stroke-width="1" x1="40" x2="405" y1="65" y2="65"></line>
+                <line stroke="rgba(255,255,255,0.06)" stroke-width="1" x1="40" x2="405" y1="110" y2="110"></line>
+                <line stroke="rgba(255,255,255,0.06)" stroke-width="1" x1="40" x2="405" y1="150" y2="150"></line>
+                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="35" y="24">16%</text>
+                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="35" y="69">10%</text>
+                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="35" y="114">5%</text>
+                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="35" y="153">0%</text>
+
+                <!-- Highlight Sensitive Zone $200 - $1,200 -->
+                <rect x="238" y="20" width="95" height="130" fill="rgba(255, 77, 109, 0.12)" stroke="#ff4d6d" stroke-dasharray="3,2" stroke-width="1"></rect>
+                <text fill="#ff6b81" font-family="JetBrains Mono" font-size="8.5" font-weight="700" x="242" y="32">VÙNG ĐỈNH LOESS</text>
+                <text fill="#ffdcc5" font-family="JetBrains Mono" font-size="8" x="242" y="43">$200 – $1,200</text>
+
+                <!-- System baseline line 3.5% -->
+                <line stroke="#f9b98b" stroke-dasharray="3,3" stroke-width="1.2" x1="40" x2="405" y1="123" y2="123"></line>
+
+                <!-- Curve 1: Has Identity (Blue/Cyan Neon) -->
+                <path d="M 45 74 Q 85 64 125 66 T 195 106 T 255 45 T 315 78 T 375 25" fill="none" stroke="#00d2ff" stroke-width="2.5"></path>
+                <!-- Curve 2: No Identity (Red/Coral) -->
+                <path d="M 45 139 Q 95 137 155 135 T 225 130 T 295 118 T 355 111 T 395 109" fill="none" stroke="#ff4d6d" stroke-width="2.5"></path>
+
+                <!-- Data Points HasIdentity -->
+                <circle cx="45" cy="74" r="3.5" fill="#00d2ff" class="cursor-pointer" onmouseenter="showTooltip(event, 'Has Identity · Đơn vi mô ($7)', 'Tỷ lệ Fraud: 8.84% (512 / 5,789 GD)')" onmouseleave="hideTooltip()"></circle>
+                <circle cx="125" cy="66" r="3.5" fill="#00d2ff" class="cursor-pointer" onmouseenter="showTooltip(event, 'Has Identity · Đơn $25', 'Tỷ lệ Fraud: 11.73% (579 / 4,937 GD)')" onmouseleave="hideTooltip()"></circle>
+                <circle cx="195" cy="106" r="3.5" fill="#00d2ff" class="cursor-pointer" onmouseenter="showTooltip(event, 'Has Identity · Đơn $100', 'Tỷ lệ Fraud: 4.50% (971 / 21,589 GD)')" onmouseleave="hideTooltip()"></circle>
+                <circle cx="270" cy="40" r="4.5" fill="#00d2ff" stroke="#ffffff" stroke-width="1.5" class="cursor-pointer" onmouseenter="showTooltip(event, 'Has Identity · VÙNG ĐỈNH $400', 'Tỷ lệ Fraud: 15.53% (832 / 5,356 GD)')" onmouseleave="hideTooltip()"></circle>
+
+                <!-- Data Points NoIdentity -->
+                <circle cx="45" cy="139" r="3.5" fill="#ff4d6d" class="cursor-pointer" onmouseenter="showTooltip(event, 'No Identity · Đơn $24', 'Tỷ lệ Fraud: 1.20% (274 / 22,801 GD)')" onmouseleave="hideTooltip()"></circle>
+                <circle cx="195" cy="130" r="3.5" fill="#ff4d6d" class="cursor-pointer" onmouseenter="showTooltip(event, 'No Identity · Đơn $117', 'Tỷ lệ Fraud: 2.28% (836 / 36,631 GD)')" onmouseleave="hideTooltip()"></circle>
+                <circle cx="295" cy="118" r="3.5" fill="#ff4d6d" class="cursor-pointer" onmouseenter="showTooltip(event, 'No Identity · Đơn $313', 'Tỷ lệ Fraud: 3.55% (632 / 17,817 GD)')" onmouseleave="hideTooltip()"></circle>
+                <circle cx="375" cy="109" r="4" fill="#ff4d6d" class="cursor-pointer" onmouseenter="showTooltip(event, 'No Identity · Đơn $945', 'Tỷ lệ Fraud: 4.56% (745 / 16,329 GD)')" onmouseleave="hideTooltip()"></circle>
+
+                <!-- X-axis Labels -->
+                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="45" y="168">$10</text>
+                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="125" y="168">$50</text>
+                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="195" y="168">$100</text>
+                <text fill="#f9b98b" font-family="JetBrains Mono" font-size="9" font-weight="bold" text-anchor="middle" x="270" y="168">$400</text>
+                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="375" y="168">$1,000+</text>
+              </svg>
+            </div>
+
+            <!-- Policy recommendations from Notebook Cell 17 -->
+            <div class="grid grid-cols-1 sm:grid-cols-4 gap-2 pt-2 border-t border-white/5 font-sans text-xs">
+              <div class="p-2 rounded-lg bg-white/[0.02] border border-white/5 flex flex-col gap-0.5">
+                <span class="font-mono text-[10px] text-on-surface-variant font-bold">1. Vi mô (&lt; $15)</span>
+                <span class="text-secondary font-semibold">Nguy cơ thử thẻ</span>
+                <span class="text-[10px] text-outline">Giám sát IP/Device rate</span>
+              </div>
+              <div class="p-2 rounded-lg bg-white/[0.02] border border-white/5 flex flex-col gap-0.5">
+                <span class="font-mono text-[10px] text-on-surface-variant font-bold">2. Phổ thông ($15–$200)</span>
+                <span class="text-emerald-400 font-semibold">An toàn nền (~1.5–3%)</span>
+                <span class="text-[10px] text-outline">Duyệt giao dịch chuẩn</span>
+              </div>
+              <div class="p-2 rounded-lg bg-error/10 border border-error/20 flex flex-col gap-0.5">
+                <span class="font-mono text-[10px] text-error font-bold">3. Nhạy cảm ($200–$1,200)</span>
+                <span class="text-error font-bold">Đỉnh LOESS (8–16%)</span>
+                <span class="text-[10px] text-error/80">Bắt buộc OTP / Sinh trắc</span>
+              </div>
+              <div class="p-2 rounded-lg bg-white/[0.02] border border-white/5 flex flex-col gap-0.5">
+                <span class="font-mono text-[10px] text-on-surface-variant font-bold">4. Giá trị lớn (&gt; $1,200)</span>
+                <span class="text-secondary font-semibold">Nguy cơ ngoại lệ</span>
+                <span class="text-[10px] text-outline">Điều tra viên thẩm định</span>
+              </div>
+            </div>
           </div>
+
+          <!-- Tab 6: Mục 9.4 Notebook: Độ Phân Tán IQR & Biến Thiên Theo ProductCD -->
+          <div id="forensic-content-iqr" class="forensic-pane hidden flex-col justify-between">
+            <div class="flex items-start justify-between pb-2 border-b border-white/10">
+              <div>
+                <h4 class="font-display text-sm font-bold text-white">Độ Phân Tán IQR (Interquartile Range) &amp; Biến Thiên Số Tiền Giữa Các Nhóm ProductCD</h4>
+                <p class="font-sans text-xs text-on-surface-variant mt-0.5">Trích xuất từ <code>04_bien_thien_product_fraud.csv</code>: So sánh khoảng tứ phân vị (IQR = Q3 - Q1) giữa Hợp lệ và Gian lận.</p>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded-full glass-pill-container text-secondary font-semibold">5 Nhóm ProductCD</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-5 gap-3 my-3">
+              <!-- Product C -->
+              <div class="p-3 rounded-xl bg-white/[0.02] border border-white/5 flex flex-col gap-2">
+                <div class="flex justify-between items-center font-mono">
+                  <span class="text-white font-bold">Mã C</span>
+                  <span class="text-error text-xs font-bold">11.69%</span>
+                </div>
+                <div class="flex flex-col text-[11px] font-mono text-outline gap-1">
+                  <div>Legit IQR: <b class="text-white">$34.56</b></div>
+                  <div>Fraud IQR: <b class="text-error">$44.16</b></div>
+                  <div class="text-[10px] text-secondary">Độ lệch: +27.8%</div>
+                </div>
+                <div class="text-[10px] text-outline">Median: $30.8 | Max: $712.9</div>
+              </div>
+
+              <!-- Product H -->
+              <div class="p-3 rounded-xl bg-white/[0.02] border border-white/5 flex flex-col gap-2">
+                <div class="flex justify-between items-center font-mono">
+                  <span class="text-white font-bold">Mã H</span>
+                  <span class="text-error text-xs font-bold">4.77%</span>
+                </div>
+                <div class="flex flex-col text-[11px] font-mono text-outline gap-1">
+                  <div>Legit IQR: <b class="text-white">$65.00</b></div>
+                  <div>Fraud IQR: <b class="text-error">$125.00</b></div>
+                  <div class="text-[10px] text-error font-bold">Độ lệch: +92.3%</div>
+                </div>
+                <div class="text-[10px] text-outline">Median: $150.0 (Fraud)</div>
+              </div>
+
+              <!-- Product R -->
+              <div class="p-3 rounded-xl bg-white/[0.02] border border-white/5 flex flex-col gap-2">
+                <div class="flex justify-between items-center font-mono">
+                  <span class="text-white font-bold">Mã R</span>
+                  <span class="text-secondary text-xs font-bold">3.78%</span>
+                </div>
+                <div class="flex flex-col text-[11px] font-mono text-outline gap-1">
+                  <div>Legit IQR: <b class="text-white">$100.00</b></div>
+                  <div>Fraud IQR: <b class="text-error">$150.00</b></div>
+                  <div class="text-[10px] text-secondary">Độ lệch: +50.0%</div>
+                </div>
+                <div class="text-[10px] text-outline">Median: $200.0 | Max: $1,800</div>
+              </div>
+
+              <!-- Product S -->
+              <div class="p-3 rounded-xl bg-white/[0.02] border border-white/5 flex flex-col gap-2">
+                <div class="flex justify-between items-center font-mono">
+                  <span class="text-white font-bold">Mã S</span>
+                  <span class="text-secondary text-xs font-bold">5.90%</span>
+                </div>
+                <div class="flex flex-col text-[11px] font-mono text-outline gap-1">
+                  <div>Legit IQR: <b class="text-white">$55.00</b></div>
+                  <div>Fraud IQR: <b class="text-error">$70.00</b></div>
+                  <div class="text-[10px] text-secondary">Độ lệch: +27.3%</div>
+                </div>
+                <div class="text-[10px] text-outline">Median: $35.0 (Cả 2 nhóm)</div>
+              </div>
+
+              <!-- Product W -->
+              <div class="p-3 rounded-xl bg-error/05 border border-error/20 flex flex-col gap-2">
+                <div class="flex justify-between items-center font-mono">
+                  <span class="text-white font-bold">Mã W (74.4% GD)</span>
+                  <span class="text-white text-xs">2.04%</span>
+                </div>
+                <div class="flex flex-col text-[11px] font-mono text-outline gap-1">
+                  <div>Legit IQR: <b class="text-white">$97.00</b></div>
+                  <div>Fraud IQR: <b class="text-error">$211.00</b></div>
+                  <div class="text-[10px] text-error font-bold">Độ lệch: +117.5%</div>
+                </div>
+                <div class="text-[10px] text-error font-semibold">Chênh lệch IQR lớn nhất</div>
+              </div>
+            </div>
+
+            <div class="p-2.5 rounded-xl bg-white/[0.03] border border-white/5 font-sans text-xs text-on-surface-variant">
+              <strong>💡 Kết luận Mục 9.4 Notebook:</strong> Ở tất cả các mã sản phẩm, <strong>IQR của nhóm gian lận luôn rộng hơn nhiều so với nhóm hợp lệ</strong> (đặc biệt mã W rộng hơn gấp đôi: $211 vs $97). Điều này chứng minh hành vi gian lận phân tán cực mạnh ở cả hai đầu số tiền.
+            </div>
+          </div>
+
         </div>
 
         <!-- Forensic Ledger Table (100% Real Transactions from fraud_train_clean.parquet) -->
@@ -914,6 +1085,17 @@
   };
 
   const CHART2_DATA = {
+    prodid: [
+      { label: "Mã C × Có Identity (Đỉnh rủi ro cực đại)", tx: "62,192 GD (7,640 Fraud)", rate: 12.28, ci: "95% CI: [12.03% – 12.54%]", loss: "$321.2K (Median: $30.86)", danger: true },
+      { label: "Mã C × Không Identity", tx: "6,327 GD (368 Fraud)", rate: 5.82, ci: "95% CI: [5.27% – 6.42%]", loss: "$18.3K (Median: $34.74)", danger: true },
+      { label: "Mã S × Có Identity", tx: "11,585 GD (684 Fraud)", rate: 5.90, ci: "95% CI: [5.49% – 6.35%]", loss: "$41.3K (Median: $35.00)", danger: true },
+      { label: "Mã H × Có Identity", tx: "32,908 GD (1,571 Fraud)", rate: 4.77, ci: "95% CI: [4.55% – 5.01%]", loss: "$115.0K (Median: $50.00)", danger: true },
+      { label: "Mã S × Không Identity", tx: "43 GD (2 Fraud)", rate: 4.65, ci: "95% CI: [1.28% – 15.46%]", loss: "$80.0 (Mẫu nhỏ)", danger: false },
+      { label: "Mã R × Có Identity", tx: "37,548 GD (1,423 Fraud)", rate: 3.79, ci: "95% CI: [3.60% – 3.99%]", loss: "$239.6K (Median: $125.00)", danger: false },
+      { label: "Mã H × Không Identity", tx: "116 GD (3 Fraud)", rate: 2.59, ci: "95% CI: [0.88% – 7.33%]", loss: "$222.8 (Mẫu nhỏ)", danger: false },
+      { label: "Mã W × Không Identity (Chiếm 74.45% tổng GD)", tx: "439,670 GD (8,969 Fraud)", rate: 2.04, ci: "95% CI: [2.00% – 2.08%]", loss: "$2.05M (Median: $78.50)", danger: false },
+      { label: "Mã R × Không Identity", tx: "151 GD (3 Fraud)", rate: 1.99, ci: "95% CI: [0.68% – 5.68%]", loss: "$451.5 (Mẫu nhỏ)", danger: false }
+    ],
     product: [
       { label: "ProductCD = C (Đứng đầu tỷ lệ rủi ro)", tx: "68,519 GD (8,008 Fraud)", rate: 11.69, ci: "95% CI: [11.45% – 11.93%]", loss: "$391.4K (Median: $31.19)", danger: true },
       { label: "ProductCD = S", tx: "11,628 GD (686 Fraud)", rate: 5.90, ci: "95% CI: [5.49% – 6.34%]", loss: "$43.4K (Median: $35.00)", danger: true },
@@ -1414,7 +1596,7 @@
   }
 
   function switchForensicTab(tab) {
-    const tabs = ['ecdf', 'hist', 'd1', 'extra'];
+    const tabs = ['ecdf', 'hist', 'd1', 'extra', 'loess', 'iqr'];
     tabs.forEach(t => {
       const btn = document.getElementById('forensic-tab-' + t);
       const pane = document.getElementById('forensic-content-' + t);
@@ -1433,10 +1615,10 @@
 
   // ================= CHART 2 & BAR RENDERERS =================
   function renderChart2(mode) {
-    ['prod', 'dev', 'card'].forEach(k => {
+    ['prod', 'dev', 'card', 'prodid'].forEach(k => {
       const btn = document.getElementById('c2-btn-' + k);
       if (!btn) return;
-      const active = (mode === 'product' && k === 'prod') || (mode === 'device' && k === 'dev') || (mode === 'card' && k === 'card');
+      const active = (mode === 'product' && k === 'prod') || (mode === 'device' && k === 'dev') || (mode === 'card' && k === 'card') || (mode === 'prodid' && k === 'prodid');
       btn.className = active
         ? 'px-3 py-1 rounded-full font-mono text-[11px] font-bold glass-tab-active'
         : 'px-3 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive';
