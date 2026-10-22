@@ -167,7 +167,9 @@
 </header>
 
 <!-- ================= COLLAPSIBLE SIDEBAR DRAWER ================= -->
-<aside class="fixed left-0 top-16 bottom-0 w-72 glass-aside z-40 flex flex-col justify-between p-4 transition-transform duration-300 ease-in-out -translate-x-full overflow-y-auto" id="sidebar">
+<div id="sidebar-backdrop" onclick="toggleSidebar()" class="fixed inset-0 bg-black/75 backdrop-blur-xs z-40 hidden transition-opacity duration-300"></div>
+
+<aside class="fixed left-0 top-16 bottom-0 w-80 bg-[#0d1017] border-r border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.85)] z-50 flex flex-col justify-between p-5 transition-transform duration-300 ease-in-out -translate-x-full overflow-y-auto" id="sidebar">
   <div class="flex flex-col gap-4">
     <!-- Sidebar Header with Close Button -->
     <div class="flex items-center justify-between pb-2 border-b border-white/10">
@@ -430,60 +432,184 @@
           </div>
         </div>
 
-        <!-- ================= TABBED EXPLORER CHO CÁC TÁC NHÂN RỦI RO (RISK DRIVERS) ================= -->
+        <!-- ================= KHỐI PHÂN TÍCH MA TRẬN RỦI RO ĐA CHIỀU (MULTI-DIMENSIONAL RISK MATRIX) ================= -->
         <div class="p-6 glass-card rounded-2xl flex flex-col gap-4">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-white/10">
             <div>
               <div class="flex items-center gap-2">
                 <span class="w-2 h-2 rounded-full bg-secondary shadow-[0_0_6px_#f9b98b]"></span>
-                <h3 class="font-display text-base font-bold text-white tracking-[-0.02em]">Phân Tích Chi Tiết Tác Nhân Rủi Ro (Risk Drivers)</h3>
+                <h3 class="font-display text-base font-bold text-white tracking-[-0.02em]">Ma Trận Phân Tích Tác Nhân Rủi Ro (Multi-Dimensional Risk Matrix)</h3>
               </div>
-              <p class="font-sans text-xs text-on-surface-variant mt-0.5">Bấm chọn từng tác nhân để xem phân bố chi tiết mà không làm tràn giao diện.</p>
+              <p class="font-sans text-xs text-on-surface-variant mt-0.5">Phân loại khoa học theo từng chủ đề độc lập để dễ dàng theo dõi mà không làm rối giao diện.</p>
             </div>
-            <!-- Sub-tabs -->
+            <!-- Sub-tabs with crystal-clear naming -->
             <div class="flex items-center gap-1 p-1 rounded-full glass-pill-container flex-wrap">
-              <button id="driver-tab-email" onclick="switchDriverTab('email')" class="px-3 py-1 rounded-full font-mono text-[11px] font-bold glass-tab-active">Tên Miền Email</button>
-              <button id="driver-tab-tech" onclick="switchDriverTab('tech')" class="px-3 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive">Trình Duyệt &amp; OS</button>
-              <button id="driver-tab-amount" onclick="switchDriverTab('amount')" class="px-3 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive">Mệnh Giá Tiền U-Shape</button>
-              <button id="driver-tab-matrix" onclick="switchDriverTab('matrix')" class="px-3 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive">ProductCD × Device</button>
+              <button id="driver-tab-product" onclick="switchDriverTab('product')" class="px-3.5 py-1 rounded-full font-mono text-[11px] font-bold glass-tab-active">1. Mã Sản Phẩm &amp; Wilson CI</button>
+              <button id="driver-tab-heatmap" onclick="switchDriverTab('heatmap')" class="px-3.5 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive">2. Bản Đồ Nhiệt 24h</button>
+              <button id="driver-tab-email" onclick="switchDriverTab('email')" class="px-3.5 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive">3. Email &amp; Thiết Bị</button>
+              <button id="driver-tab-amount" onclick="switchDriverTab('amount')" class="px-3.5 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive">4. Mệnh Giá U-Shape &amp; Ma Trận</button>
             </div>
           </div>
 
-          <!-- Content Panels for Tabs -->
-          <div id="driver-content-email" class="driver-pane flex flex-col gap-3">
-            <div class="flex justify-between items-center text-xs">
-              <span class="text-on-surface-variant font-mono">Nhà cung cấp email (Mẫu ≥ 2,000 GD)</span>
-              <div class="flex gap-1 p-0.5 rounded-full glass-pill-container">
-                <button id="btn-email-p" onclick="renderEmailChart('P')" class="px-2.5 py-1 rounded-full font-mono text-[10px] font-bold glass-tab-active">Người Mua (P)</button>
-                <button id="btn-email-r" onclick="renderEmailChart('R')" class="px-2.5 py-1 rounded-full font-mono text-[10px] font-medium glass-tab-inactive">Người Nhận (R)</button>
+          <!-- Tab 1: ProductCD & Wilson CI -->
+          <div id="driver-content-product" class="driver-pane flex flex-col gap-3">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
+              <span class="text-on-surface-variant font-mono">Tỷ lệ gian lận và khoảng tin cậy 95% Wilson Score trên 590,540 GD:</span>
+              <div class="flex items-center gap-1 p-1 rounded-full glass-pill-container">
+                <button id="c2-btn-prod" onclick="renderChart2('product')" class="px-3 py-0.5 rounded-full font-mono text-[10.5px] font-bold glass-tab-active">Mã ProductCD</button>
+                <button id="c2-btn-dev" onclick="renderChart2('device')" class="px-3 py-0.5 rounded-full font-mono text-[10.5px] font-medium glass-tab-inactive">Thiết Bị &amp; ID</button>
+                <button id="c2-btn-card" onclick="renderChart2('card')" class="px-3 py-0.5 rounded-full font-mono text-[10.5px] font-medium glass-tab-inactive">Loại Thẻ</button>
+                <button id="c2-btn-prodid" onclick="renderChart2('prodid')" class="px-3 py-0.5 rounded-full font-mono text-[10.5px] font-medium glass-tab-inactive">Product × Identity</button>
+              </div>
+            </div>
+            <div id="chart2-bars-container" class="flex flex-col gap-2.5 pt-1"></div>
+            <div class="p-2.5 rounded-xl bg-white/[0.03] border border-white/5 flex items-center gap-2 text-xs text-on-surface-variant font-sans">
+              <span class="material-symbols-outlined text-secondary text-[16px]">info</span>
+              <span><strong>💡 Tóm tắt rủi ro:</strong> Mã sản phẩm C (11.69%) và thiết bị Mobile (10.17%) có nguy cơ gian lận cao gấp 3–4 lần so với mức nền hệ thống (3.50%). Thẻ Discover (7.93%) đứng đầu nhóm thẻ tín dụng.</span>
+            </div>
+          </div>
+
+          <!-- Tab 2: 24h Heatmap -->
+          <div id="driver-content-heatmap" class="driver-pane hidden flex-col gap-3">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-2 border-b border-white/10 gap-2">
+              <div>
+                <span class="font-display text-sm font-bold text-white">Bản Đồ Nhiệt Điểm Nóng Gian Lận (24h Heatmap)</span>
+                <p class="font-sans text-xs text-on-surface-variant mt-0.5">Tỷ lệ Fraud (%) theo 5 mã sản phẩm và 12 khung giờ tương đối trong ngày (chu kỳ 24h).</p>
+              </div>
+              <div class="flex items-center gap-3 font-mono text-[10.5px] text-outline">
+                <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-xs bg-[#ff4d6d]"></span> &gt;20% (Cực cao)</span>
+                <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-xs bg-[#8b1528]"></span> 10–20% (Cao)</span>
+                <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-xs bg-[#683c18]"></span> 5–10% (Vừa)</span>
+                <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-xs bg-white/10"></span> &lt;5% (Bình thường)</span>
+              </div>
+            </div>
+            <div class="w-full h-52 relative my-1">
+              <svg class="w-full h-full overflow-visible" viewBox="0 0 420 165">
+                <text fill="#ff6b81" font-family="JetBrains Mono" font-size="10" font-weight="bold" x="6" y="29">C</text>
+                <rect fill="#8b1528" height="18" width="28" rx="3" x="30" y="16" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã C · Giờ 00h–02h', 'Tỷ lệ Fraud: 10.27%<br>Số vụ: 907 / 8,828 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="#8b1528" height="18" width="28" rx="3" x="62" y="16" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã C · Giờ 02h–04h', 'Tỷ lệ Fraud: 10.97%<br>Số vụ: 938 / 8,553 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="#8b1528" height="18" width="28" rx="3" x="94" y="16" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã C · Giờ 04h–06h', 'Tỷ lệ Fraud: 13.74%<br>Số vụ: 893 / 6,499 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="#ff4d6d" stroke="#ffffff" stroke-width="1.2" height="18" width="28" rx="3" x="126" y="16" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã C · Giờ 06h–08h', 'Tỷ lệ Fraud: 23.64%<br>Số vụ: 504 / 2,132 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="#ff4d6d" stroke="#ffffff" stroke-width="1.2" height="18" width="28" rx="3" x="158" y="16" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã C · Giờ 08h–10h (ĐỈNH CAO NHẤT)', 'Tỷ lệ Fraud: 33.33%<br>Số vụ: 209 / 627 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="#ff4d6d" stroke="#ffffff" stroke-width="1.2" height="18" width="28" rx="3" x="190" y="16" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã C · Giờ 10h–12h', 'Tỷ lệ Fraud: 21.63%<br>Số vụ: 117 / 541 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="#683c18" height="18" width="28" rx="3" x="222" y="16" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã C · Giờ 12h–14h', 'Tỷ lệ Fraud: 7.47%<br>Số vụ: 121 / 1,619 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="#683c18" height="18" width="28" rx="3" x="254" y="16" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã C · Giờ 14h–16h', 'Tỷ lệ Fraud: 8.17%<br>Số vụ: 404 / 4,943 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="#683c18" height="18" width="28" rx="3" x="286" y="16" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã C · Giờ 16h–18h', 'Tỷ lệ Fraud: 9.98%<br>Số vụ: 811 / 8,126 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="#8b1528" height="18" width="28" rx="3" x="318" y="16" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã C · Giờ 18h–20h', 'Tỷ lệ Fraud: 11.97%<br>Số vụ: 1,053 / 8,798 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="#8b1528" height="18" width="28" rx="3" x="350" y="16" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã C · Giờ 20h–22h', 'Tỷ lệ Fraud: 11.49%<br>Số vụ: 1,007 / 8,762 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="#8b1528" height="18" width="28" rx="3" x="382" y="16" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã C · Giờ 22h–24h', 'Tỷ lệ Fraud: 11.48%<br>Số vụ: 1,044 / 9,091 GD')" onmouseleave="hideTooltip()"></rect>
+                
+                <text fill="#ff6b81" font-family="JetBrains Mono" font-size="10" font-weight="bold" x="6" y="53">S</text>
+                <rect fill="#683c18" height="18" width="28" rx="3" x="30" y="40" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã S · Giờ 00h–02h', 'Tỷ lệ Fraud: 5.42%<br>Số vụ: 68 / 1,254 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="#683c18" height="18" width="28" rx="3" x="62" y="40" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã S · Giờ 02h–04h', 'Tỷ lệ Fraud: 7.55%<br>Số vụ: 54 / 715 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="#8b1528" height="18" width="28" rx="3" x="94" y="40" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã S · Giờ 04h–06h', 'Tỷ lệ Fraud: 11.46%<br>Số vụ: 37 / 323 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="#8b1528" height="18" width="28" rx="3" x="126" y="40" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã S · Giờ 06h–08h', 'Tỷ lệ Fraud: 18.24%<br>Số vụ: 29 / 159 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="#683c18" height="18" width="28" rx="3" x="158" y="40" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã S · Giờ 08h–10h', 'Tỷ lệ Fraud: 9.52%<br>Số vụ: 12 / 126 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="#8b1528" height="18" width="28" rx="3" x="190" y="40" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã S · Giờ 10h–12h', 'Tỷ lệ Fraud: 10.36%<br>Số vụ: 40 / 386 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="rgba(249,185,139,0.28)" height="18" width="28" rx="3" x="222" y="40" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã S · Giờ 12h–14h', 'Tỷ lệ Fraud: 4.65%<br>Số vụ: 53 / 1,140 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="rgba(249,185,139,0.28)" height="18" width="28" rx="3" x="254" y="40" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã S · Giờ 14h–16h', 'Tỷ lệ Fraud: 4.52%<br>Số vụ: 85 / 1,881 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="rgba(249,185,139,0.28)" height="18" width="28" rx="3" x="286" y="40" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã S · Giờ 16h–18h', 'Tỷ lệ Fraud: 3.89%<br>Số vụ: 62 / 1,595 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="#683c18" height="18" width="28" rx="3" x="318" y="40" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã S · Giờ 18h–20h', 'Tỷ lệ Fraud: 5.72%<br>Số vụ: 84 / 1,469 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="#683c18" height="18" width="28" rx="3" x="350" y="40" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã S · Giờ 20h–22h', 'Tỷ lệ Fraud: 5.58%<br>Số vụ: 74 / 1,327 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="#683c18" height="18" width="28" rx="3" x="382" y="40" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã S · Giờ 22h–24h', 'Tỷ lệ Fraud: 7.02%<br>Số vụ: 88 / 1,253 GD')" onmouseleave="hideTooltip()"></rect>
+
+                <text fill="#f9b98b" font-family="JetBrains Mono" font-size="10" font-weight="bold" x="6" y="77">H</text>
+                <rect fill="rgba(249,185,139,0.28)" height="18" width="28" rx="3" x="30" y="64" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã H · Giờ 00h–02h', 'Tỷ lệ Fraud: 3.96%<br>Số vụ: 142 / 3,586 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="rgba(249,185,139,0.28)" height="18" width="28" rx="3" x="62" y="64" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã H · Giờ 02h–04h', 'Tỷ lệ Fraud: 3.16%<br>Số vụ: 98 / 3,099 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="#683c18" height="18" width="28" rx="3" x="94" y="64" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã H · Giờ 04h–06h', 'Tỷ lệ Fraud: 5.06%<br>Số vụ: 91 / 1,797 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="#8b1528" height="18" width="28" rx="3" x="126" y="64" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã H · Giờ 06h–08h', 'Tỷ lệ Fraud: 12.34%<br>Số vụ: 88 / 713 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="#8b1528" height="18" width="28" rx="3" x="158" y="64" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã H · Giờ 08h–10h', 'Tỷ lệ Fraud: 18.27%<br>Số vụ: 55 / 301 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="#8b1528" height="18" width="28" rx="3" x="190" y="64" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã H · Giờ 10h–12h', 'Tỷ lệ Fraud: 10.96%<br>Số vụ: 50 / 456 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="#683c18" height="18" width="28" rx="3" x="222" y="64" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã H · Giờ 12h–14h', 'Tỷ lệ Fraud: 6.15%<br>Số vụ: 105 / 1,708 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="rgba(249,185,139,0.28)" height="18" width="28" rx="3" x="254" y="64" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã H · Giờ 14h–16h', 'Tỷ lệ Fraud: 3.54%<br>Số vụ: 126 / 3,556 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="rgba(249,185,139,0.28)" height="18" width="28" rx="3" x="286" y="64" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã H · Giờ 16h–18h', 'Tỷ lệ Fraud: 4.48%<br>Số vụ: 211 / 4,709 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="rgba(249,185,139,0.28)" height="18" width="28" rx="3" x="318" y="64" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã H · Giờ 18h–20h', 'Tỷ lệ Fraud: 4.93%<br>Số vụ: 229 / 4,647 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="rgba(249,185,139,0.28)" height="18" width="28" rx="3" x="350" y="64" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã H · Giờ 20h–22h', 'Tỷ lệ Fraud: 4.48%<br>Số vụ: 202 / 4,507 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="rgba(249,185,139,0.28)" height="18" width="28" rx="3" x="382" y="64" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã H · Giờ 22h–24h', 'Tỷ lệ Fraud: 4.49%<br>Số vụ: 177 / 3,945 GD')" onmouseleave="hideTooltip()"></rect>
+
+                <text fill="#f9b98b" font-family="JetBrains Mono" font-size="10" font-weight="bold" x="6" y="101">R</text>
+                <rect fill="#683c18" height="18" width="28" rx="3" x="30" y="88" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã R · Giờ 00h–02h', 'Tỷ lệ Fraud: 5.36%<br>Số vụ: 182 / 3,396 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="#683c18" height="18" width="28" rx="3" x="62" y="88" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã R · Giờ 02h–04h', 'Tỷ lệ Fraud: 5.99%<br>Số vụ: 149 / 2,489 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="#683c18" height="18" width="28" rx="3" x="94" y="88" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã R · Giờ 04h–06h', 'Tỷ lệ Fraud: 8.14%<br>Số vụ: 100 / 1,228 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="#683c18" height="18" width="28" rx="3" x="126" y="88" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã R · Giờ 06h–08h', 'Tỷ lệ Fraud: 7.92%<br>Số vụ: 40 / 505 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="#8b1528" height="18" width="28" rx="3" x="158" y="88" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã R · Giờ 08h–10h', 'Tỷ lệ Fraud: 10.20%<br>Số vụ: 20 / 196 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="#683c18" height="18" width="28" rx="3" x="190" y="88" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã R · Giờ 10h–12h', 'Tỷ lệ Fraud: 7.58%<br>Số vụ: 41 / 541 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="rgba(255,255,255,0.06)" height="18" width="28" rx="3" x="222" y="88" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã R · Giờ 12h–14h', 'Tỷ lệ Fraud: 2.15%<br>Số vụ: 47 / 2,185 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="rgba(255,255,255,0.06)" height="18" width="28" rx="3" x="254" y="88" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã R · Giờ 14h–16h', 'Tỷ lệ Fraud: 1.82%<br>Số vụ: 91 / 5,011 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="rgba(255,255,255,0.06)" height="18" width="28" rx="3" x="286" y="88" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã R · Giờ 16h–18h', 'Tỷ lệ Fraud: 1.92%<br>Số vụ: 116 / 6,041 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="rgba(255,255,255,0.06)" height="18" width="28" rx="3" x="318" y="88" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã R · Giờ 18h–20h', 'Tỷ lệ Fraud: 2.95%<br>Số vụ: 179 / 6,060 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="rgba(249,185,139,0.28)" height="18" width="28" rx="3" x="350" y="88" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã R · Giờ 20h–22h', 'Tỷ lệ Fraud: 4.00%<br>Số vụ: 224 / 5,603 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="#683c18" height="18" width="28" rx="3" x="382" y="88" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã R · Giờ 22h–24h', 'Tỷ lệ Fraud: 5.33%<br>Số vụ: 237 / 4,444 GD')" onmouseleave="hideTooltip()"></rect>
+
+                <text fill="#9ba1ad" font-family="JetBrains Mono" font-size="10" font-weight="bold" x="6" y="125">W</text>
+                <rect fill="rgba(255,255,255,0.06)" height="18" width="28" rx="3" x="30" y="112" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã W · Giờ 00h–02h', 'Tỷ lệ Fraud: 1.71%<br>Số vụ: 914 / 53,528 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="rgba(255,255,255,0.06)" height="18" width="28" rx="3" x="62" y="112" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã W · Giờ 02h–04h', 'Tỷ lệ Fraud: 1.71%<br>Số vụ: 560 / 32,678 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="rgba(255,255,255,0.06)" height="18" width="28" rx="3" x="94" y="112" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã W · Giờ 04h–06h', 'Tỷ lệ Fraud: 2.25%<br>Số vụ: 331 / 14,693 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="rgba(249,185,139,0.28)" height="18" width="28" rx="3" x="126" y="112" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã W · Giờ 06h–08h', 'Tỷ lệ Fraud: 3.21%<br>Số vụ: 199 / 6,202 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="rgba(249,185,139,0.28)" height="18" width="28" rx="3" x="158" y="112" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã W · Giờ 08h–10h', 'Tỷ lệ Fraud: 4.40%<br>Số vụ: 168 / 3,820 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="rgba(255,255,255,0.06)" height="18" width="28" rx="3" x="190" y="112" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã W · Giờ 10h–12h', 'Tỷ lệ Fraud: 2.46%<br>Số vụ: 210 / 8,530 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="rgba(255,255,255,0.06)" height="18" width="28" rx="3" x="222" y="112" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã W · Giờ 12h–14h', 'Tỷ lệ Fraud: 1.98%<br>Số vụ: 518 / 26,114 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="rgba(255,255,255,0.06)" height="18" width="28" rx="3" x="254" y="112" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã W · Giờ 14h–16h', 'Tỷ lệ Fraud: 1.80%<br>Số vụ: 840 / 46,796 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="rgba(255,255,255,0.06)" height="18" width="28" rx="3" x="286" y="112" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã W · Giờ 16h–18h', 'Tỷ lệ Fraud: 2.08%<br>Số vụ: 1,226 / 58,950 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="rgba(255,255,255,0.06)" height="18" width="28" rx="3" x="318" y="112" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã W · Giờ 18h–20h', 'Tỷ lệ Fraud: 2.21%<br>Số vụ: 1,385 / 62,780 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="rgba(255,255,255,0.06)" height="18" width="28" rx="3" x="350" y="112" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã W · Giờ 20h–22h', 'Tỷ lệ Fraud: 2.12%<br>Số vụ: 1,341 / 63,224 GD')" onmouseleave="hideTooltip()"></rect>
+                <rect fill="rgba(255,255,255,0.06)" height="18" width="28" rx="3" x="382" y="112" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã W · Giờ 22h–24h', 'Tỷ lệ Fraud: 2.05%<br>Số vụ: 1,277 / 62,355 GD')" onmouseleave="hideTooltip()"></rect>
+
+                <!-- X-axis Labels -->
+                <text fill="#636a7a" font-family="JetBrains Mono" font-size="8.5" text-anchor="middle" x="44" y="150">00h</text>
+                <text fill="#636a7a" font-family="JetBrains Mono" font-size="8.5" text-anchor="middle" x="108" y="150">04h</text>
+                <text fill="#ff6b81" font-family="JetBrains Mono" font-size="8.5" font-weight="bold" text-anchor="middle" x="172" y="150">08h (Đỉnh)</text>
+                <text fill="#636a7a" font-family="JetBrains Mono" font-size="8.5" text-anchor="middle" x="238" y="150">12h</text>
+                <text fill="#636a7a" font-family="JetBrains Mono" font-size="8.5" text-anchor="middle" x="302" y="150">16h</text>
+                <text fill="#636a7a" font-family="JetBrains Mono" font-size="8.5" text-anchor="middle" x="366" y="150">20h</text>
+              </svg>
+            </div>
+            <div class="p-2.5 rounded-xl bg-white/[0.03] border border-white/5 font-sans text-xs text-on-surface-variant">
+              <strong>💡 Phát hiện ca trực:</strong> Khung giờ sáng sớm từ <strong>06h–10h</strong> là điểm bùng phát rủi ro cao nhất (đặc biệt mã C đạt <strong>33.33%</strong> lúc 08h–10h). Vào ban đêm, mã C duy trì mức &gt;10% ổn định.
+            </div>
+          </div>
+
+          <!-- Tab 3: Email & Tech Drivers -->
+          <div id="driver-content-email" class="driver-pane hidden flex-col gap-3">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-2 border-b border-white/10 gap-2">
+              <div>
+                <span class="font-display text-sm font-bold text-white">Tên Miền Email &amp; Hồ Sơ Thiết Bị</span>
+                <p class="font-sans text-xs text-on-surface-variant mt-0.5">So sánh nhà cung cấp email người mua (P) / người nhận (R) và trình duyệt / hệ điều hành.</p>
+              </div>
+              <div class="flex items-center gap-1 p-0.5 rounded-full glass-pill-container">
+                <button id="btn-email-p" onclick="renderEmailChart('P')" class="px-2.5 py-1 rounded-full font-mono text-[10px] font-bold glass-tab-active">Email Người Mua (P)</button>
+                <button id="btn-email-r" onclick="renderEmailChart('R')" class="px-2.5 py-1 rounded-full font-mono text-[10px] font-medium glass-tab-inactive">Email Người Nhận (R)</button>
               </div>
             </div>
             <div id="email-bars-container" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5"></div>
+            
+            <div class="pt-2 border-t border-white/5 flex flex-col gap-2">
+              <div class="flex justify-between items-center text-xs">
+                <span class="text-on-surface-variant font-mono">Định danh id_30 (Hệ điều hành) và id_31 (Trình duyệt):</span>
+                <div class="flex gap-1 p-0.5 rounded-full glass-pill-container">
+                  <button id="btn-tech-browser" onclick="renderTechChart('browser')" class="px-2.5 py-1 rounded-full font-mono text-[10px] font-bold glass-tab-active">Trình Duyệt</button>
+                  <button id="btn-tech-os" onclick="renderTechChart('os')" class="px-2.5 py-1 rounded-full font-mono text-[10px] font-medium glass-tab-inactive">Hệ Điều Hành</button>
+                </div>
+              </div>
+              <div id="tech-bars-container" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5"></div>
+            </div>
           </div>
 
-          <div id="driver-content-tech" class="driver-pane hidden flex-col gap-3">
-            <div class="flex justify-between items-center text-xs">
-              <span class="text-on-surface-variant font-mono">Định danh id_30 (Hệ điều hành) và id_31 (Trình duyệt)</span>
-              <div class="flex gap-1 p-0.5 rounded-full glass-pill-container">
-                <button id="btn-tech-browser" onclick="renderTechChart('browser')" class="px-2.5 py-1 rounded-full font-mono text-[10px] font-bold glass-tab-active">Browser (id_31)</button>
-                <button id="btn-tech-os" onclick="renderTechChart('os')" class="px-2.5 py-1 rounded-full font-mono text-[10px] font-medium glass-tab-inactive">OS (id_30)</button>
+          <!-- Tab 4: Amount Brackets & Interaction Matrix -->
+          <div id="driver-content-amount" class="driver-pane hidden flex-col gap-3">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-2 border-b border-white/10 gap-2">
+              <div>
+                <span class="font-display text-sm font-bold text-white">Mệnh Giá Tiền &amp; Ma Trận Tương Tác</span>
+                <p class="font-sans text-xs text-on-surface-variant mt-0.5">Đường cong hình chữ U của số tiền và ma trận tương tác ProductCD × Thiết bị.</p>
               </div>
             </div>
-            <div id="tech-bars-container" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5"></div>
-          </div>
-
-          <div id="driver-content-amount" class="driver-pane hidden flex-col gap-3">
-            <div class="text-xs text-on-surface-variant font-mono">Đường cong chữ U: Đơn nhỏ thử thẻ ($0–$25: 6.2%) và đơn lớn rút tiền ($250–$1,000: 5.3%)</div>
+            <div class="text-xs text-on-surface-variant font-mono">1. Phân tầng mệnh giá: Đơn nhỏ thử thẻ ($0–$25: 6.2%) và đơn lớn rút tiền ($250–$1,000: 5.3%)</div>
             <div id="amt-bracket-container" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5"></div>
-          </div>
-
-          <div id="driver-content-matrix" class="driver-pane hidden flex-col gap-3">
-            <div class="text-xs text-on-surface-variant font-mono">Ma trận tương tác ProductCD × Thiết bị (100% đơn W không có bản ghi Identity)</div>
+            <div class="pt-2 border-t border-white/5 text-xs text-on-surface-variant font-mono">2. Ma trận tương tác ProductCD × Thiết bị (100% đơn W không có bản ghi Identity)</div>
             <div id="prod-device-container" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5"></div>
           </div>
         </div>
-
-      </section>
+</section>
 
       <!-- ================= SECTION 2: FORENSIC INVESTIGATOR ================= -->
       <section class="flex flex-col gap-6 hidden transition-all duration-300" id="section-investigator">
@@ -600,101 +726,7 @@
             </div>
           </div>
 
-          <!-- Chart 4: Heatmap ProductCD x RelativeHour (0h-23h) -->
-          <div class="p-6 glass-card rounded-2xl flex flex-col justify-between">
-            <div class="flex items-start justify-between pb-2 border-b border-white/10">
-              <div>
-                <div class="flex items-center gap-2">
-                  <span class="font-mono text-xs text-secondary font-bold">BIỂU ĐỒ 04</span>
-                  <span class="text-outline">/</span>
-                  <h3 class="font-display text-base font-bold text-white tracking-[-0.02em]">Heatmap ProductCD × Giờ Tương Đối (00h–23h)</h3>
-                </div>
-                <p class="font-sans text-xs text-on-surface-variant mt-0.5">Tỷ lệ Fraud (%) theo mã sản phẩm và chu kỳ 24h: <code>floor(TransactionDT/3600) mod 24</code>.</p>
-              </div>
-              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded-full bg-error/15 border border-error/30 text-error font-semibold">Đỉnh C (08h-10h): 33.3%</span>
-            </div>
-            <div class="w-full h-56 relative my-2">
-              <svg class="w-full h-full overflow-visible" viewBox="0 0 420 165">
-<text fill="#ff6b81" font-family="JetBrains Mono" font-size="10" font-weight="bold" x="6" y="29">C</text>
-<rect fill="#8b1528" height="18" width="28" rx="3" x="30" y="16" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã C · Giờ tương đối 00h–02h', 'Tỷ lệ Fraud: 10.27%<br>Số vụ: 907 / 8,828 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="#8b1528" height="18" width="28" rx="3" x="62" y="16" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã C · Giờ tương đối 02h–04h', 'Tỷ lệ Fraud: 10.97%<br>Số vụ: 938 / 8,553 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="#8b1528" height="18" width="28" rx="3" x="94" y="16" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã C · Giờ tương đối 04h–06h', 'Tỷ lệ Fraud: 13.74%<br>Số vụ: 893 / 6,499 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="#ff4d6d" stroke="#ffffff" stroke-width="1.2" height="18" width="28" rx="3" x="126" y="16" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã C · Giờ tương đối 06h–08h', 'Tỷ lệ Fraud: 23.64%<br>Số vụ: 504 / 2,132 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="#ff4d6d" stroke="#ffffff" stroke-width="1.2" height="18" width="28" rx="3" x="158" y="16" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã C · Giờ tương đối 08h–10h (ĐỈNH CAO NHẤT)', 'Tỷ lệ Fraud: 33.33%<br>Số vụ: 209 / 627 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="#ff4d6d" stroke="#ffffff" stroke-width="1.2" height="18" width="28" rx="3" x="190" y="16" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã C · Giờ tương đối 10h–12h', 'Tỷ lệ Fraud: 21.63%<br>Số vụ: 117 / 541 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="#683c18" height="18" width="28" rx="3" x="222" y="16" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã C · Giờ tương đối 12h–14h', 'Tỷ lệ Fraud: 7.47%<br>Số vụ: 121 / 1,619 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="#683c18" height="18" width="28" rx="3" x="254" y="16" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã C · Giờ tương đối 14h–16h', 'Tỷ lệ Fraud: 8.17%<br>Số vụ: 404 / 4,943 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="#683c18" height="18" width="28" rx="3" x="286" y="16" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã C · Giờ tương đối 16h–18h', 'Tỷ lệ Fraud: 9.98%<br>Số vụ: 811 / 8,126 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="#8b1528" height="18" width="28" rx="3" x="318" y="16" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã C · Giờ tương đối 18h–20h', 'Tỷ lệ Fraud: 11.97%<br>Số vụ: 1,053 / 8,798 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="#8b1528" height="18" width="28" rx="3" x="350" y="16" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã C · Giờ tương đối 20h–22h', 'Tỷ lệ Fraud: 11.49%<br>Số vụ: 1,007 / 8,762 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="#8b1528" height="18" width="28" rx="3" x="382" y="16" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã C · Giờ tương đối 22h–24h', 'Tỷ lệ Fraud: 11.48%<br>Số vụ: 1,044 / 9,091 GD')" onmouseleave="hideTooltip()"></rect>
-<text fill="#ff6b81" font-family="JetBrains Mono" font-size="10" font-weight="bold" x="6" y="53">S</text>
-<rect fill="#683c18" height="18" width="28" rx="3" x="30" y="40" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã S · Giờ tương đối 00h–02h', 'Tỷ lệ Fraud: 5.42%<br>Số vụ: 68 / 1,254 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="#683c18" height="18" width="28" rx="3" x="62" y="40" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã S · Giờ tương đối 02h–04h', 'Tỷ lệ Fraud: 7.55%<br>Số vụ: 54 / 715 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="#8b1528" height="18" width="28" rx="3" x="94" y="40" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã S · Giờ tương đối 04h–06h', 'Tỷ lệ Fraud: 11.46%<br>Số vụ: 37 / 323 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="#8b1528" height="18" width="28" rx="3" x="126" y="40" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã S · Giờ tương đối 06h–08h', 'Tỷ lệ Fraud: 18.24%<br>Số vụ: 29 / 159 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="#683c18" height="18" width="28" rx="3" x="158" y="40" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã S · Giờ tương đối 08h–10h', 'Tỷ lệ Fraud: 9.52%<br>Số vụ: 12 / 126 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="#8b1528" height="18" width="28" rx="3" x="190" y="40" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã S · Giờ tương đối 10h–12h', 'Tỷ lệ Fraud: 10.36%<br>Số vụ: 40 / 386 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="rgba(249,185,139,0.28)" height="18" width="28" rx="3" x="222" y="40" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã S · Giờ tương đối 12h–14h', 'Tỷ lệ Fraud: 4.65%<br>Số vụ: 53 / 1,140 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="rgba(249,185,139,0.28)" height="18" width="28" rx="3" x="254" y="40" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã S · Giờ tương đối 14h–16h', 'Tỷ lệ Fraud: 4.52%<br>Số vụ: 85 / 1,881 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="rgba(249,185,139,0.28)" height="18" width="28" rx="3" x="286" y="40" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã S · Giờ tương đối 16h–18h', 'Tỷ lệ Fraud: 3.89%<br>Số vụ: 62 / 1,595 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="#683c18" height="18" width="28" rx="3" x="318" y="40" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã S · Giờ tương đối 18h–20h', 'Tỷ lệ Fraud: 5.72%<br>Số vụ: 84 / 1,469 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="#683c18" height="18" width="28" rx="3" x="350" y="40" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã S · Giờ tương đối 20h–22h', 'Tỷ lệ Fraud: 5.58%<br>Số vụ: 74 / 1,327 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="#683c18" height="18" width="28" rx="3" x="382" y="40" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã S · Giờ tương đối 22h–24h', 'Tỷ lệ Fraud: 7.02%<br>Số vụ: 88 / 1,253 GD')" onmouseleave="hideTooltip()"></rect>
-<text fill="#f9b98b" font-family="JetBrains Mono" font-size="10" font-weight="bold" x="6" y="77">H</text>
-<rect fill="rgba(249,185,139,0.28)" height="18" width="28" rx="3" x="30" y="64" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã H · Giờ tương đối 00h–02h', 'Tỷ lệ Fraud: 3.96%<br>Số vụ: 142 / 3,586 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="rgba(249,185,139,0.28)" height="18" width="28" rx="3" x="62" y="64" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã H · Giờ tương đối 02h–04h', 'Tỷ lệ Fraud: 3.16%<br>Số vụ: 98 / 3,099 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="#683c18" height="18" width="28" rx="3" x="94" y="64" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã H · Giờ tương đối 04h–06h', 'Tỷ lệ Fraud: 5.06%<br>Số vụ: 91 / 1,797 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="#8b1528" height="18" width="28" rx="3" x="126" y="64" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã H · Giờ tương đối 06h–08h', 'Tỷ lệ Fraud: 12.34%<br>Số vụ: 88 / 713 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="#8b1528" height="18" width="28" rx="3" x="158" y="64" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã H · Giờ tương đối 08h–10h', 'Tỷ lệ Fraud: 18.27%<br>Số vụ: 55 / 301 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="#8b1528" height="18" width="28" rx="3" x="190" y="64" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã H · Giờ tương đối 10h–12h', 'Tỷ lệ Fraud: 10.96%<br>Số vụ: 50 / 456 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="#683c18" height="18" width="28" rx="3" x="222" y="64" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã H · Giờ tương đối 12h–14h', 'Tỷ lệ Fraud: 6.15%<br>Số vụ: 105 / 1,708 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="rgba(249,185,139,0.28)" height="18" width="28" rx="3" x="254" y="64" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã H · Giờ tương đối 14h–16h', 'Tỷ lệ Fraud: 3.54%<br>Số vụ: 126 / 3,556 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="rgba(249,185,139,0.28)" height="18" width="28" rx="3" x="286" y="64" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã H · Giờ tương đối 16h–18h', 'Tỷ lệ Fraud: 4.48%<br>Số vụ: 211 / 4,709 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="rgba(249,185,139,0.28)" height="18" width="28" rx="3" x="318" y="64" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã H · Giờ tương đối 18h–20h', 'Tỷ lệ Fraud: 4.93%<br>Số vụ: 229 / 4,647 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="rgba(249,185,139,0.28)" height="18" width="28" rx="3" x="350" y="64" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã H · Giờ tương đối 20h–22h', 'Tỷ lệ Fraud: 4.48%<br>Số vụ: 202 / 4,507 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="rgba(249,185,139,0.28)" height="18" width="28" rx="3" x="382" y="64" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã H · Giờ tương đối 22h–24h', 'Tỷ lệ Fraud: 4.49%<br>Số vụ: 177 / 3,945 GD')" onmouseleave="hideTooltip()"></rect>
-<text fill="#f9b98b" font-family="JetBrains Mono" font-size="10" font-weight="bold" x="6" y="101">R</text>
-<rect fill="#683c18" height="18" width="28" rx="3" x="30" y="88" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã R · Giờ tương đối 00h–02h', 'Tỷ lệ Fraud: 5.36%<br>Số vụ: 182 / 3,396 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="#683c18" height="18" width="28" rx="3" x="62" y="88" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã R · Giờ tương đối 02h–04h', 'Tỷ lệ Fraud: 5.99%<br>Số vụ: 149 / 2,489 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="#683c18" height="18" width="28" rx="3" x="94" y="88" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã R · Giờ tương đối 04h–06h', 'Tỷ lệ Fraud: 8.14%<br>Số vụ: 100 / 1,228 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="#683c18" height="18" width="28" rx="3" x="126" y="88" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã R · Giờ tương đối 06h–08h', 'Tỷ lệ Fraud: 7.92%<br>Số vụ: 40 / 505 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="#8b1528" height="18" width="28" rx="3" x="158" y="88" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã R · Giờ tương đối 08h–10h', 'Tỷ lệ Fraud: 10.20%<br>Số vụ: 20 / 196 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="#683c18" height="18" width="28" rx="3" x="190" y="88" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã R · Giờ tương đối 10h–12h', 'Tỷ lệ Fraud: 7.58%<br>Số vụ: 41 / 541 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="rgba(255,255,255,0.06)" height="18" width="28" rx="3" x="222" y="88" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã R · Giờ tương đối 12h–14h', 'Tỷ lệ Fraud: 2.15%<br>Số vụ: 47 / 2,185 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="rgba(255,255,255,0.06)" height="18" width="28" rx="3" x="254" y="88" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã R · Giờ tương đối 14h–16h', 'Tỷ lệ Fraud: 1.82%<br>Số vụ: 91 / 5,011 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="rgba(255,255,255,0.06)" height="18" width="28" rx="3" x="286" y="88" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã R · Giờ tương đối 16h–18h', 'Tỷ lệ Fraud: 1.92%<br>Số vụ: 116 / 6,041 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="rgba(255,255,255,0.06)" height="18" width="28" rx="3" x="318" y="88" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã R · Giờ tương đối 18h–20h', 'Tỷ lệ Fraud: 2.95%<br>Số vụ: 179 / 6,060 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="rgba(249,185,139,0.28)" height="18" width="28" rx="3" x="350" y="88" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã R · Giờ tương đối 20h–22h', 'Tỷ lệ Fraud: 4.00%<br>Số vụ: 224 / 5,603 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="#683c18" height="18" width="28" rx="3" x="382" y="88" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã R · Giờ tương đối 22h–24h', 'Tỷ lệ Fraud: 5.33%<br>Số vụ: 237 / 4,444 GD')" onmouseleave="hideTooltip()"></rect>
-<text fill="#9ba1ad" font-family="JetBrains Mono" font-size="10" font-weight="bold" x="6" y="125">W</text>
-<rect fill="rgba(255,255,255,0.06)" height="18" width="28" rx="3" x="30" y="112" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã W · Giờ tương đối 00h–02h', 'Tỷ lệ Fraud: 1.71%<br>Số vụ: 914 / 53,528 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="rgba(255,255,255,0.06)" height="18" width="28" rx="3" x="62" y="112" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã W · Giờ tương đối 02h–04h', 'Tỷ lệ Fraud: 1.71%<br>Số vụ: 560 / 32,678 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="rgba(255,255,255,0.06)" height="18" width="28" rx="3" x="94" y="112" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã W · Giờ tương đối 04h–06h', 'Tỷ lệ Fraud: 2.25%<br>Số vụ: 331 / 14,693 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="rgba(249,185,139,0.28)" height="18" width="28" rx="3" x="126" y="112" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã W · Giờ tương đối 06h–08h', 'Tỷ lệ Fraud: 3.21%<br>Số vụ: 199 / 6,202 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="rgba(249,185,139,0.28)" height="18" width="28" rx="3" x="158" y="112" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã W · Giờ tương đối 08h–10h', 'Tỷ lệ Fraud: 4.40%<br>Số vụ: 168 / 3,820 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="rgba(255,255,255,0.06)" height="18" width="28" rx="3" x="190" y="112" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã W · Giờ tương đối 10h–12h', 'Tỷ lệ Fraud: 2.46%<br>Số vụ: 210 / 8,530 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="rgba(255,255,255,0.06)" height="18" width="28" rx="3" x="222" y="112" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã W · Giờ tương đối 12h–14h', 'Tỷ lệ Fraud: 1.98%<br>Số vụ: 518 / 26,114 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="rgba(255,255,255,0.06)" height="18" width="28" rx="3" x="254" y="112" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã W · Giờ tương đối 14h–16h', 'Tỷ lệ Fraud: 1.80%<br>Số vụ: 840 / 46,796 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="rgba(255,255,255,0.06)" height="18" width="28" rx="3" x="286" y="112" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã W · Giờ tương đối 16h–18h', 'Tỷ lệ Fraud: 2.08%<br>Số vụ: 1,226 / 58,950 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="rgba(255,255,255,0.06)" height="18" width="28" rx="3" x="318" y="112" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã W · Giờ tương đối 18h–20h', 'Tỷ lệ Fraud: 2.21%<br>Số vụ: 1,385 / 62,780 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="rgba(255,255,255,0.06)" height="18" width="28" rx="3" x="350" y="112" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã W · Giờ tương đối 20h–22h', 'Tỷ lệ Fraud: 2.12%<br>Số vụ: 1,341 / 63,224 GD')" onmouseleave="hideTooltip()"></rect>
-<rect fill="rgba(255,255,255,0.06)" height="18" width="28" rx="3" x="382" y="112" class="cursor-pointer transition-opacity duration-150 hover:stroke-white hover:stroke-[1.5]" onmouseenter="showTooltip(event, 'Mã W · Giờ tương đối 22h–24h', 'Tỷ lệ Fraud: 2.05%<br>Số vụ: 1,277 / 62,355 GD')" onmouseleave="hideTooltip()"></rect>
-<text fill="#636a7a" font-family="JetBrains Mono" font-size="8.5" text-anchor="middle" x="44" y="150">00h</text>
-<text fill="#636a7a" font-family="JetBrains Mono" font-size="8.5" text-anchor="middle" x="108" y="150">04h</text>
-<text fill="#ff6b81" font-family="JetBrains Mono" font-size="8.5" font-weight="bold" text-anchor="middle" x="172" y="150">08h</text>
-<text fill="#636a7a" font-family="JetBrains Mono" font-size="8.5" text-anchor="middle" x="236" y="150">12h</text>
-<text fill="#636a7a" font-family="JetBrains Mono" font-size="8.5" text-anchor="middle" x="300" y="150">16h</text>
-<text fill="#636a7a" font-family="JetBrains Mono" font-size="8.5" text-anchor="middle" x="364" y="150">20h</text>
-</svg>
-            </div>
-            <div class="p-2.5 rounded-xl bg-white/[0.03] border border-white/5 font-sans text-xs text-on-surface-variant">
-              <strong>💡 Tóm tắt:</strong> Khung giờ sáng sớm (06h–10h) là thời điểm tội phạm tấn công mạng tập trung nhất. Riêng mã C vào lúc 08h–10h sáng có tỷ lệ gian lận lên tới <strong>33.3%</strong> (cứ 3 giao dịch có 1 vụ gian lận).
-            </div>
-          </div>
-        </div>
-
-        <!-- Row 2: Deep-Dive Forensic Lab (Tabbed Workbench) -->
+          <!-- Row 2: Deep-Dive Forensic Lab (Tabbed Workbench) -->
         <div class="p-6 glass-card rounded-2xl flex flex-col gap-4">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-white/10">
             <div>
@@ -706,13 +738,13 @@
             </div>
             <!-- Lab Sub-tabs -->
             <div class="flex items-center gap-1 p-1 rounded-full glass-pill-container flex-wrap">
-              <button id="forensic-tab-compare" onclick="switchForensicTab('compare')" class="px-3 py-1 rounded-full font-mono text-[11px] font-bold glass-tab-active">Mục 2: So Sánh 2 Lớp (02_so_sanh)</button>
-              <button id="forensic-tab-iqr" onclick="switchForensicTab('iqr')" class="px-3 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive">Mục 4: Biến Thiên Nhóm (04_do_phan_tan)</button>
-              <button id="forensic-tab-ecdf" onclick="switchForensicTab('ecdf')" class="px-3 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive">Phân Vị ECDF (Biểu đồ 05)</button>
-              <button id="forensic-tab-hist" onclick="switchForensicTab('hist')" class="px-3 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive">Histogram 24 Bins (Biểu đồ 08)</button>
-              <button id="forensic-tab-d1" onclick="switchForensicTab('d1')" class="px-3 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive">Cụm Timedelta D1 (Biểu đồ 06)</button>
-              <button id="forensic-tab-loess" onclick="switchForensicTab('loess')" class="px-3 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive">LOESS Phi Tuyến $ (Biểu đồ 3)</button>
-              <button id="forensic-tab-extra" onclick="switchForensicTab('extra')" class="px-3 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive">Missing &amp; C1/M4 (Biểu đồ 12)</button>
+              <button id="forensic-tab-compare" onclick="switchForensicTab('compare')" class="px-3 py-1 rounded-full font-mono text-[11px] font-bold glass-tab-active">1. So Sánh 2 Lớp (Mục 2)</button>
+              <button id="forensic-tab-iqr" onclick="switchForensicTab('iqr')" class="px-3 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive">2. Biến Thiên ProductCD &amp; IQR (Mục 4)</button>
+              <button id="forensic-tab-ecdf" onclick="switchForensicTab('ecdf')" class="px-3 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive">3. Phân Vị Tích Lũy ECDF</button>
+              <button id="forensic-tab-hist" onclick="switchForensicTab('hist')" class="px-3 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive">4. Phân Bố Số Tiền (Histogram)</button>
+              <button id="forensic-tab-d1" onclick="switchForensicTab('d1')" class="px-3 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive">5. Cụm Tuổi Thẻ D1 (≤15 ngày)</button>
+              <button id="forensic-tab-loess" onclick="switchForensicTab('loess')" class="px-3 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive">6. Hồi Quy LOESS Phi Tuyến $</button>
+              <button id="forensic-tab-extra" onclick="switchForensicTab('extra')" class="px-3 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive">7. Dữ Liệu Thiếu (Missing) &amp; C1/M4</button>
             </div>
           </div>
 
@@ -1819,28 +1851,21 @@
   let sidebarOpen = false;
 
   function toggleSidebar() {
-    const sidebar = document.getElementById('sidebar');
-    const mainWrapper = document.getElementById('main-wrapper');
-    const toggleIcon = document.getElementById('sidebar-toggle-icon');
-    const toggleText = document.getElementById('sidebar-toggle-text');
-
-    sidebarOpen = !sidebarOpen;
-
-    if (sidebarOpen) {
-      sidebar.classList.remove('-translate-x-full');
-      mainWrapper.classList.remove('pl-0');
-      mainWrapper.classList.add('pl-72');
-      if (toggleIcon) toggleIcon.innerText = 'menu_open';
-      if (toggleText) toggleText.innerText = 'Thu Gọn';
+    const sb = document.getElementById('sidebar');
+    const bd = document.getElementById('sidebar-backdrop');
+    const icon = document.getElementById('sidebar-toggle-icon');
+    if (!sb) return;
+    const isClosed = sb.classList.contains('-translate-x-full');
+    if (isClosed) {
+      sb.classList.remove('-translate-x-full');
+      if (bd) bd.classList.remove('hidden');
+      if (icon) icon.innerText = 'close';
     } else {
-      sidebar.classList.add('-translate-x-full');
-      mainWrapper.classList.remove('pl-72');
-      mainWrapper.classList.add('pl-0');
-      if (toggleIcon) toggleIcon.innerText = 'menu';
-      if (toggleText) toggleText.innerText = 'Bộ Lọc Dữ Liệu';
+      sb.classList.add('-translate-x-full');
+      if (bd) bd.classList.add('hidden');
+      if (icon) icon.innerText = 'menu';
     }
 
-    // Resize ECharts smoothly after transition
     setTimeout(() => {
       if (chart1) chart1.resize();
     }, 320);
@@ -1848,6 +1873,10 @@
 
   // ================= ROLE NAVIGATION =================
   function switchView(mode) {
+    const sb = document.getElementById('sidebar');
+    if (sb && !sb.classList.contains('-translate-x-full')) {
+      toggleSidebar();
+    }
     const secManager = document.getElementById('section-manager');
     const secInvestigator = document.getElementById('section-investigator');
     const hdrMgr = document.getElementById('hdr-tab-manager');
@@ -1862,6 +1891,7 @@
       if (hdrInv) hdrInv.className = 'px-3.5 py-1 rounded-full font-display text-xs font-semibold tracking-tight transition-all duration-300 glass-tab-inactive flex items-center gap-1.5';
       if (sideMgr) sideMgr.className = 'flex items-center gap-2.5 px-3 py-2 rounded-xl font-display text-xs font-semibold tracking-tight transition-all glass-tab-active text-left w-full';
       if (sideInv) sideInv.className = 'flex items-center gap-2.5 px-3 py-2 rounded-xl font-display text-xs font-medium tracking-tight text-on-surface-variant hover:text-white hover:bg-white/5 transition-all text-left w-full';
+      setTimeout(() => { if (chart1) chart1.resize(); }, 60);
     } else {
       secManager.classList.add('hidden');
       secInvestigator.classList.remove('hidden');
@@ -1878,17 +1908,17 @@
 
   // ================= TABS FOR DETAILED EXPLORERS =================
   function switchDriverTab(tab) {
-    const tabs = ['email', 'tech', 'amount', 'matrix'];
+    const tabs = ['product', 'heatmap', 'email', 'amount'];
     tabs.forEach(t => {
       const btn = document.getElementById('driver-tab-' + t);
       const pane = document.getElementById('driver-content-' + t);
       if (!btn || !pane) return;
       if (t === tab) {
-        btn.className = 'px-3 py-1 rounded-full font-mono text-[11px] font-bold glass-tab-active';
+        btn.className = 'px-3.5 py-1 rounded-full font-mono text-[11px] font-bold glass-tab-active';
         pane.classList.remove('hidden');
         pane.classList.add('flex');
       } else {
-        btn.className = 'px-3 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive';
+        btn.className = 'px-3.5 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive';
         pane.classList.add('hidden');
         pane.classList.remove('flex');
       }
@@ -1906,12 +1936,6 @@
         pane.classList.remove('hidden');
         pane.classList.add('flex');
       } else {
-        btn.className = 'px-3 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive';
-        pane.classList.add('hidden');
-        pane.classList.remove('flex');
-      }
-    });
-  } else {
         btn.className = 'px-3 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive';
         pane.classList.add('hidden');
         pane.classList.remove('flex');
@@ -2342,6 +2366,7 @@
   // ================= ONLOAD BOOTSTRAP =================
   window.onload = async () => {
     initChart1();
+    switchDriverTab('product');
     renderChart2('product');
     renderEmailChart('P');
     renderTechChart('browser');
