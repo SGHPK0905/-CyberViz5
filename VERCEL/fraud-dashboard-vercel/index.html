@@ -670,60 +670,33 @@
             </div>
           </div>
 
-          <!-- Forensic View Navigation Toolbar (Chọn Danh Sách Dropdown + Điều Hướng Trước/Sau + Thẻ Nhanh) -->
-          <div class="w-full p-2 rounded-2xl bg-[#12151e]/95 border border-white/10 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 shadow-lg">
-            <!-- Left: Dropdown Selector (Chọn Danh Sách Trực Quan) + Điều hướng Trước/Sau -->
-            <div class="flex items-center gap-2 flex-wrap sm:flex-nowrap">
-              <div class="flex items-center gap-2 bg-[#08090d] border border-white/15 px-3 py-1.5 rounded-xl text-white">
-                <span class="material-symbols-outlined text-[18px] text-secondary">view_timeline</span>
-                <label for="forensic-select-dropdown" class="font-mono text-xs text-secondary font-bold whitespace-nowrap">Góc Nhìn:</label>
-                <select id="forensic-select-dropdown" onchange="switchForensicTab(this.value)" class="bg-transparent border-0 text-white font-mono text-xs focus:outline-none cursor-pointer pr-1 font-semibold">
-                  <option value="compare" class="bg-[#0d1017] text-white">1. Biểu Đồ 03 · So Sánh &amp; Boxplot Log10</option>
-                  <option value="iqr" class="bg-[#0d1017] text-white">2. Biến Thiên ProductCD &amp; Độ Phân Tán IQR</option>
-                  <option value="ecdf" class="bg-[#0d1017] text-white">3. Phân Vị Tích Lũy ECDF (P90: $335)</option>
-                  <option value="hist" class="bg-[#0d1017] text-white">4. Histogram Mật Độ Số Tiền (24 Bins)</option>
-                  <option value="d1" class="bg-[#0d1017] text-white">5. Cụm Tuổi Thẻ D1 (≤15d &amp; ≥$300: 14.63%)</option>
-                  <option value="loess" class="bg-[#0d1017] text-white">6. Hồi Quy LOESS Phi Tuyến $ ($200–$1,200)</option>
-                  <option value="extra" class="bg-[#0d1017] text-white">7. Dữ Liệu Khuyết (Missing) &amp; Biến C1/M4</option>
-                </select>
-              </div>
-
-              <!-- Quick Prev / Next Buttons (Chuyển nhanh từng góc nhìn) -->
-              <div class="flex items-center gap-1">
-                <button type="button" onclick="navigateForensicTab(-1)" class="p-1.5 px-2.5 rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 text-white transition-all cursor-pointer flex items-center justify-center text-xs font-mono" title="Góc nhìn trước">
-                  <span class="material-symbols-outlined text-[16px]">chevron_left</span>
-                  <span class="hidden sm:inline ml-0.5">Trước</span>
-                </button>
-                <span id="forensic-tab-indicator" class="font-mono text-xs text-secondary font-bold px-1.5">1 / 7</span>
-                <button type="button" onclick="navigateForensicTab(1)" class="p-1.5 px-2.5 rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 text-white transition-all cursor-pointer flex items-center justify-center text-xs font-mono" title="Góc nhìn tiếp theo">
-                  <span class="hidden sm:inline mr-0.5">Sau</span>
-                  <span class="material-symbols-outlined text-[16px]">chevron_right</span>
-                </button>
-              </div>
+          <!-- Forensic View Navigation Toolbar (Danh Sách Chọn Độc Lập Trải Rộng + Điều Hướng Trước / Sau) -->
+          <div class="w-full p-2.5 rounded-2xl bg-[#12151e]/95 border border-white/10 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 shadow-lg">
+            <!-- Left: Dropdown Selector (Danh Sách Dãn Rộng Toàn Bộ) -->
+            <div class="flex items-center gap-3 bg-[#08090d] border border-white/15 px-4 py-2.5 rounded-xl text-white flex-1 hover:border-secondary/60 focus-within:border-secondary transition-all">
+              <span class="material-symbols-outlined text-[20px] text-secondary shrink-0">view_timeline</span>
+              <label for="forensic-select-dropdown" class="font-mono text-xs text-secondary font-bold whitespace-nowrap shrink-0">Chọn Góc Nhìn:</label>
+              <select id="forensic-select-dropdown" onchange="switchForensicTab(this.value)" class="w-full bg-transparent border-0 text-white font-mono text-xs sm:text-sm font-semibold focus:outline-none cursor-pointer pr-2">
+                <option value="compare" class="bg-[#0d1017] text-white">1. Biểu Đồ 03 · So Sánh Toàn Diện Hai Lớp &amp; Boxplot Log10</option>
+                <option value="iqr" class="bg-[#0d1017] text-white">2. Biến Thiên ProductCD &amp; Độ Phân Tán IQR (50% Giao Dịch)</option>
+                <option value="ecdf" class="bg-[#0d1017] text-white">3. Phân Vị Tích Lũy ECDF (P90: $335 Fraud vs $267 Legit)</option>
+                <option value="hist" class="bg-[#0d1017] text-white">4. Histogram Mật Độ Số Tiền (24 Bins Thang Log10)</option>
+                <option value="d1" class="bg-[#0d1017] text-white">5. Cụm Tuổi Thẻ D1 (1–15 ngày &amp; ≥$300: 14.63% Fraud)</option>
+                <option value="loess" class="bg-[#0d1017] text-white">6. Hồi Quy LOESS Phi Tuyến $ (Vùng Đỉnh $200–$1,200)</option>
+                <option value="extra" class="bg-[#0d1017] text-white">7. Dữ Liệu Khuyết (Missing Values) &amp; Biến Đếm C1 / M4</option>
+              </select>
             </div>
 
-            <!-- Right: Compact Quick Jump Pills (Chọn nhanh 1-click) -->
-            <div class="flex items-center gap-1 overflow-x-auto py-0.5 no-scrollbar">
-              <button id="forensic-tab-compare" onclick="switchForensicTab('compare')" class="px-2.5 py-1.5 rounded-lg font-mono text-[11px] font-bold glass-tab-active whitespace-nowrap shrink-0 transition-all">
-                1. Boxplot
+            <!-- Right: Nút Chuyển Góc Nhìn Trước / Sau -->
+            <div class="flex items-center gap-2 shrink-0 justify-end">
+              <button type="button" onclick="navigateForensicTab(-1)" class="p-2 px-3.5 rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 text-white transition-all cursor-pointer flex items-center gap-1.5 font-mono text-xs font-medium" title="Góc nhìn trước">
+                <span class="material-symbols-outlined text-[16px]">chevron_left</span>
+                <span>Trước</span>
               </button>
-              <button id="forensic-tab-iqr" onclick="switchForensicTab('iqr')" class="px-2.5 py-1.5 rounded-lg font-mono text-[11px] font-medium glass-tab-inactive whitespace-nowrap shrink-0 transition-all">
-                2. IQR
-              </button>
-              <button id="forensic-tab-ecdf" onclick="switchForensicTab('ecdf')" class="px-2.5 py-1.5 rounded-lg font-mono text-[11px] font-medium glass-tab-inactive whitespace-nowrap shrink-0 transition-all">
-                3. ECDF
-              </button>
-              <button id="forensic-tab-hist" onclick="switchForensicTab('hist')" class="px-2.5 py-1.5 rounded-lg font-mono text-[11px] font-medium glass-tab-inactive whitespace-nowrap shrink-0 transition-all">
-                4. Histogram
-              </button>
-              <button id="forensic-tab-d1" onclick="switchForensicTab('d1')" class="px-2.5 py-1.5 rounded-lg font-mono text-[11px] font-medium glass-tab-inactive whitespace-nowrap shrink-0 transition-all">
-                5. Cụm D1
-              </button>
-              <button id="forensic-tab-loess" onclick="switchForensicTab('loess')" class="px-2.5 py-1.5 rounded-lg font-mono text-[11px] font-medium glass-tab-inactive whitespace-nowrap shrink-0 transition-all">
-                6. LOESS
-              </button>
-              <button id="forensic-tab-extra" onclick="switchForensicTab('extra')" class="px-2.5 py-1.5 rounded-lg font-mono text-[11px] font-medium glass-tab-inactive whitespace-nowrap shrink-0 transition-all">
-                7. Missing
+              <span id="forensic-tab-indicator" class="font-mono text-xs text-secondary font-bold px-2.5 py-1.5 rounded-xl bg-secondary/15 border border-secondary/25">1 / 7</span>
+              <button type="button" onclick="navigateForensicTab(1)" class="p-2 px-3.5 rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 text-white transition-all cursor-pointer flex items-center gap-1.5 font-mono text-xs font-medium" title="Góc nhìn tiếp theo">
+                <span>Sau</span>
+                <span class="material-symbols-outlined text-[16px]">chevron_right</span>
               </button>
             </div>
           </div>
@@ -1919,15 +1892,12 @@
     }
 
     tabs.forEach(t => {
-      const btn = document.getElementById('forensic-tab-' + t);
       const pane = document.getElementById('forensic-content-' + t);
       if (!pane) return;
       if (t === tab) {
-        if (btn) btn.className = 'px-2.5 py-1.5 rounded-lg font-mono text-[11px] font-bold glass-tab-active whitespace-nowrap shrink-0 transition-all';
         pane.classList.remove('hidden');
         pane.classList.add('flex');
       } else {
-        if (btn) btn.className = 'px-2.5 py-1.5 rounded-lg font-mono text-[11px] font-medium glass-tab-inactive whitespace-nowrap shrink-0 transition-all';
         pane.classList.add('hidden');
         pane.classList.remove('flex');
       }
