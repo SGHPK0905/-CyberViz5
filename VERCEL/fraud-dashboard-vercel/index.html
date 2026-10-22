@@ -407,44 +407,20 @@
           </div>
         </div>
 
-        <!-- ================= BIỂU ĐỒ 2: CATEGORY RISK DISTRIBUTION ================= -->
-        <div class="p-6 glass-card rounded-2xl flex flex-col gap-4">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-2 border-b border-white/10">
-            <div>
-              <div class="flex items-center gap-2">
-                <span class="font-mono text-xs text-secondary font-bold">BIỂU ĐỒ 02</span>
-                <span class="text-outline">/</span>
-                <h3 class="font-display text-base font-bold text-white tracking-[-0.02em]">Phân Bổ Tỷ Lệ Gian Lận Theo Nhóm Danh Mục &amp; Khoảng Tin Cậy 95% Wilson Score</h3>
-              </div>
-              <p class="font-sans text-xs text-on-surface-variant mt-0.5">Khoảng tin cậy [CI_low – CI_high] khẳng định sự khác biệt có ý nghĩa thống kê.</p>
-            </div>
-            <div class="flex items-center gap-1 p-1 rounded-full glass-pill-container">
-              <button id="c2-btn-prod" onclick="renderChart2('product')" class="px-3 py-1 rounded-full font-mono text-[11px] font-bold glass-tab-active">Theo ProductCD</button>
-              <button id="c2-btn-dev" onclick="renderChart2('device')" class="px-3 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive">Theo Thiết Bị &amp; ID</button>
-              <button id="c2-btn-card" onclick="renderChart2('card')" class="px-3 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive">Theo Loại Thẻ</button>
-              <button id="c2-btn-prodid" onclick="renderChart2('prodid')" class="px-3 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive">ProductCD × Identity (Wilson CI)</button>
-            </div>
-          </div>
-          <div id="chart2-bars-container" class="flex flex-col gap-3 pt-1"></div>
-          <div class="p-3 rounded-xl bg-white/[0.03] border border-white/5 flex items-center gap-2 text-xs text-on-surface-variant font-sans">
-            <span class="material-symbols-outlined text-secondary text-[16px]">info</span>
-            <span><strong>💡 Tóm tắt nhanh:</strong> Mã sản phẩm C (11.69%) và thiết bị Mobile (10.17%) có nguy cơ gian lận cao gấp 3–4 lần so với mức nền hệ thống (3.50%). Thẻ Discover (7.93%) đứng đầu nhóm thẻ tín dụng.</span>
-          </div>
-        </div>
-
-        <!-- ================= KHỐI PHÂN TÍCH MA TRẬN RỦI RO ĐA CHIỀU (MULTI-DIMENSIONAL RISK MATRIX) ================= -->
+        <!-- ================= BIỂU ĐỒ 02 & MA TRẬN RỦI RO ĐA CHIỀU (MULTI-DIMENSIONAL RISK MATRIX) ================= -->
         <div class="p-6 glass-card rounded-2xl flex flex-col gap-4">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-white/10">
             <div>
               <div class="flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-secondary shadow-[0_0_6px_#f9b98b]"></span>
+                <span class="font-mono text-xs text-secondary font-bold">BIỂU ĐỒ 02</span>
+                <span class="text-outline">/</span>
                 <h3 class="font-display text-base font-bold text-white tracking-[-0.02em]">Ma Trận Phân Tích Tác Nhân Rủi Ro (Multi-Dimensional Risk Matrix)</h3>
               </div>
-              <p class="font-sans text-xs text-on-surface-variant mt-0.5">Phân loại khoa học theo từng chủ đề độc lập để dễ dàng theo dõi mà không làm rối giao diện.</p>
+              <p class="font-sans text-xs text-on-surface-variant mt-0.5">Khảo sát đa chiều: Danh mục sản phẩm, Thẻ, Bản đồ nhiệt 24h, Email Domain và Thiết bị.</p>
             </div>
             <!-- Sub-tabs with crystal-clear naming -->
             <div class="flex items-center gap-1 p-1 rounded-full glass-pill-container flex-wrap">
-              <button id="driver-tab-product" onclick="switchDriverTab('product')" class="px-3.5 py-1 rounded-full font-mono text-[11px] font-bold glass-tab-active">1. Mã Sản Phẩm &amp; Wilson CI</button>
+              <button id="driver-tab-product" onclick="switchDriverTab('product')" class="px-3.5 py-1 rounded-full font-mono text-[11px] font-bold glass-tab-active">1. Biểu Đồ 02 · Danh Mục &amp; Wilson CI</button>
               <button id="driver-tab-heatmap" onclick="switchDriverTab('heatmap')" class="px-3.5 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive">2. Bản Đồ Nhiệt 24h</button>
               <button id="driver-tab-email" onclick="switchDriverTab('email')" class="px-3.5 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive">3. Email &amp; Thiết Bị</button>
               <button id="driver-tab-amount" onclick="switchDriverTab('amount')" class="px-3.5 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive">4. Mệnh Giá U-Shape &amp; Ma Trận</button>
@@ -669,87 +645,30 @@
           </div>
         </div>
 
-        <!-- Row 1: Macro Core Forensic Visuals (Can doi 2 cot, truc quan ro rang) -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <!-- Chart 3: Boxplot Phân Phối Giá Trị Giao Dịch Log10 (Real quantiles) -->
-          <div class="p-6 glass-card rounded-2xl flex flex-col justify-between">
-            <div class="flex items-start justify-between pb-2 border-b border-white/10">
-              <div>
-                <div class="flex items-center gap-2">
-                  <span class="font-mono text-xs text-secondary font-bold">BIỂU ĐỒ 03</span>
-                  <span class="text-outline">/</span>
-                  <h3 class="font-display text-base font-bold text-white tracking-[-0.02em]">Boxplot Số Tiền Giao Dịch (Thang Log10)</h3>
-                </div>
-                <p class="font-sans text-xs text-on-surface-variant mt-0.5">So sánh Q1, Median, Q3, ranh giới IQR và Khoảng tin cậy 95% của Trung bình.</p>
-              </div>
-              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded-full glass-pill-container text-secondary font-semibold">Skew = 14.37</span>
-            </div>
-            <div class="w-full h-56 relative my-2">
-              <svg class="w-full h-full overflow-visible" viewbox="0 0 420 180">
-                <!-- Log10 scale grid: $1 (65), $10 (150), $100 (235), $1,000 (320), $10,000 (405) -->
-                <line stroke="rgba(255,255,255,0.06)" stroke-width="1" x1="65" x2="65" y1="25" y2="148"></line>
-                <line stroke="rgba(255,255,255,0.06)" stroke-width="1" x1="150" x2="150" y1="25" y2="148"></line>
-                <line stroke="rgba(255,255,255,0.06)" stroke-width="1" x1="235" x2="235" y1="25" y2="148"></line>
-                <line stroke="rgba(255,255,255,0.06)" stroke-width="1" x1="320" x2="320" y1="25" y2="148"></line>
-                <line stroke="rgba(255,255,255,0.06)" stroke-width="1" x1="405" x2="405" y1="25" y2="148"></line>
-                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="65" y="165">$1</text>
-                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="150" y="165">$10</text>
-                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="235" y="165">$100</text>
-                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="320" y="165">$1,000</text>
-                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="405" y="165">$10,000</text>
-
-                <!-- Row 1: Legitimate (isFraud=0) y=58 -->
-                <text fill="#f1f3f7" font-family="JetBrains Mono" font-size="10.5" x="4" y="62">● Hợp lệ</text>
-                <line stroke="#636a7a" stroke-width="1.5" x1="185.7" x2="204.7" y1="58" y2="58"></line>
-                <line stroke="#636a7a" stroke-width="1.5" x1="185.7" x2="185.7" y1="50" y2="66"></line>
-                <line stroke="#636a7a" stroke-width="1.5" x1="241.7" x2="266.4" y1="58" y2="58"></line>
-                <line stroke="#636a7a" stroke-width="1.5" x1="266.4" x2="266.4" y1="50" y2="66"></line>
-                <rect fill="rgba(255,255,255,0.08)" height="30" class="cursor-pointer" onmouseenter="showTooltip(event, '● Giao Dịch Hợp Lệ (n = 569,877)', 'Q1: $43.97 | Median: $68.50 | Q3: $120.00<br>IQR: $76.03 | Upper Fence: $234.05<br>Mean: $134.51 (95% CI: $133.89–$135.13)<br>Ngoại lệ > Fence: 64,043 GD (11.24%)')" onmouseleave="hideTooltip()" rx="4" stroke="#9ba1ad" stroke-width="1.5" width="37.0" x="204.7" y="43"></rect>
-                <line stroke="#ffffff" stroke-width="2.5" x1="221.0" x2="221.0" y1="43" y2="73"></line>
-                <circle cx="323.7" cy="58" fill="#9ba1ad" r="3" onmouseenter="showTooltip(event, 'Phân vị P99 Hợp lệ', 'P99 = $1,104.00 | Max = $31,937.39')" onmouseleave="hideTooltip()"></circle>
-                <circle cx="405" cy="58" fill="#9ba1ad" r="3.5" onmouseenter="showTooltip(event, 'Cực đại Hợp lệ (TX #3261336)', 'Max = $31,937.39 (Hợp lệ, không xóa outlier)')" onmouseleave="hideTooltip()"></circle>
-
-                <!-- Row 2: Fraud (isFraud=1) y=115 -->
-                <text fill="#ff6b81" font-family="JetBrains Mono" font-size="10.5" font-weight="700" x="4" y="119">▲ Fraud</text>
-                <line stroke="#ff6b81" stroke-width="1.5" x1="173.6" x2="196.3" y1="115" y2="115"></line>
-                <line stroke="#ff6b81" stroke-width="1.5" x1="173.6" x2="173.6" y1="107" y2="123"></line>
-                <line stroke="#ff6b81" stroke-width="1.5" x1="252.6" x2="281.2" y1="115" y2="115"></line>
-                <line stroke="#ff6b81" stroke-width="1.5" x1="281.2" x2="281.2" y1="107" y2="123"></line>
-                <rect fill="rgba(255,107,129,0.22)" height="30" class="cursor-pointer" onmouseenter="showTooltip(event, '▲ Giao Dịch Gian Lận (n = 20,663)', 'Q1: $35.04 | Median: $75.00 | Q3: $161.00<br>IQR: $125.96 (+65.7% rộng hơn Hợp lệ)<br>Mean: $149.25 (95% CI: $146.08–$152.41)<br>Ngoại lệ > $349.93: 1,984 vụ (9.60%)')" onmouseleave="hideTooltip()" rx="4" stroke="#ff6b81" stroke-width="1.5" width="56.3" x="196.3" y="100"></rect>
-                <line stroke="#f9b98b" stroke-width="2.5" x1="224.4" x2="224.4" y1="100" y2="130"></line>
-                <circle cx="319.8" cy="115" fill="#ff6b81" r="3.5" onmouseenter="showTooltip(event, 'Phân vị P99 Gian lận', 'P99 = $994.00 | P95 = $500.00')" onmouseleave="hideTooltip()"></circle>
-                <circle class="animate-pulse cursor-pointer" cx="380.8" cy="115" fill="#ff4d6d" r="4.5" onmouseenter="showTooltip(event, 'Đỉnh Tiền Gian Lận (TX #3409708)', 'Max Fraud = $5,191.00 (Ngày 123, Product W)')" onmouseleave="hideTooltip()"></circle>
-              </svg>
-            </div>
-            <div class="p-2.5 rounded-xl bg-white/[0.03] border border-white/5 font-sans text-xs text-on-surface-variant">
-              <strong>💡 Tóm tắt:</strong> Gian lận có dải giá trị biến thiên (IQR = $125.96) rộng hơn <strong>65.7%</strong> so với giao dịch hợp lệ ($76.03). Đơn gian lận lớn nhất trong tập train là <strong>$5,191.00</strong>.
-            </div>
-          </div>
-
-          <!-- Row 2: Deep-Dive Forensic Lab (Tabbed Workbench) -->
+                <!-- ================= BIỂU ĐỒ 03 & FORENSIC DEEP-DIVE LAB (WORKBENCH ĐIỀU TRA VI MÔ) ================= -->
         <div class="p-6 glass-card rounded-2xl flex flex-col gap-4">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-white/10">
             <div>
               <div class="flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-secondary shadow-[0_0_6px_#f9b98b]"></span>
+                <span class="font-mono text-xs text-secondary font-bold">BIỂU ĐỒ 03</span>
+                <span class="text-outline">/</span>
                 <h3 class="font-display text-base font-bold text-white tracking-[-0.02em]">Không Gian Phân Tích Chuyên Sâu (Forensic Deep-Dive Lab)</h3>
               </div>
-              <p class="font-sans text-xs text-on-surface-variant mt-0.5">Chuyển đổi góc nhìn vi mô bằng các tab chuyên biệt để phân tích chi tiết mà không làm tràn giao diện.</p>
+              <p class="font-sans text-xs text-on-surface-variant mt-0.5">Khảo sát vi mô 7 chiều phân tích trích xuất từ notebook EDA trên 590,540 giao dịch thật.</p>
             </div>
             <!-- Lab Sub-tabs -->
             <div class="flex items-center gap-1 p-1 rounded-full glass-pill-container flex-wrap">
               <button id="forensic-tab-compare" onclick="switchForensicTab('compare')" class="px-3 py-1 rounded-full font-mono text-[11px] font-bold glass-tab-active">1. So Sánh 2 Lớp (Mục 2)</button>
               <button id="forensic-tab-iqr" onclick="switchForensicTab('iqr')" class="px-3 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive">2. Biến Thiên ProductCD &amp; IQR (Mục 4)</button>
-              <button id="forensic-tab-ecdf" onclick="switchForensicTab('ecdf')" class="px-3 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive">3. Phân Vị Tích Lũy ECDF</button>
+              <button id="forensic-tab-ecdf" onclick="switchForensicTab('ecdf')" class="px-3 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive">3. Phân Vị Tích Lũy ECDF (Mục 3)</button>
               <button id="forensic-tab-hist" onclick="switchForensicTab('hist')" class="px-3 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive">4. Phân Bố Số Tiền (Histogram)</button>
-              <button id="forensic-tab-d1" onclick="switchForensicTab('d1')" class="px-3 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive">5. Cụm Tuổi Thẻ D1 (≤15 ngày)</button>
-              <button id="forensic-tab-loess" onclick="switchForensicTab('loess')" class="px-3 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive">6. Hồi Quy LOESS Phi Tuyến $</button>
-              <button id="forensic-tab-extra" onclick="switchForensicTab('extra')" class="px-3 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive">7. Dữ Liệu Thiếu (Missing) &amp; C1/M4</button>
+              <button id="forensic-tab-d1" onclick="switchForensicTab('d1')" class="px-3 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive">5. Cụm Tuổi Thẻ D1 (Mục 8)</button>
+              <button id="forensic-tab-loess" onclick="switchForensicTab('loess')" class="px-3 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive">6. Hồi Quy LOESS Phi Tuyến $ (Mục 9)</button>
+              <button id="forensic-tab-extra" onclick="switchForensicTab('extra')" class="px-3 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive">7. Dữ Liệu Thiếu &amp; C1/M4 (Mục 10)</button>
             </div>
           </div>
 
-          <!-- Content Panels for Forensic Tabs -->
-
+          <!-- Content Panels for Forensic Tabs (Ordered 1 to 7) -->
           <!-- Tab 1: Mục 2 Notebook: So Sánh Toàn Diện Fraud & Legitimate (02_so_sanh_fraud_legitimate.png) -->
           <div id="forensic-content-compare" class="forensic-pane flex flex-col justify-between">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-white/10 gap-2">
@@ -921,228 +840,6 @@
             </div>
           </div>
 
-          <div id="forensic-content-ecdf" class="forensic-pane hidden flex-col justify-between">
-            <div class="flex items-start justify-between pb-2 border-b border-white/10">
-              <div>
-                <h4 class="font-display text-sm font-bold text-white">Hàm Phân Phối Tích Lũy Thực Nghiệm (ECDF)</h4>
-                <p class="font-sans text-xs text-on-surface-variant mt-0.5">Tra cứu chính xác phân vị: 90% giao dịch Fraud ≤ $335.00 (so với Hợp lệ ≤ $267.11).</p>
-              </div>
-              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded-full glass-pill-container text-secondary font-bold">P90 Fraud: $335</span>
-            </div>
-            <div class="w-full h-56 relative my-2">
-              <svg class="w-full h-full overflow-visible" viewbox="0 0 420 180">
-                <line stroke="rgba(255,255,255,0.06)" stroke-width="1" x1="40" x2="400" y1="20" y2="20"></line>
-                <line stroke="rgba(255,255,255,0.06)" stroke-width="1" x1="40" x2="400" y1="52.5" y2="52.5"></line>
-                <line stroke="rgba(255,255,255,0.06)" stroke-width="1" x1="40" x2="400" y1="85" y2="85"></line>
-                <line stroke="rgba(255,255,255,0.06)" stroke-width="1" x1="40" x2="400" y1="117.5" y2="117.5"></line>
-                <line stroke="rgba(255,255,255,0.06)" stroke-width="1" x1="40" x2="400" y1="150" y2="150"></line>
-                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="34" y="24">100%</text>
-                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="34" y="56">75%</text>
-                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="34" y="88">50%</text>
-                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="34" y="121">25%</text>
-                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="34" y="153">0%</text>
-                <path d="M 40.0 150.0 L 48.2 150.0 L 56.4 150.0 L 64.5 150.0 L 72.7 150.0 L 80.9 149.9 L 89.1 149.9 L 97.3 149.9 L 105.5 149.8 L 113.6 149.6 L 121.8 149.5 L 130.0 149.2 L 138.2 148.8 L 146.4 148.2 L 154.5 147.4 L 162.7 145.9 L 170.9 144.8 L 179.1 142.4 L 187.3 136.3 L 195.5 128.9 L 203.6 122.5 L 211.8 115.7 L 220.0 101.8 L 228.2 86.4 L 236.4 79.6 L 244.5 73.9 L 252.7 59.1 L 260.9 50.3 L 269.1 44.7 L 277.3 40.3 L 285.5 34.4 L 293.6 31.9 L 301.8 28.2 L 310.0 26.8 L 318.2 24.9 L 326.4 23.4 L 334.5 22.7 L 342.7 22.1 L 350.9 21.5 L 359.1 21.1 L 367.3 20.8 L 375.5 20.6 L 383.6 20.3 L 391.8 20.2 L 400.0 20.1" fill="none" stroke="#9ba1ad" stroke-dasharray="4,3" stroke-width="2"></path>
-                <path d="M 40.0 149.9 L 48.2 149.9 L 56.4 149.9 L 64.5 149.8 L 72.7 149.8 L 80.9 149.8 L 89.1 149.8 L 97.3 149.7 L 105.5 149.6 L 113.6 149.2 L 121.8 149.0 L 130.0 148.5 L 138.2 147.2 L 146.4 145.5 L 154.5 143.6 L 162.7 140.4 L 170.9 137.2 L 179.1 133.6 L 187.3 127.7 L 195.5 120.8 L 203.6 114.8 L 211.8 107.5 L 220.0 97.3 L 228.2 87.7 L 236.4 80.8 L 244.5 74.2 L 252.7 66.2 L 260.9 59.2 L 269.1 51.9 L 277.3 45.8 L 285.5 41.2 L 293.6 37.8 L 301.8 32.1 L 310.0 30.4 L 318.2 26.3 L 326.4 24.7 L 334.5 23.9 L 342.7 23.3 L 350.9 21.1 L 359.1 20.8 L 367.3 20.5 L 375.5 20.3 L 383.6 20.2 L 391.8 20.1 L 400.0 20.1" fill="none" stroke="#ff6b81" stroke-width="2.5"></path>
-                <line stroke="#f9b98b" stroke-dasharray="3,3" stroke-width="1" x1="40" x2="299.7" y1="33.0" y2="33.0"></line>
-                <line stroke="#f9b98b" stroke-dasharray="3,3" stroke-width="1" x1="299.7" x2="299.7" y1="33.0" y2="150"></line>
-                <circle cx="289.6" cy="33.0" fill="#9ba1ad" r="4" stroke="#08090d" stroke-width="1.5"></circle>
-                <circle cx="299.7" cy="33.0" fill="#ff6b81" r="5" stroke="#ffffff" stroke-width="2"></circle>
-                <text fill="#f9b98b" font-family="JetBrains Mono" font-size="9.5" font-weight="700" x="305.7" y="42">P90 Fraud: $335</text>
-                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="40" y="165">$1</text>
-                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="142.9" y="165">$10</text>
-                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="245.7" y="165">$100</text>
-                <text fill="#f9b98b" font-family="JetBrains Mono" font-size="9" font-weight="bold" text-anchor="middle" x="299.7" y="165">$335</text>
-                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="355" y="165">$1,000+</text>
-              </svg>
-            </div>
-            <div class="flex items-center justify-between pt-2 border-t border-white/5 font-mono text-xs">
-              <span class="text-on-surface-variant flex items-center gap-1.5"><span class="w-3 h-0.5 border-t border-dashed border-on-surface-variant"></span> ● Hợp lệ (P90: $267.1)</span>
-              <span class="text-error flex items-center gap-1.5 font-semibold"><span class="w-3 h-0.5 bg-error"></span> ▲ Gian lận (P90: $335.0)</span>
-            </div>
-          </div>
-
-          <div id="forensic-content-hist" class="forensic-pane hidden flex-col justify-between">
-            <div class="flex items-start justify-between pb-2 border-b border-white/10">
-              <div>
-                <h4 class="font-display text-sm font-bold text-white">Histogram Mật Độ Số Tiền (24 Bins Thang Log10)</h4>
-                <p class="font-sans text-xs text-on-surface-variant mt-0.5">So sánh mật độ phân phối (%) giữa Gian lận (Đỏ) và Hợp lệ (Xám) từ $1 đến $10,000.</p>
-              </div>
-              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded-full glass-pill-container text-secondary font-semibold">24 Log Bins</span>
-            </div>
-            <div class="w-full h-56 relative my-2">
-              <svg class="w-full h-full overflow-visible" viewbox="0 0 420 180">
-                <line stroke="rgba(255,255,255,0.06)" stroke-width="1" x1="40" x2="410" y1="20" y2="20"></line>
-                <line stroke="rgba(255,255,255,0.06)" stroke-width="1" x1="40" x2="410" y1="63.3" y2="63.3"></line>
-                <line stroke="rgba(255,255,255,0.06)" stroke-width="1" x1="40" x2="410" y1="106.7" y2="106.7"></line>
-                <line stroke="rgba(255,255,255,0.06)" stroke-width="1" x1="40" x2="410" y1="150" y2="150"></line>
-                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="34" y="24">14%</text>
-                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="34" y="67">9.3%</text>
-                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="34" y="110">4.7%</text>
-                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="34" y="153">0%</text>
-                <g class="cursor-pointer" onmouseenter="showTooltip(event, 'Bin: $1.0–$1.5', 'Fraud: 0.12% | Hợp lệ: 0.03%')" onmouseleave="hideTooltip()"><rect x="42.0" y="149.7" width="6.5" height="0.3" rx="1.5" fill="rgba(155,161,173,0.45)"></rect><rect x="48.5" y="148.9" width="6.5" height="1.1" rx="1.5" fill="rgba(255,107,129,0.85)"></rect></g>
-                <g class="cursor-pointer" onmouseenter="showTooltip(event, 'Bin: $10–$15', 'Fraud: 3.32% | Hợp lệ: 1.32%')" onmouseleave="hideTooltip()"><rect x="133.2" y="137.7" width="6.5" height="12.3" rx="1.5" fill="rgba(155,161,173,0.45)"></rect><rect x="139.7" y="119.2" width="6.5" height="30.8" rx="1.5" fill="rgba(255,107,129,0.85)"></rect></g>
-                <g class="cursor-pointer" onmouseenter="showTooltip(event, 'Bin: $46–$68', 'Fraud: 15.59% | Hợp lệ: 23.63%')" onmouseleave="hideTooltip()"><rect x="194.0" y="30.0" width="6.5" height="120.0" rx="1.5" fill="rgba(155,161,173,0.45)"></rect><rect x="200.5" y="45.0" width="6.5" height="105.0" rx="1.5" fill="rgba(255,107,129,0.85)"></rect></g>
-                <g class="cursor-pointer" onmouseenter="showTooltip(event, 'Bin: $100–$147', 'Fraud: 12.43% | Hợp lệ: 18.46%')" onmouseleave="hideTooltip()"><rect x="224.4" y="40.0" width="6.5" height="110.0" rx="1.5" fill="rgba(155,161,173,0.45)"></rect><rect x="230.9" y="55.0" width="6.5" height="95.0" rx="1.5" fill="rgba(255,107,129,0.85)"></rect></g>
-                <g class="cursor-pointer" onmouseenter="showTooltip(event, 'Bin: $215–$316', 'Fraud: 7.78% | Hợp lệ: 5.81%')" onmouseleave="hideTooltip()"><rect x="254.8" y="96.1" width="6.5" height="53.9" rx="1.5" fill="rgba(155,161,173,0.45)"></rect><rect x="261.3" y="77.7" width="6.5" height="72.3" rx="1.5" fill="rgba(255,107,129,0.85)"></rect></g>
-                <g class="cursor-pointer" onmouseenter="showTooltip(event, 'Bin: $681–$1,000', 'Fraud: 2.26% | Hợp lệ: 0.95%')" onmouseleave="hideTooltip()"><rect x="300.4" y="141.1" width="6.5" height="8.9" rx="1.5" fill="rgba(155,161,173,0.45)"></rect><rect x="306.9" y="129.0" width="6.5" height="21.0" rx="1.5" fill="rgba(255,107,129,0.85)"></rect></g>
-                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="45" y="165">$1</text>
-                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="136" y="165">$10</text>
-                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="227" y="165">$100</text>
-                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="318" y="165">$1,000</text>
-                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="405" y="165">$10,000</text>
-              </svg>
-            </div>
-            <div class="flex items-center justify-between pt-2 border-t border-white/5 font-mono text-xs text-outline">
-              <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 bg-on-surface-variant/50 rounded-sm"></span> ● Mật độ Hợp lệ (%)</span>
-              <span class="text-error font-semibold flex items-center gap-1.5"><span class="w-2.5 h-2.5 bg-error rounded-sm"></span> ▲ Mật độ Fraud (%) — Vọt lên ở &lt;$25 &amp; &gt;$250</span>
-            </div>
-          </div>
-
-          <div id="forensic-content-d1" class="forensic-pane hidden flex-col justify-between">
-            <div class="flex items-start justify-between pb-2 border-b border-white/10">
-              <div>
-                <h4 class="font-display text-sm font-bold text-white">Tương Quan Biến D1 (Timedelta) vs Số Tiền</h4>
-                <p class="font-sans text-xs text-on-surface-variant mt-0.5">Nhóm D1 = 1–15d có tỷ lệ Fraud 7.73% (vọt lên 14.63% khi số tiền ≥ $300), gấp 6x nhóm D1 &gt; 180d (1.28%).</p>
-              </div>
-              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded-full bg-error/15 border border-error/30 text-error font-semibold">1–15d &amp; ≥$300: 14.63%</span>
-            </div>
-            <div class="w-full h-56 relative my-2">
-              <svg class="w-full h-full overflow-visible" viewbox="0 0 420 180">
-                <line stroke="rgba(255,255,255,0.06)" stroke-width="1" x1="45" x2="405" y1="20" y2="20"></line>
-                <line stroke="rgba(255,255,255,0.06)" stroke-width="1" x1="45" x2="405" y1="65" y2="65"></line>
-                <line stroke="rgba(255,255,255,0.06)" stroke-width="1" x1="45" x2="405" y1="110" y2="110"></line>
-                <line stroke="rgba(255,255,255,0.06)" stroke-width="1" x1="45" x2="405" y1="150" y2="150"></line>
-                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="38" y="24">$3,000+</text>
-                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="38" y="69">$1,000</text>
-                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="38" y="114">$300</text>
-                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="38" y="152">$0</text>
-
-                <!-- High Risk Cluster Box: D1 <= 15d & Amt >= $300 -->
-                <rect fill="rgba(255,107,129,0.15)" height="90" rx="4" stroke="#ff6b81" stroke-dasharray="3,2" stroke-width="1.2" width="82" x="45" y="20"></rect>
-                <text fill="#ff6b81" font-family="JetBrains Mono" font-size="8.5" font-weight="700" x="50" y="32">CỤM D1 ≤ 15d</text>
-                <text fill="#ffdcc5" font-family="JetBrains Mono" font-size="8" x="50" y="43">14.63% Fraud (≥$300)</text>
-
-                <!-- Real Fraud Points from Parquet -->
-                <circle cx="52" cy="24" fill="#ff4d6d" class="cursor-pointer" onmouseenter="showTooltip(event, '▲ TX #3455844 (Gian lận)', 'D1: 0 ngày | Số tiền: $3,822.95<br>Product W · Visa Credit')" onmouseleave="hideTooltip()" r="4.5" stroke="#ffffff" stroke-width="1"></circle>
-                <circle cx="58" cy="30" fill="#ff4d6d" class="cursor-pointer" onmouseenter="showTooltip(event, '▲ TX #3283902 (Gian lận)', 'D1: 0 ngày | Số tiền: $3,221.00<br>Product W · Visa Credit')" onmouseleave="hideTooltip()" r="4"></circle>
-                <circle cx="64" cy="38" fill="#ff4d6d" class="cursor-pointer" onmouseenter="showTooltip(event, '▲ TX #3567759 (Gian lận)', 'D1: 0 ngày | Số tiền: $2,680.00<br>Khung giờ đỉnh 08:00 · Visa Debit')" onmouseleave="hideTooltip()" r="4"></circle>
-                <circle cx="78" cy="78" fill="#ff4d6d" class="cursor-pointer" onmouseenter="showTooltip(event, '▲ TX #3389739 (Gian lận)', 'D1: 1 ngày | Số tiền: $675.38<br>Product C · Desktop')" onmouseleave="hideTooltip()" r="4.5" stroke="#ffffff" stroke-width="1"></circle>
-                <circle cx="88" cy="84" fill="#ff4d6d" class="cursor-pointer" onmouseenter="showTooltip(event, '▲ TX #3130267 (Gian lận)', 'D1: 2 ngày | Số tiền: $600.00<br>Product R · Mobile')" onmouseleave="hideTooltip()" r="4"></circle>
-
-                <!-- Legitimate Points -->
-                <circle cx="170" cy="135" fill="#636a7a" opacity="0.5" r="2.5"></circle>
-                <circle cx="265" cy="82" fill="#636a7a" opacity="0.6" r="3" onmouseenter="showTooltip(event, '● TX #3069390 (Hợp lệ)', 'D1: 295 ngày | Số tiền: $2,240.01')" onmouseleave="hideTooltip()"></circle>
-                <circle cx="330" cy="95" fill="#636a7a" opacity="0.6" r="3" onmouseenter="showTooltip(event, '● TX #3158063 (Hợp lệ)', 'D1: 457 ngày | Số tiền: $696.75')" onmouseleave="hideTooltip()"></circle>
-
-                <text fill="#f9b98b" font-family="JetBrains Mono" font-size="9" font-weight="bold" text-anchor="middle" x="55" y="165">0d (4.2%)</text>
-                <text fill="#ff6b81" font-family="JetBrains Mono" font-size="9" font-weight="bold" text-anchor="middle" x="112" y="165">1-15d (7.7%)</text>
-                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="185" y="165">16-60d (2.9%)</text>
-                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="275" y="165">61-180d (2.1%)</text>
-                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="370" y="165">&gt;180d (1.3%)</text>
-              </svg>
-            </div>
-            <div class="flex items-center justify-between pt-2 border-t border-white/5 font-mono text-xs text-outline">
-              <span class="text-error font-semibold">D1 = 1–15d: 3,841 / 49,721 GD (7.73% Fraud)</span>
-              <span>D1 &gt; 180d: 1,506 / 117,219 GD (1.28%)</span>
-            </div>
-          </div>
-
-          <div id="forensic-content-extra" class="forensic-pane hidden flex-col justify-between">
-            <div class="flex items-start justify-between pb-2 border-b border-white/10">
-              <div>
-                <h4 class="font-display text-sm font-bold text-white">Tác Động Của Missing Values &amp; Biến C1 / M4</h4>
-                <p class="font-sans text-xs text-on-surface-variant mt-0.5">Đối sánh tỷ lệ gian lận khi biến bị khuyết (Missing) vs có giá trị (Present) và nhóm C1/M4.</p>
-              </div>
-              <div class="flex gap-1 p-0.5 rounded-full glass-pill-container">
-                <button id="btn-eda-miss" onclick="renderEdaExtra('missing')" class="px-2 py-0.5 rounded-full font-mono text-[10px] font-bold glass-tab-active">Missing Impact</button>
-                <button id="btn-eda-c1" onclick="renderEdaExtra('c1')" class="px-2 py-0.5 rounded-full font-mono text-[10px] font-medium glass-tab-inactive">Biến Đếm C1</button>
-                <button id="btn-eda-m4" onclick="renderEdaExtra('m4')" class="px-2 py-0.5 rounded-full font-mono text-[10px] font-medium glass-tab-inactive">Biến M4</button>
-              </div>
-            </div>
-            <div id="eda-extra-container" class="flex flex-col gap-2 my-2"></div>
-          
-          <!-- Tab 5: Biểu đồ 3 Notebook: LOESS Phi Tuyến Số Tiền x Identity (Vùng nhạy cảm $200–$1,200) -->
-          <div id="forensic-content-loess" class="forensic-pane hidden flex-col justify-between">
-            <div class="flex items-start justify-between pb-2 border-b border-white/10">
-              <div>
-                <h4 class="font-display text-sm font-bold text-white">Hồi Quy Phi Tuyến Binned-LOESS Giữa Số Tiền &amp; Rủi Ro Phân Tầng Theo Identity</h4>
-                <p class="font-sans text-xs text-on-surface-variant mt-0.5">Khảo sát quan hệ phi tuyến trên thang Log. Vùng nguy cơ cao đạt đỉnh tại <strong>$200 – $1,200</strong>.</p>
-              </div>
-              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded-full bg-error/15 border border-error/30 text-error font-semibold">Đỉnh LOESS: $200–$1,200</span>
-            </div>
-            
-            <div class="w-full h-60 relative my-2">
-              <svg class="w-full h-full overflow-visible" viewBox="0 0 420 190">
-                <!-- Log scale grid: $5 (40), $20 (110), $100 (195), $500 (280), $2,000 (360), $5,000 (400) -->
-                <line stroke="rgba(255,255,255,0.06)" stroke-width="1" x1="40" x2="405" y1="20" y2="20"></line>
-                <line stroke="rgba(255,255,255,0.06)" stroke-width="1" x1="40" x2="405" y1="65" y2="65"></line>
-                <line stroke="rgba(255,255,255,0.06)" stroke-width="1" x1="40" x2="405" y1="110" y2="110"></line>
-                <line stroke="rgba(255,255,255,0.06)" stroke-width="1" x1="40" x2="405" y1="150" y2="150"></line>
-                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="35" y="24">16%</text>
-                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="35" y="69">10%</text>
-                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="35" y="114">5%</text>
-                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="35" y="153">0%</text>
-
-                <!-- Highlight Sensitive Zone $200 - $1,200 -->
-                <rect x="238" y="20" width="95" height="130" fill="rgba(255, 77, 109, 0.12)" stroke="#ff4d6d" stroke-dasharray="3,2" stroke-width="1"></rect>
-                <text fill="#ff6b81" font-family="JetBrains Mono" font-size="8.5" font-weight="700" x="242" y="32">VÙNG ĐỈNH LOESS</text>
-                <text fill="#ffdcc5" font-family="JetBrains Mono" font-size="8" x="242" y="43">$200 – $1,200</text>
-
-                <!-- System baseline line 3.5% -->
-                <line stroke="#f9b98b" stroke-dasharray="3,3" stroke-width="1.2" x1="40" x2="405" y1="123" y2="123"></line>
-
-                <!-- Curve 1: Has Identity (Blue/Cyan Neon) -->
-                <path d="M 45 74 Q 85 64 125 66 T 195 106 T 255 45 T 315 78 T 375 25" fill="none" stroke="#00d2ff" stroke-width="2.5"></path>
-                <!-- Curve 2: No Identity (Red/Coral) -->
-                <path d="M 45 139 Q 95 137 155 135 T 225 130 T 295 118 T 355 111 T 395 109" fill="none" stroke="#ff4d6d" stroke-width="2.5"></path>
-
-                <!-- Data Points HasIdentity -->
-                <circle cx="45" cy="74" r="3.5" fill="#00d2ff" class="cursor-pointer" onmouseenter="showTooltip(event, 'Has Identity · Đơn vi mô ($7)', 'Tỷ lệ Fraud: 8.84% (512 / 5,789 GD)')" onmouseleave="hideTooltip()"></circle>
-                <circle cx="125" cy="66" r="3.5" fill="#00d2ff" class="cursor-pointer" onmouseenter="showTooltip(event, 'Has Identity · Đơn $25', 'Tỷ lệ Fraud: 11.73% (579 / 4,937 GD)')" onmouseleave="hideTooltip()"></circle>
-                <circle cx="195" cy="106" r="3.5" fill="#00d2ff" class="cursor-pointer" onmouseenter="showTooltip(event, 'Has Identity · Đơn $100', 'Tỷ lệ Fraud: 4.50% (971 / 21,589 GD)')" onmouseleave="hideTooltip()"></circle>
-                <circle cx="270" cy="40" r="4.5" fill="#00d2ff" stroke="#ffffff" stroke-width="1.5" class="cursor-pointer" onmouseenter="showTooltip(event, 'Has Identity · VÙNG ĐỈNH $400', 'Tỷ lệ Fraud: 15.53% (832 / 5,356 GD)')" onmouseleave="hideTooltip()"></circle>
-
-                <!-- Data Points NoIdentity -->
-                <circle cx="45" cy="139" r="3.5" fill="#ff4d6d" class="cursor-pointer" onmouseenter="showTooltip(event, 'No Identity · Đơn $24', 'Tỷ lệ Fraud: 1.20% (274 / 22,801 GD)')" onmouseleave="hideTooltip()"></circle>
-                <circle cx="195" cy="130" r="3.5" fill="#ff4d6d" class="cursor-pointer" onmouseenter="showTooltip(event, 'No Identity · Đơn $117', 'Tỷ lệ Fraud: 2.28% (836 / 36,631 GD)')" onmouseleave="hideTooltip()"></circle>
-                <circle cx="295" cy="118" r="3.5" fill="#ff4d6d" class="cursor-pointer" onmouseenter="showTooltip(event, 'No Identity · Đơn $313', 'Tỷ lệ Fraud: 3.55% (632 / 17,817 GD)')" onmouseleave="hideTooltip()"></circle>
-                <circle cx="375" cy="109" r="4" fill="#ff4d6d" class="cursor-pointer" onmouseenter="showTooltip(event, 'No Identity · Đơn $945', 'Tỷ lệ Fraud: 4.56% (745 / 16,329 GD)')" onmouseleave="hideTooltip()"></circle>
-
-                <!-- X-axis Labels -->
-                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="45" y="168">$10</text>
-                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="125" y="168">$50</text>
-                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="195" y="168">$100</text>
-                <text fill="#f9b98b" font-family="JetBrains Mono" font-size="9" font-weight="bold" text-anchor="middle" x="270" y="168">$400</text>
-                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="375" y="168">$1,000+</text>
-              </svg>
-            </div>
-
-            <!-- Policy recommendations from Notebook Cell 17 -->
-            <div class="grid grid-cols-1 sm:grid-cols-4 gap-2 pt-2 border-t border-white/5 font-sans text-xs">
-              <div class="p-2 rounded-lg bg-white/[0.02] border border-white/5 flex flex-col gap-0.5">
-                <span class="font-mono text-[10px] text-on-surface-variant font-bold">1. Vi mô (&lt; $15)</span>
-                <span class="text-secondary font-semibold">Nguy cơ thử thẻ</span>
-                <span class="text-[10px] text-outline">Giám sát IP/Device rate</span>
-              </div>
-              <div class="p-2 rounded-lg bg-white/[0.02] border border-white/5 flex flex-col gap-0.5">
-                <span class="font-mono text-[10px] text-on-surface-variant font-bold">2. Phổ thông ($15–$200)</span>
-                <span class="text-emerald-400 font-semibold">An toàn nền (~1.5–3%)</span>
-                <span class="text-[10px] text-outline">Duyệt giao dịch chuẩn</span>
-              </div>
-              <div class="p-2 rounded-lg bg-error/10 border border-error/20 flex flex-col gap-0.5">
-                <span class="font-mono text-[10px] text-error font-bold">3. Nhạy cảm ($200–$1,200)</span>
-                <span class="text-error font-bold">Đỉnh LOESS (8–16%)</span>
-                <span class="text-[10px] text-error/80">Bắt buộc OTP / Sinh trắc</span>
-              </div>
-              <div class="p-2 rounded-lg bg-white/[0.02] border border-white/5 flex flex-col gap-0.5">
-                <span class="font-mono text-[10px] text-on-surface-variant font-bold">4. Giá trị lớn (&gt; $1,200)</span>
-                <span class="text-secondary font-semibold">Nguy cơ ngoại lệ</span>
-                <span class="text-[10px] text-outline">Điều tra viên thẩm định</span>
-              </div>
-            </div>
-          </div>
-
-          
           <!-- Tab 2: Mục 4 Notebook: Biến Thiên Số Tiền Giữa Các Nhóm ProductCD (04_do_phan_tan_theo_nhom.png) -->
           <div id="forensic-content-iqr" class="forensic-pane hidden flex-col justify-between">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-white/10 gap-2">
@@ -1324,6 +1021,227 @@
             </div>
           </div>
 
+          <div id="forensic-content-ecdf" class="forensic-pane hidden flex-col justify-between">
+            <div class="flex items-start justify-between pb-2 border-b border-white/10">
+              <div>
+                <h4 class="font-display text-sm font-bold text-white">Hàm Phân Phối Tích Lũy Thực Nghiệm (ECDF)</h4>
+                <p class="font-sans text-xs text-on-surface-variant mt-0.5">Tra cứu chính xác phân vị: 90% giao dịch Fraud ≤ $335.00 (so với Hợp lệ ≤ $267.11).</p>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded-full glass-pill-container text-secondary font-bold">P90 Fraud: $335</span>
+            </div>
+            <div class="w-full h-56 relative my-2">
+              <svg class="w-full h-full overflow-visible" viewbox="0 0 420 180">
+                <line stroke="rgba(255,255,255,0.06)" stroke-width="1" x1="40" x2="400" y1="20" y2="20"></line>
+                <line stroke="rgba(255,255,255,0.06)" stroke-width="1" x1="40" x2="400" y1="52.5" y2="52.5"></line>
+                <line stroke="rgba(255,255,255,0.06)" stroke-width="1" x1="40" x2="400" y1="85" y2="85"></line>
+                <line stroke="rgba(255,255,255,0.06)" stroke-width="1" x1="40" x2="400" y1="117.5" y2="117.5"></line>
+                <line stroke="rgba(255,255,255,0.06)" stroke-width="1" x1="40" x2="400" y1="150" y2="150"></line>
+                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="34" y="24">100%</text>
+                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="34" y="56">75%</text>
+                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="34" y="88">50%</text>
+                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="34" y="121">25%</text>
+                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="34" y="153">0%</text>
+                <path d="M 40.0 150.0 L 48.2 150.0 L 56.4 150.0 L 64.5 150.0 L 72.7 150.0 L 80.9 149.9 L 89.1 149.9 L 97.3 149.9 L 105.5 149.8 L 113.6 149.6 L 121.8 149.5 L 130.0 149.2 L 138.2 148.8 L 146.4 148.2 L 154.5 147.4 L 162.7 145.9 L 170.9 144.8 L 179.1 142.4 L 187.3 136.3 L 195.5 128.9 L 203.6 122.5 L 211.8 115.7 L 220.0 101.8 L 228.2 86.4 L 236.4 79.6 L 244.5 73.9 L 252.7 59.1 L 260.9 50.3 L 269.1 44.7 L 277.3 40.3 L 285.5 34.4 L 293.6 31.9 L 301.8 28.2 L 310.0 26.8 L 318.2 24.9 L 326.4 23.4 L 334.5 22.7 L 342.7 22.1 L 350.9 21.5 L 359.1 21.1 L 367.3 20.8 L 375.5 20.6 L 383.6 20.3 L 391.8 20.2 L 400.0 20.1" fill="none" stroke="#9ba1ad" stroke-dasharray="4,3" stroke-width="2"></path>
+                <path d="M 40.0 149.9 L 48.2 149.9 L 56.4 149.9 L 64.5 149.8 L 72.7 149.8 L 80.9 149.8 L 89.1 149.8 L 97.3 149.7 L 105.5 149.6 L 113.6 149.2 L 121.8 149.0 L 130.0 148.5 L 138.2 147.2 L 146.4 145.5 L 154.5 143.6 L 162.7 140.4 L 170.9 137.2 L 179.1 133.6 L 187.3 127.7 L 195.5 120.8 L 203.6 114.8 L 211.8 107.5 L 220.0 97.3 L 228.2 87.7 L 236.4 80.8 L 244.5 74.2 L 252.7 66.2 L 260.9 59.2 L 269.1 51.9 L 277.3 45.8 L 285.5 41.2 L 293.6 37.8 L 301.8 32.1 L 310.0 30.4 L 318.2 26.3 L 326.4 24.7 L 334.5 23.9 L 342.7 23.3 L 350.9 21.1 L 359.1 20.8 L 367.3 20.5 L 375.5 20.3 L 383.6 20.2 L 391.8 20.1 L 400.0 20.1" fill="none" stroke="#ff6b81" stroke-width="2.5"></path>
+                <line stroke="#f9b98b" stroke-dasharray="3,3" stroke-width="1" x1="40" x2="299.7" y1="33.0" y2="33.0"></line>
+                <line stroke="#f9b98b" stroke-dasharray="3,3" stroke-width="1" x1="299.7" x2="299.7" y1="33.0" y2="150"></line>
+                <circle cx="289.6" cy="33.0" fill="#9ba1ad" r="4" stroke="#08090d" stroke-width="1.5"></circle>
+                <circle cx="299.7" cy="33.0" fill="#ff6b81" r="5" stroke="#ffffff" stroke-width="2"></circle>
+                <text fill="#f9b98b" font-family="JetBrains Mono" font-size="9.5" font-weight="700" x="305.7" y="42">P90 Fraud: $335</text>
+                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="40" y="165">$1</text>
+                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="142.9" y="165">$10</text>
+                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="245.7" y="165">$100</text>
+                <text fill="#f9b98b" font-family="JetBrains Mono" font-size="9" font-weight="bold" text-anchor="middle" x="299.7" y="165">$335</text>
+                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="355" y="165">$1,000+</text>
+              </svg>
+            </div>
+            <div class="flex items-center justify-between pt-2 border-t border-white/5 font-mono text-xs">
+              <span class="text-on-surface-variant flex items-center gap-1.5"><span class="w-3 h-0.5 border-t border-dashed border-on-surface-variant"></span> ● Hợp lệ (P90: $267.1)</span>
+              <span class="text-error flex items-center gap-1.5 font-semibold"><span class="w-3 h-0.5 bg-error"></span> ▲ Gian lận (P90: $335.0)</span>
+            </div>
+          </div>
+
+          <div id="forensic-content-hist" class="forensic-pane hidden flex-col justify-between">
+            <div class="flex items-start justify-between pb-2 border-b border-white/10">
+              <div>
+                <h4 class="font-display text-sm font-bold text-white">Histogram Mật Độ Số Tiền (24 Bins Thang Log10)</h4>
+                <p class="font-sans text-xs text-on-surface-variant mt-0.5">So sánh mật độ phân phối (%) giữa Gian lận (Đỏ) và Hợp lệ (Xám) từ $1 đến $10,000.</p>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded-full glass-pill-container text-secondary font-semibold">24 Log Bins</span>
+            </div>
+            <div class="w-full h-56 relative my-2">
+              <svg class="w-full h-full overflow-visible" viewbox="0 0 420 180">
+                <line stroke="rgba(255,255,255,0.06)" stroke-width="1" x1="40" x2="410" y1="20" y2="20"></line>
+                <line stroke="rgba(255,255,255,0.06)" stroke-width="1" x1="40" x2="410" y1="63.3" y2="63.3"></line>
+                <line stroke="rgba(255,255,255,0.06)" stroke-width="1" x1="40" x2="410" y1="106.7" y2="106.7"></line>
+                <line stroke="rgba(255,255,255,0.06)" stroke-width="1" x1="40" x2="410" y1="150" y2="150"></line>
+                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="34" y="24">14%</text>
+                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="34" y="67">9.3%</text>
+                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="34" y="110">4.7%</text>
+                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="34" y="153">0%</text>
+                <g class="cursor-pointer" onmouseenter="showTooltip(event, 'Bin: $1.0–$1.5', 'Fraud: 0.12% | Hợp lệ: 0.03%')" onmouseleave="hideTooltip()"><rect x="42.0" y="149.7" width="6.5" height="0.3" rx="1.5" fill="rgba(155,161,173,0.45)"></rect><rect x="48.5" y="148.9" width="6.5" height="1.1" rx="1.5" fill="rgba(255,107,129,0.85)"></rect></g>
+                <g class="cursor-pointer" onmouseenter="showTooltip(event, 'Bin: $10–$15', 'Fraud: 3.32% | Hợp lệ: 1.32%')" onmouseleave="hideTooltip()"><rect x="133.2" y="137.7" width="6.5" height="12.3" rx="1.5" fill="rgba(155,161,173,0.45)"></rect><rect x="139.7" y="119.2" width="6.5" height="30.8" rx="1.5" fill="rgba(255,107,129,0.85)"></rect></g>
+                <g class="cursor-pointer" onmouseenter="showTooltip(event, 'Bin: $46–$68', 'Fraud: 15.59% | Hợp lệ: 23.63%')" onmouseleave="hideTooltip()"><rect x="194.0" y="30.0" width="6.5" height="120.0" rx="1.5" fill="rgba(155,161,173,0.45)"></rect><rect x="200.5" y="45.0" width="6.5" height="105.0" rx="1.5" fill="rgba(255,107,129,0.85)"></rect></g>
+                <g class="cursor-pointer" onmouseenter="showTooltip(event, 'Bin: $100–$147', 'Fraud: 12.43% | Hợp lệ: 18.46%')" onmouseleave="hideTooltip()"><rect x="224.4" y="40.0" width="6.5" height="110.0" rx="1.5" fill="rgba(155,161,173,0.45)"></rect><rect x="230.9" y="55.0" width="6.5" height="95.0" rx="1.5" fill="rgba(255,107,129,0.85)"></rect></g>
+                <g class="cursor-pointer" onmouseenter="showTooltip(event, 'Bin: $215–$316', 'Fraud: 7.78% | Hợp lệ: 5.81%')" onmouseleave="hideTooltip()"><rect x="254.8" y="96.1" width="6.5" height="53.9" rx="1.5" fill="rgba(155,161,173,0.45)"></rect><rect x="261.3" y="77.7" width="6.5" height="72.3" rx="1.5" fill="rgba(255,107,129,0.85)"></rect></g>
+                <g class="cursor-pointer" onmouseenter="showTooltip(event, 'Bin: $681–$1,000', 'Fraud: 2.26% | Hợp lệ: 0.95%')" onmouseleave="hideTooltip()"><rect x="300.4" y="141.1" width="6.5" height="8.9" rx="1.5" fill="rgba(155,161,173,0.45)"></rect><rect x="306.9" y="129.0" width="6.5" height="21.0" rx="1.5" fill="rgba(255,107,129,0.85)"></rect></g>
+                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="45" y="165">$1</text>
+                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="136" y="165">$10</text>
+                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="227" y="165">$100</text>
+                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="318" y="165">$1,000</text>
+                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="405" y="165">$10,000</text>
+              </svg>
+            </div>
+            <div class="flex items-center justify-between pt-2 border-t border-white/5 font-mono text-xs text-outline">
+              <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 bg-on-surface-variant/50 rounded-sm"></span> ● Mật độ Hợp lệ (%)</span>
+              <span class="text-error font-semibold flex items-center gap-1.5"><span class="w-2.5 h-2.5 bg-error rounded-sm"></span> ▲ Mật độ Fraud (%) — Vọt lên ở &lt;$25 &amp; &gt;$250</span>
+            </div>
+          </div>
+
+          <div id="forensic-content-d1" class="forensic-pane hidden flex-col justify-between">
+            <div class="flex items-start justify-between pb-2 border-b border-white/10">
+              <div>
+                <h4 class="font-display text-sm font-bold text-white">Tương Quan Biến D1 (Timedelta) vs Số Tiền</h4>
+                <p class="font-sans text-xs text-on-surface-variant mt-0.5">Nhóm D1 = 1–15d có tỷ lệ Fraud 7.73% (vọt lên 14.63% khi số tiền ≥ $300), gấp 6x nhóm D1 &gt; 180d (1.28%).</p>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded-full bg-error/15 border border-error/30 text-error font-semibold">1–15d &amp; ≥$300: 14.63%</span>
+            </div>
+            <div class="w-full h-56 relative my-2">
+              <svg class="w-full h-full overflow-visible" viewbox="0 0 420 180">
+                <line stroke="rgba(255,255,255,0.06)" stroke-width="1" x1="45" x2="405" y1="20" y2="20"></line>
+                <line stroke="rgba(255,255,255,0.06)" stroke-width="1" x1="45" x2="405" y1="65" y2="65"></line>
+                <line stroke="rgba(255,255,255,0.06)" stroke-width="1" x1="45" x2="405" y1="110" y2="110"></line>
+                <line stroke="rgba(255,255,255,0.06)" stroke-width="1" x1="45" x2="405" y1="150" y2="150"></line>
+                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="38" y="24">$3,000+</text>
+                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="38" y="69">$1,000</text>
+                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="38" y="114">$300</text>
+                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="38" y="152">$0</text>
+
+                <!-- High Risk Cluster Box: D1 <= 15d & Amt >= $300 -->
+                <rect fill="rgba(255,107,129,0.15)" height="90" rx="4" stroke="#ff6b81" stroke-dasharray="3,2" stroke-width="1.2" width="82" x="45" y="20"></rect>
+                <text fill="#ff6b81" font-family="JetBrains Mono" font-size="8.5" font-weight="700" x="50" y="32">CỤM D1 ≤ 15d</text>
+                <text fill="#ffdcc5" font-family="JetBrains Mono" font-size="8" x="50" y="43">14.63% Fraud (≥$300)</text>
+
+                <!-- Real Fraud Points from Parquet -->
+                <circle cx="52" cy="24" fill="#ff4d6d" class="cursor-pointer" onmouseenter="showTooltip(event, '▲ TX #3455844 (Gian lận)', 'D1: 0 ngày | Số tiền: $3,822.95<br>Product W · Visa Credit')" onmouseleave="hideTooltip()" r="4.5" stroke="#ffffff" stroke-width="1"></circle>
+                <circle cx="58" cy="30" fill="#ff4d6d" class="cursor-pointer" onmouseenter="showTooltip(event, '▲ TX #3283902 (Gian lận)', 'D1: 0 ngày | Số tiền: $3,221.00<br>Product W · Visa Credit')" onmouseleave="hideTooltip()" r="4"></circle>
+                <circle cx="64" cy="38" fill="#ff4d6d" class="cursor-pointer" onmouseenter="showTooltip(event, '▲ TX #3567759 (Gian lận)', 'D1: 0 ngày | Số tiền: $2,680.00<br>Khung giờ đỉnh 08:00 · Visa Debit')" onmouseleave="hideTooltip()" r="4"></circle>
+                <circle cx="78" cy="78" fill="#ff4d6d" class="cursor-pointer" onmouseenter="showTooltip(event, '▲ TX #3389739 (Gian lận)', 'D1: 1 ngày | Số tiền: $675.38<br>Product C · Desktop')" onmouseleave="hideTooltip()" r="4.5" stroke="#ffffff" stroke-width="1"></circle>
+                <circle cx="88" cy="84" fill="#ff4d6d" class="cursor-pointer" onmouseenter="showTooltip(event, '▲ TX #3130267 (Gian lận)', 'D1: 2 ngày | Số tiền: $600.00<br>Product R · Mobile')" onmouseleave="hideTooltip()" r="4"></circle>
+
+                <!-- Legitimate Points -->
+                <circle cx="170" cy="135" fill="#636a7a" opacity="0.5" r="2.5"></circle>
+                <circle cx="265" cy="82" fill="#636a7a" opacity="0.6" r="3" onmouseenter="showTooltip(event, '● TX #3069390 (Hợp lệ)', 'D1: 295 ngày | Số tiền: $2,240.01')" onmouseleave="hideTooltip()"></circle>
+                <circle cx="330" cy="95" fill="#636a7a" opacity="0.6" r="3" onmouseenter="showTooltip(event, '● TX #3158063 (Hợp lệ)', 'D1: 457 ngày | Số tiền: $696.75')" onmouseleave="hideTooltip()"></circle>
+
+                <text fill="#f9b98b" font-family="JetBrains Mono" font-size="9" font-weight="bold" text-anchor="middle" x="55" y="165">0d (4.2%)</text>
+                <text fill="#ff6b81" font-family="JetBrains Mono" font-size="9" font-weight="bold" text-anchor="middle" x="112" y="165">1-15d (7.7%)</text>
+                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="185" y="165">16-60d (2.9%)</text>
+                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="275" y="165">61-180d (2.1%)</text>
+                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="370" y="165">&gt;180d (1.3%)</text>
+              </svg>
+            </div>
+            <div class="flex items-center justify-between pt-2 border-t border-white/5 font-mono text-xs text-outline">
+              <span class="text-error font-semibold">D1 = 1–15d: 3,841 / 49,721 GD (7.73% Fraud)</span>
+              <span>D1 &gt; 180d: 1,506 / 117,219 GD (1.28%)</span>
+            </div>
+          </div>
+
+          <!-- Tab 5: Biểu đồ 3 Notebook: LOESS Phi Tuyến Số Tiền x Identity (Vùng nhạy cảm $200–$1,200) -->
+          <div id="forensic-content-loess" class="forensic-pane hidden flex-col justify-between">
+            <div class="flex items-start justify-between pb-2 border-b border-white/10">
+              <div>
+                <h4 class="font-display text-sm font-bold text-white">Hồi Quy Phi Tuyến Binned-LOESS Giữa Số Tiền &amp; Rủi Ro Phân Tầng Theo Identity</h4>
+                <p class="font-sans text-xs text-on-surface-variant mt-0.5">Khảo sát quan hệ phi tuyến trên thang Log. Vùng nguy cơ cao đạt đỉnh tại <strong>$200 – $1,200</strong>.</p>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded-full bg-error/15 border border-error/30 text-error font-semibold">Đỉnh LOESS: $200–$1,200</span>
+            </div>
+            
+            <div class="w-full h-60 relative my-2">
+              <svg class="w-full h-full overflow-visible" viewBox="0 0 420 190">
+                <!-- Log scale grid: $5 (40), $20 (110), $100 (195), $500 (280), $2,000 (360), $5,000 (400) -->
+                <line stroke="rgba(255,255,255,0.06)" stroke-width="1" x1="40" x2="405" y1="20" y2="20"></line>
+                <line stroke="rgba(255,255,255,0.06)" stroke-width="1" x1="40" x2="405" y1="65" y2="65"></line>
+                <line stroke="rgba(255,255,255,0.06)" stroke-width="1" x1="40" x2="405" y1="110" y2="110"></line>
+                <line stroke="rgba(255,255,255,0.06)" stroke-width="1" x1="40" x2="405" y1="150" y2="150"></line>
+                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="35" y="24">16%</text>
+                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="35" y="69">10%</text>
+                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="35" y="114">5%</text>
+                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="35" y="153">0%</text>
+
+                <!-- Highlight Sensitive Zone $200 - $1,200 -->
+                <rect x="238" y="20" width="95" height="130" fill="rgba(255, 77, 109, 0.12)" stroke="#ff4d6d" stroke-dasharray="3,2" stroke-width="1"></rect>
+                <text fill="#ff6b81" font-family="JetBrains Mono" font-size="8.5" font-weight="700" x="242" y="32">VÙNG ĐỈNH LOESS</text>
+                <text fill="#ffdcc5" font-family="JetBrains Mono" font-size="8" x="242" y="43">$200 – $1,200</text>
+
+                <!-- System baseline line 3.5% -->
+                <line stroke="#f9b98b" stroke-dasharray="3,3" stroke-width="1.2" x1="40" x2="405" y1="123" y2="123"></line>
+
+                <!-- Curve 1: Has Identity (Blue/Cyan Neon) -->
+                <path d="M 45 74 Q 85 64 125 66 T 195 106 T 255 45 T 315 78 T 375 25" fill="none" stroke="#00d2ff" stroke-width="2.5"></path>
+                <!-- Curve 2: No Identity (Red/Coral) -->
+                <path d="M 45 139 Q 95 137 155 135 T 225 130 T 295 118 T 355 111 T 395 109" fill="none" stroke="#ff4d6d" stroke-width="2.5"></path>
+
+                <!-- Data Points HasIdentity -->
+                <circle cx="45" cy="74" r="3.5" fill="#00d2ff" class="cursor-pointer" onmouseenter="showTooltip(event, 'Has Identity · Đơn vi mô ($7)', 'Tỷ lệ Fraud: 8.84% (512 / 5,789 GD)')" onmouseleave="hideTooltip()"></circle>
+                <circle cx="125" cy="66" r="3.5" fill="#00d2ff" class="cursor-pointer" onmouseenter="showTooltip(event, 'Has Identity · Đơn $25', 'Tỷ lệ Fraud: 11.73% (579 / 4,937 GD)')" onmouseleave="hideTooltip()"></circle>
+                <circle cx="195" cy="106" r="3.5" fill="#00d2ff" class="cursor-pointer" onmouseenter="showTooltip(event, 'Has Identity · Đơn $100', 'Tỷ lệ Fraud: 4.50% (971 / 21,589 GD)')" onmouseleave="hideTooltip()"></circle>
+                <circle cx="270" cy="40" r="4.5" fill="#00d2ff" stroke="#ffffff" stroke-width="1.5" class="cursor-pointer" onmouseenter="showTooltip(event, 'Has Identity · VÙNG ĐỈNH $400', 'Tỷ lệ Fraud: 15.53% (832 / 5,356 GD)')" onmouseleave="hideTooltip()"></circle>
+
+                <!-- Data Points NoIdentity -->
+                <circle cx="45" cy="139" r="3.5" fill="#ff4d6d" class="cursor-pointer" onmouseenter="showTooltip(event, 'No Identity · Đơn $24', 'Tỷ lệ Fraud: 1.20% (274 / 22,801 GD)')" onmouseleave="hideTooltip()"></circle>
+                <circle cx="195" cy="130" r="3.5" fill="#ff4d6d" class="cursor-pointer" onmouseenter="showTooltip(event, 'No Identity · Đơn $117', 'Tỷ lệ Fraud: 2.28% (836 / 36,631 GD)')" onmouseleave="hideTooltip()"></circle>
+                <circle cx="295" cy="118" r="3.5" fill="#ff4d6d" class="cursor-pointer" onmouseenter="showTooltip(event, 'No Identity · Đơn $313', 'Tỷ lệ Fraud: 3.55% (632 / 17,817 GD)')" onmouseleave="hideTooltip()"></circle>
+                <circle cx="375" cy="109" r="4" fill="#ff4d6d" class="cursor-pointer" onmouseenter="showTooltip(event, 'No Identity · Đơn $945', 'Tỷ lệ Fraud: 4.56% (745 / 16,329 GD)')" onmouseleave="hideTooltip()"></circle>
+
+                <!-- X-axis Labels -->
+                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="45" y="168">$10</text>
+                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="125" y="168">$50</text>
+                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="195" y="168">$100</text>
+                <text fill="#f9b98b" font-family="JetBrains Mono" font-size="9" font-weight="bold" text-anchor="middle" x="270" y="168">$400</text>
+                <text fill="#636a7a" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="375" y="168">$1,000+</text>
+              </svg>
+            </div>
+
+            <!-- Policy recommendations from Notebook Cell 17 -->
+            <div class="grid grid-cols-1 sm:grid-cols-4 gap-2 pt-2 border-t border-white/5 font-sans text-xs">
+              <div class="p-2 rounded-lg bg-white/[0.02] border border-white/5 flex flex-col gap-0.5">
+                <span class="font-mono text-[10px] text-on-surface-variant font-bold">1. Vi mô (&lt; $15)</span>
+                <span class="text-secondary font-semibold">Nguy cơ thử thẻ</span>
+                <span class="text-[10px] text-outline">Giám sát IP/Device rate</span>
+              </div>
+              <div class="p-2 rounded-lg bg-white/[0.02] border border-white/5 flex flex-col gap-0.5">
+                <span class="font-mono text-[10px] text-on-surface-variant font-bold">2. Phổ thông ($15–$200)</span>
+                <span class="text-emerald-400 font-semibold">An toàn nền (~1.5–3%)</span>
+                <span class="text-[10px] text-outline">Duyệt giao dịch chuẩn</span>
+              </div>
+              <div class="p-2 rounded-lg bg-error/10 border border-error/20 flex flex-col gap-0.5">
+                <span class="font-mono text-[10px] text-error font-bold">3. Nhạy cảm ($200–$1,200)</span>
+                <span class="text-error font-bold">Đỉnh LOESS (8–16%)</span>
+                <span class="text-[10px] text-error/80">Bắt buộc OTP / Sinh trắc</span>
+              </div>
+              <div class="p-2 rounded-lg bg-white/[0.02] border border-white/5 flex flex-col gap-0.5">
+                <span class="font-mono text-[10px] text-on-surface-variant font-bold">4. Giá trị lớn (&gt; $1,200)</span>
+                <span class="text-secondary font-semibold">Nguy cơ ngoại lệ</span>
+                <span class="text-[10px] text-outline">Điều tra viên thẩm định</span>
+              </div>
+            </div>
+          </div>
+
+          <div id="forensic-content-extra" class="forensic-pane hidden flex-col justify-between">
+            <div class="flex items-start justify-between pb-2 border-b border-white/10">
+              <div>
+                <h4 class="font-display text-sm font-bold text-white">Tác Động Của Missing Values &amp; Biến C1 / M4</h4>
+                <p class="font-sans text-xs text-on-surface-variant mt-0.5">Đối sánh tỷ lệ gian lận khi biến bị khuyết (Missing) vs có giá trị (Present) và nhóm C1/M4.</p>
+              </div>
+              <div class="flex gap-1 p-0.5 rounded-full glass-pill-container">
+                <button id="btn-eda-miss" onclick="renderEdaExtra('missing')" class="px-2 py-0.5 rounded-full font-mono text-[10px] font-bold glass-tab-active">Missing Impact</button>
+                <button id="btn-eda-c1" onclick="renderEdaExtra('c1')" class="px-2 py-0.5 rounded-full font-mono text-[10px] font-medium glass-tab-inactive">Biến Đếm C1</button>
+                <button id="btn-eda-m4" onclick="renderEdaExtra('m4')" class="px-2 py-0.5 rounded-full font-mono text-[10px] font-medium glass-tab-inactive">Biến M4</button>
+              </div>
+            </div>
+            <div id="eda-extra-container" class="flex flex-col gap-2 my-2"></div>
+          </div>
         </div>
 
         <!-- Forensic Ledger Table (100% Real Transactions from fraud_train_clean.parquet) -->
@@ -1926,7 +1844,7 @@
   }
 
   function switchForensicTab(tab) {
-    const tabs = ['compare', 'iqr', 'ecdf', 'hist', 'd1', 'extra', 'loess'];
+    const tabs = ['compare', 'iqr', 'ecdf', 'hist', 'd1', 'loess', 'extra'];
     tabs.forEach(t => {
       const btn = document.getElementById('forensic-tab-' + t);
       const pane = document.getElementById('forensic-content-' + t);
