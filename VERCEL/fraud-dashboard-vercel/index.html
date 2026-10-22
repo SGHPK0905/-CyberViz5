@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Dashboard hậu kiểm dữ liệu IEEE-CIS Fraud Detection cho hai vai trò quản lý rủi ro và chuyên viên điều tra.">
+  <title>FraudScope · IEEE-CIS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Roboto+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Bỏ qua thanh điều hướng</a>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Điều hướng chính">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">FS</span>
+        <div>
+          <strong>FraudScope</strong>
+          <span>IEEE-CIS · hậu kiểm</span>
+        </div>
+      </div>
+      <nav class="nav-list">
+        <button class="nav-button active" data-view="manager" aria-controls="manager-view" aria-selected="true">
+          <span class="nav-index">01</span><span>Quản lý rủi ro</span>
+        </button>
+        <button class="nav-button" data-view="investigator" aria-controls="investigator-view" aria-selected="false">
+          <span class="nav-index">02</span><span>Điều tra gian lận</span>
+        </button>
+      </nav>
+      <div class="sidebar-note">
+        <span class="status-dot" aria-hidden="true"></span>
+        <p><strong id="source-rows">—</strong> giao dịch huấn luyện</p>
+        <p>Không suy ra ngày lịch từ thời gian tương đối.</p>
+      </div>
+    </aside>
+
+    <main id="main-content">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Đồ án Trực quan hóa dữ liệu</p>
+          <h1>Giám sát và điều tra gian lận giao dịch</h1>
+        </div>
+        <div class="data-badge"><span class="status-dot" aria-hidden="true"></span><span id="data-status">Đang nạp dữ liệu…</span></div>
+      </header>
+
+      <section id="manager-view" class="view" aria-labelledby="manager-title">
+        <div class="hero-grid">
+          <div>
+            <p class="eyebrow">User Story 01 · Chiến lược</p>
+            <h2 id="manager-title">Tổng quan rủi ro và phân bổ nguồn lực</h2>
+            <p id="manager-story" class="story"></p>
+          </div>
+          <label class="control">Phân khúc ProductCD
+            <select id="manager-product"><option value="ALL">Tất cả sản phẩm</option></select>
+          </label>
+        </div>
+
+        <div class="kpi-grid" id="manager-kpis" aria-label="Chỉ số chính dành cho quản lý"></div>
+
+        <div class="dashboard-grid manager-grid">
+          <article class="panel panel-wide">
+            <div class="panel-head">
+              <div><p class="chart-kicker">Xu hướng · khoảng tin cậy</p><h3>Tỷ lệ gian lận theo tuần tương đối</h3></div>
+              <span class="method-chip">95% Wilson CI</span>
+            </div>
+            <div id="weekly-chart" class="chart" role="img" aria-label="Biểu đồ tỷ lệ gian lận theo tuần tương đối"></div>
+            <p class="chart-note">Mỗi điểm là tỷ lệ quan sát trong một tuần tương đối. Dải mờ là khoảng tin cậy Wilson 95%; trục thời gian không phải ngày lịch.</p>
+          </article>
+
+          <article class="panel">
+            <div class="panel-head"><div><p class="chart-kicker">Nhịp lặp · 7 ngày</p><h3>Chu kỳ ngày tương đối</h3></div></div>
+            <div id="cycle-chart" class="chart compact" role="img" aria-label="Biểu đồ tỷ lệ gian lận theo vị trí trong chu kỳ bảy ngày tương đối"></div>
+            <p class="chart-note">Nhãn 0–6 biểu thị vị trí trong chu kỳ, không tương ứng Thứ Hai–Chủ Nhật.</p>
+          </article>
+
+          <article class="panel">
+            <div class="panel-head"><div><p class="chart-kicker">So sánh phân khúc</p><h3>ProductCD × Identity</h3></div></div>
+            <div id="identity-chart" class="chart compact" role="img" aria-label="Biểu đồ tỷ lệ gian lận theo ProductCD và trạng thái identity"></div>
+            <div class="legend" aria-label="Chú giải"><span><i class="legend-dot blue"></i>Có identity</span><span><i class="legend-square orange"></i>Không có identity</span></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="investigator-view" class="view hidden" aria-labelledby="investigator-title">
+        <div class="hero-grid">
+          <div>
+            <p class="eyebrow">User Story 02 · Tác nghiệp</p>
+            <h2 id="investigator-title">Phân tích dấu hiệu và truy vết giao dịch</h2>
+            <p id="investigator-story" class="story"></p>
+          </div>
+          <div class="scope-note"><strong>Phạm vi</strong><span>Tập train đã có nhãn · phân tích hồi cứu</span></div>
+        </div>
+
+        <div class="dashboard-grid investigator-grid">
+          <article class="panel panel-wide">
+            <div class="panel-head">
+              <div><p class="chart-kicker">Phân phối · trục log</p><h3>Số tiền theo nhãn giao dịch</h3></div>
+              <span class="method-chip">Chuẩn hóa trong từng lớp</span>
+            </div>
+            <div id="amount-histogram" class="chart" role="img" aria-label="Biểu đồ phân phối số tiền giao dịch hợp lệ và gian lận"></div>
+            <p class="chart-note">So sánh hình dạng phân phối, không dùng chiều cao để so sánh quy mô hai lớp.</p>
+          </article>
+
+          <article class="panel">
+            <div class="panel-head"><div><p class="chart-kicker">Phân tầng số tiền</p><h3>Tỷ lệ và mẫu số</h3></div></div>
+            <div id="amount-bin-chart" class="bar-list" aria-label="Tỷ lệ gian lận theo khoảng số tiền"></div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-head"><div><p class="chart-kicker">Chất lượng dữ liệu</p><h3>Missing và tỷ lệ gian lận</h3></div></div>
+            <div id="missing-chart" class="comparison-list" aria-label="So sánh tỷ lệ gian lận giữa nhóm thiếu và có dữ liệu"></div>
+            <p class="chart-note">Chênh lệch mô tả mối liên hệ trong tập train, không chứng minh quan hệ nhân quả.</p>
+          </article>
+
+          <article class="panel panel-wide">
+            <div class="panel-head">
+              <div><p class="chart-kicker">Ưu tiên kiểm tra</p><h3>Phân khúc ProductCD × DeviceType</h3></div>
+              <span class="method-chip">n ≥ 100</span>
+            </div>
+            <div class="table-wrap"><table id="segment-table"><thead><tr><th>Phân khúc</th><th class="num">Số GD</th><th class="num">Fraud</th><th class="num">Tỷ lệ</th><th class="num">95% CI</th></tr></thead><tbody></tbody></table></div>
+          </article>
+
+          <article class="panel panel-full">
+            <div class="panel-head ledger-head">
+              <div><p class="chart-kicker">Hồ sơ mẫu · hồi cứu</p><h3>Bảng giao dịch để truy vết</h3></div>
+              <div class="ledger-controls">
+                <input id="ledger-search" type="search" placeholder="Tìm TransactionID…" aria-label="Tìm mã giao dịch">
+                <select id="ledger-label" aria-label="Lọc theo nhãn"><option value="ALL">Tất cả nhãn</option><option value="1">Fraud</option><option value="0">Hợp lệ</option></select>
+                <select id="ledger-product" aria-label="Lọc theo ProductCD"><option value="ALL">Mọi ProductCD</option></select>
+              </div>
+            </div>
+            <div class="table-wrap"><table id="ledger-table"><thead><tr><th>TransactionID</th><th>Nhãn</th><th class="num">Ngày tương đối</th><th class="num">Số tiền</th><th>Product</th><th>Thẻ</th><th>Device</th><th class="num">D1</th></tr></thead><tbody></tbody></table></div>
+            <p class="chart-note">Mẫu gồm 80 giao dịch fraud có số tiền lớn và 40 giao dịch hợp lệ lấy mẫu cố định. Bảng này phục vụ minh họa giao diện, không phải danh sách cảnh báo theo mô hình.</p>
+          </article>
+        </div>
+      </section>
+
+      <footer>
+        <p id="method-note"></p>
+        <p>Dữ liệu: IEEE-CIS Fraud Detection · giao diện tạo từ JSON tiền tổng hợp.</p>
+      </footer>
+    </main>
+  </div>
+  <div id="tooltip" class="tooltip" role="status" aria-live="polite"></div>
+  <script src="./app.js" defer></script>
+</body>
+</html>
