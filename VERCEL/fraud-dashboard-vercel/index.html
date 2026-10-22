@@ -107,6 +107,13 @@
       color: #ffffff;
       background: rgba(255, 255, 255, 0.08);
     }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
     .glass-pill-container {
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid rgba(255, 255, 255, 0.08);
@@ -646,26 +653,46 @@
         </div>
 
                 <!-- ================= BIỂU ĐỒ 03 & FORENSIC DEEP-DIVE LAB (WORKBENCH ĐIỀU TRA VI MÔ) ================= -->
-        <div class="p-6 glass-card rounded-2xl flex flex-col gap-4">
+        <div class="p-6 glass-card rounded-2xl flex flex-col gap-5">
+          <!-- Card Header: Title & Quick Metrics (Full Width) -->
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-white/10">
             <div>
               <div class="flex items-center gap-2">
-                <span class="font-mono text-xs text-secondary font-bold">BIỂU ĐỒ 03</span>
+                <span class="font-mono text-xs text-secondary font-bold">VAI TRÒ 02</span>
                 <span class="text-outline">/</span>
-                <h3 class="font-display text-base font-bold text-white tracking-[-0.02em]">Không Gian Phân Tích Chuyên Sâu (Forensic Deep-Dive Lab)</h3>
+                <h3 class="font-display text-base sm:text-lg font-bold text-white tracking-[-0.02em]">Không Gian Phân Tích Chuyên Sâu (Forensic Deep-Dive Lab)</h3>
               </div>
               <p class="font-sans text-xs text-on-surface-variant mt-0.5">Khảo sát vi mô 7 chiều phân tích trích xuất từ notebook EDA trên 590,540 giao dịch thật.</p>
             </div>
-            <!-- Lab Sub-tabs -->
-            <div class="flex items-center gap-1 p-1 rounded-full glass-pill-container flex-wrap">
-              <button id="forensic-tab-compare" onclick="switchForensicTab('compare')" class="px-3 py-1 rounded-full font-mono text-[11px] font-bold glass-tab-active">1. So Sánh 2 Lớp (Mục 2)</button>
-              <button id="forensic-tab-iqr" onclick="switchForensicTab('iqr')" class="px-3 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive">2. Biến Thiên ProductCD &amp; IQR (Mục 4)</button>
-              <button id="forensic-tab-ecdf" onclick="switchForensicTab('ecdf')" class="px-3 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive">3. Phân Vị Tích Lũy ECDF (Mục 3)</button>
-              <button id="forensic-tab-hist" onclick="switchForensicTab('hist')" class="px-3 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive">4. Phân Bố Số Tiền (Histogram)</button>
-              <button id="forensic-tab-d1" onclick="switchForensicTab('d1')" class="px-3 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive">5. Cụm Tuổi Thẻ D1 (Mục 8)</button>
-              <button id="forensic-tab-loess" onclick="switchForensicTab('loess')" class="px-3 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive">6. Hồi Quy LOESS Phi Tuyến $ (Mục 9)</button>
-              <button id="forensic-tab-extra" onclick="switchForensicTab('extra')" class="px-3 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive">7. Dữ Liệu Thiếu &amp; C1/M4 (Mục 10)</button>
+            <div class="flex items-center gap-2 shrink-0">
+              <span class="font-mono text-[11px] px-3 py-1 rounded-full bg-white/5 border border-white/10 text-cyan-300 font-semibold">● 569,877 Hợp Lệ (96.5%)</span>
+              <span class="font-mono text-[11px] px-3 py-1 rounded-full bg-error/15 border border-error/30 text-error font-bold">▲ 20,663 Gian Lận (3.5%)</span>
             </div>
+          </div>
+
+          <!-- Dedicated Full-Width Tab Strip (Modern Horizontal Segmented Bar) -->
+          <div class="w-full flex items-center gap-1.5 p-1.5 rounded-xl bg-[#12151e]/90 border border-white/10 overflow-x-auto no-scrollbar">
+            <button id="forensic-tab-compare" onclick="switchForensicTab('compare')" class="px-3.5 py-1.5 rounded-lg font-mono text-xs font-bold glass-tab-active whitespace-nowrap shrink-0 transition-all">
+              Biểu Đồ 03 · Phân Phối &amp; Boxplot
+            </button>
+            <button id="forensic-tab-iqr" onclick="switchForensicTab('iqr')" class="px-3.5 py-1.5 rounded-lg font-mono text-xs font-medium glass-tab-inactive whitespace-nowrap shrink-0 transition-all">
+              Biến Thiên ProductCD &amp; IQR
+            </button>
+            <button id="forensic-tab-ecdf" onclick="switchForensicTab('ecdf')" class="px-3.5 py-1.5 rounded-lg font-mono text-xs font-medium glass-tab-inactive whitespace-nowrap shrink-0 transition-all">
+              Phân Vị Tích Lũy ECDF
+            </button>
+            <button id="forensic-tab-hist" onclick="switchForensicTab('hist')" class="px-3.5 py-1.5 rounded-lg font-mono text-xs font-medium glass-tab-inactive whitespace-nowrap shrink-0 transition-all">
+              Histogram Mật Độ Số Tiền
+            </button>
+            <button id="forensic-tab-d1" onclick="switchForensicTab('d1')" class="px-3.5 py-1.5 rounded-lg font-mono text-xs font-medium glass-tab-inactive whitespace-nowrap shrink-0 transition-all">
+              Cụm Tuổi Thẻ D1 (≤15d)
+            </button>
+            <button id="forensic-tab-loess" onclick="switchForensicTab('loess')" class="px-3.5 py-1.5 rounded-lg font-mono text-xs font-medium glass-tab-inactive whitespace-nowrap shrink-0 transition-all">
+              Hồi Quy LOESS Phi Tuyến $
+            </button>
+            <button id="forensic-tab-extra" onclick="switchForensicTab('extra')" class="px-3.5 py-1.5 rounded-lg font-mono text-xs font-medium glass-tab-inactive whitespace-nowrap shrink-0 transition-all">
+              Dữ Liệu Khuyết &amp; C1/M4
+            </button>
           </div>
 
           <!-- Content Panels for Forensic Tabs (Ordered 1 to 7) -->
@@ -675,14 +702,11 @@
               <div>
                 <div class="flex items-center gap-2">
                   <span class="w-2 h-2 rounded-full bg-secondary shadow-[0_0_6px_#f9b98b]"></span>
-                  <h4 class="font-display text-sm font-bold text-white tracking-tight">Mục 2. So Sánh Toàn Diện Fraud &amp; Legitimate (02_so_sanh_fraud_legitimate)</h4>
+                  <h4 class="font-display text-sm font-bold text-white tracking-tight">Biểu Đồ 03 · So Sánh Toàn Diện Giao Dịch Gian Lận &amp; Hợp Lệ</h4>
                 </div>
-                <p class="font-sans text-xs text-on-surface-variant mt-0.5">Đối chiếu quy mô mất cân bằng lớp (96.50% vs 3.50%), hình dạng phân phối trên trục log10 và Boxplot Median ($68.50 vs $75.00).</p>
+                <p class="font-sans text-xs text-on-surface-variant mt-0.5">Đối chiếu quy mô mất cân bằng lớp (96.50% vs 3.50%), hình dạng phân phối trên trục log10 và Boxplot phân vị Median ($68.50 vs $75.00).</p>
               </div>
-              <div class="flex items-center gap-2">
-                <span class="font-mono text-[11px] px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 text-cyan-300 font-semibold">569,877 Legit (96.5%)</span>
-                <span class="font-mono text-[11px] px-2.5 py-0.5 rounded-full bg-error/10 border border-error/20 text-error font-bold">20,663 Fraud (3.5%)</span>
-              </div>
+              <span class="font-mono text-xs text-secondary font-semibold shrink-0">Tỷ lệ mất cân bằng: 27.6 : 1</span>
             </div>
 
             <!-- 3 Subplots Side-by-Side matching Notebook Fig 02 -->
@@ -846,9 +870,9 @@
               <div>
                 <div class="flex items-center gap-2">
                   <span class="w-2 h-2 rounded-full bg-secondary shadow-[0_0_6px_#f9b98b]"></span>
-                  <h4 class="font-display text-sm font-bold text-white tracking-tight">Mục 4. Biến Thiên Số Tiền Giữa Các Nhóm ProductCD (04_do_phan_tan_theo_nhom)</h4>
+                  <h4 class="font-display text-sm font-bold text-white tracking-tight">Biến Thiên Số Tiền &amp; Độ Phân Tán IQR Giữa Các Nhóm ProductCD</h4>
                 </div>
-                <p class="font-sans text-xs text-on-surface-variant mt-0.5">Trích xuất từ <code>04_bien_thien_product_fraud.csv</code>: 10 Boxplots trên thang log10 và Biểu đồ Dot Plot IQR (50% giao dịch giữa).</p>
+                <p class="font-sans text-xs text-on-surface-variant mt-0.5">So sánh 10 Boxplots trên thang Log10 và biểu đồ khoảng biến thiên IQR (50% giao dịch nằm ở giữa).</p>
               </div>
               <div class="flex items-center gap-2 font-mono text-[11px]">
                 <span class="px-2.5 py-0.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-300">● Legitimate (Tròn)</span>
@@ -1850,11 +1874,11 @@
       const pane = document.getElementById('forensic-content-' + t);
       if (!btn || !pane) return;
       if (t === tab) {
-        btn.className = 'px-3 py-1 rounded-full font-mono text-[11px] font-bold glass-tab-active';
+        btn.className = 'px-3.5 py-1.5 rounded-lg font-mono text-xs font-bold glass-tab-active whitespace-nowrap shrink-0 transition-all';
         pane.classList.remove('hidden');
         pane.classList.add('flex');
       } else {
-        btn.className = 'px-3 py-1 rounded-full font-mono text-[11px] font-medium glass-tab-inactive';
+        btn.className = 'px-3.5 py-1.5 rounded-lg font-mono text-xs font-medium glass-tab-inactive whitespace-nowrap shrink-0 transition-all';
         pane.classList.add('hidden');
         pane.classList.remove('flex');
       }
